@@ -4,5 +4,5 @@ metadata:
   name: oswald-ai-image
   namespace: flux-system
 spec:
-  image: jonahgcarpenter/joney-bot
+  image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai
   interval: 5m

@@ -39,15 +39,15 @@ data:
             href: https://homebridge.home.jonahsserver.com
 
     - Infrastructure & Data:
-        - PVE-3:
+        - PVE-0:
             icon: proxmox.png
-            href: https://pve-3.home.jonahsserver.com/
+            href: https://pve-0.home.jonahsserver.com/
             widget:
               type: proxmox
               url: {{HOMEPAGE_VAR_PROXMOX_PVE3_URL}}
               username: "{{HOMEPAGE_VAR_PROXMOX_USERNAME}}"
               password: "{{HOMEPAGE_VAR_PROXMOX_API_TOKEN}}"
-              node: pve-3
+              node: pve-0
               fields: ["vms", "lxc", "resources.cpu", "resources.mem"]
         - TrueNAS:
             icon: truenas.png

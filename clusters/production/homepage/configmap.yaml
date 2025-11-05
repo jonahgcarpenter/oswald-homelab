@@ -44,10 +44,10 @@ data:
             href: https://pve-0.home.jonahsserver.com/
             widget:
               type: proxmox
-              url: {{HOMEPAGE_VAR_PROXMOX_PVE3_URL}}
+              url: {{HOMEPAGE_VAR_PROXMOX_PVE0_URL}}
               username: "{{HOMEPAGE_VAR_PROXMOX_USERNAME}}"
               password: "{{HOMEPAGE_VAR_PROXMOX_API_TOKEN}}"
-              node: pve-0
+              node: oswald-pve-0
               fields: ["vms", "lxc", "resources.cpu", "resources.mem"]
         - TrueNAS:
             icon: truenas.png

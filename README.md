@@ -38,8 +38,10 @@
 
 ### Problems:
 
+- Fix Homepage PVE-3 name
 - continue to monitor helper scripts for frigate 16
-- cluster pod logs on web?
+- Loki/Promtail install
+- FluxCD alerts from Loki
 - fix WoLAN for talos nodes (talos v1.12 in alpha)
 - check that NUT client works for shutdown
 - split GPU between multiple LXCs instead of using passthrough

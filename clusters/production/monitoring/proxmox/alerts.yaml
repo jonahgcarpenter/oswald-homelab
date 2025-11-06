@@ -122,7 +122,7 @@ spec:
             summary: "Proxmox LXC {{ $labels.name }} memory usage high"
             description: "The Proxmox LXC '{{ $labels.name }}' (ID: {{ $labels.id }}) has memory usage of {{ $value | humanizePercentage }} (Threshold: 75%)."
 
-        # Notifies if VM RAM usage is >90% for 10mins
+        # Notifies if VM RAM usage is >95% for 10mins
         - alert: ProxmoxVmGuestMemoryHigh
           expr: |
             (
@@ -137,7 +137,7 @@ spec:
               )
               and on (id, instance)
               (pve_up{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"} == 1)
-            ) > 0.90
+            ) > 0.95
           for: 10m
           labels:
             severity: warning

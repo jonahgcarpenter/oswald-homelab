@@ -38,7 +38,6 @@
 
 ### Problems:
 
-- Fix Homepage PVE-3 name
 - continue to monitor helper scripts for frigate 16
 - Loki/Promtail install
 - FluxCD alerts from Loki

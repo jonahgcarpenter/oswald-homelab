@@ -9,7 +9,7 @@ spec:
       chart: loki
       sourceRef:
         kind: HelmRepository
-        name: loki
+        name: grafana
         namespace: monitoring
       version: "6.46.0"
   values:

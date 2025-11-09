@@ -13,3 +13,27 @@ spec:
         namespace: monitoring
       version: "1.4.0"
   values:
+    controller:
+      type: "daemonset"
+
+    config:
+      loki.source.kubernetes "logs":
+        scrape_pods: true
+        forward_to: [loki.relabel.add_k8s_metadata.receiver]
+
+      loki.relabel "add_k8s_metadata":
+        forward_to: [loki.write.default.receiver]
+
+        rule:
+          - source_labels: ["__meta_kubernetes_pod_name"]
+            target_label: "pod"
+          - source_labels: ["__meta_kubernetes_namespace"]
+            target_label: "namespace"
+          - source_labels: ["__meta_kubernetes_pod_controller_name"]
+            target_label: "controller"
+          - source_labels: ["__meta_kubernetes_container_name"]
+            target_label: "container"
+
+      loki.write "default":
+        endpoint:
+          url: "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"

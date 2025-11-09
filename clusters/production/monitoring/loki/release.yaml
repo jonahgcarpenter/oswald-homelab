@@ -35,3 +35,5 @@ spec:
     loki:
       auth_enabled: false
       useTestSchema: false
+      storage:
+        type: filesystem

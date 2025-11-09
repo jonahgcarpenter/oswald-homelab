@@ -32,6 +32,9 @@ spec:
     test:
       enabled: false
 
+    lokiCanary:
+      enabled: false
+
     loki:
       auth_enabled: false
       useTestSchema: true

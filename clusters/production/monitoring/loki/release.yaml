@@ -13,14 +13,15 @@ spec:
         namespace: monitoring
       version: "6.46.0"
   values:
-    # Deployment mode: SingleBinary (simple), SimpleScalable (medium), Distributed (large)
     deploymentMode: SingleBinary
 
-    # Number of replicas
     singleBinary:
       replicas: 1
+      persistence:
+        enabled: true
+        size: 10Gi
+        storageClassName: "longhorn"
 
-    # Component replicas
     write:
       replicas: 0
     read:
@@ -28,23 +29,9 @@ spec:
     backend:
       replicas: 0
 
-    # Caching
-    chunksCache:
-      enabled: false
-    resultsCache:
-      enabled: false
-
-    # Helm test
     test:
       enabled: false
 
-    # All loki settings combined under one key
     loki:
       auth_enabled: false
-      commonConfig:
-        replication_factor: 1
-      storage:
-        type: filesystem
-        filesystem:
-          directory: /var/loki/chunks
-      useTestSchema: true
+      useTestSchema: false

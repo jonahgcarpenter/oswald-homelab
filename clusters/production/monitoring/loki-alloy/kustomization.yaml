@@ -4,4 +4,3 @@ namespace: monitoring
 resources:
   - helm-repo.yaml
   - loki-release.yaml
-  - alloy-release.yaml

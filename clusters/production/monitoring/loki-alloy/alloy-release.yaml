@@ -23,8 +23,8 @@ spec:
             role = "pod"
             selectors = [
               {
-                role  = "pod"
-                field = "spec.nodeName=${coalesce(sys.env('HOSTNAME'), constants.hostname)}"
+                role  = "pod",
+                field = "spec.nodeName=" + coalesce(sys.env("HOSTNAME"), constants.hostname),
               }
             ]
           }
@@ -76,7 +76,7 @@ spec:
           loki.process "pod_logs" {
             stage.static_labels {
               values = {
-                cluster = "oswald-talos"
+                cluster = "oswald-talos",
               }
             }
             forward_to = [loki.write.default.receiver]

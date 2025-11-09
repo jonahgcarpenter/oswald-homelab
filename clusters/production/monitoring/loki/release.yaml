@@ -13,3 +13,11 @@ spec:
         namespace: monitoring
       version: "6.46.0"
   values:
+    deploymentMode: "SingleBinary"
+
+    loki:
+      storage:
+        type: "filesystem"
+
+      boltdbShipper:
+        sharedStore: ""

@@ -21,12 +21,10 @@ spec:
         content: |
           discovery.kubernetes "pod" {
             role = "pod"
-            selectors = [
-              {
-                role  = "pod",
-                field = "spec.nodeName=" + coalesce(sys.env("HOSTNAME"), constants.hostname),
-              },
-            ]
+            selectors = {
+              role  = "pod",
+              field = "spec.nodeName=" + coalesce(sys.env("HOSTNAME"), constants.hostname),
+            }
           }
 
           discovery.relabel "pod_logs" {

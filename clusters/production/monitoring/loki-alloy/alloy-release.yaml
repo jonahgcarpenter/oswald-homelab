@@ -23,7 +23,7 @@ spec:
             role = "pod"
             selectors = [
               {
-                role  = "pod"
+                role  = "pod",
                 field = "spec.nodeName=" + coalesce(sys.env("HOSTNAME"), constants.hostname)
               }
             ]

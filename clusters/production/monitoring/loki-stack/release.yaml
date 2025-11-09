@@ -6,7 +6,7 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: grafana/loki-stack
+      chart: loki-stack
       sourceRef:
         kind: HelmRepository
         name: loki-stack

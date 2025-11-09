@@ -23,7 +23,7 @@ spec:
       adminPassword: ""
 
       additionalDataSources:
-        - name: Loki
+        - name: loki
           type: loki
           access: proxy
           url: http://loki-stack:3100

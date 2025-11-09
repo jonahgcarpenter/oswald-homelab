@@ -5,4 +5,4 @@ resources:
   - ./proxmox
   - ./longhorn
   - ./home-assistant
-  - ./loki
+  - ./loki-alloy

@@ -22,8 +22,8 @@ spec:
           discovery.kubernetes "pod" {
             role = "pod"
             selector {
-              role  = "pod",
-              field = "spec.nodeName=" + coalesce(sys.env("HOSTNAME"), constants.hostname),
+              role  = "pod"
+              field = "spec.nodeName=" + coalesce(sys.env("HOSTNAME"), constants.hostname)
             }
           }
 

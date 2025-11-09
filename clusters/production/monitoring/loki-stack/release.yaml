@@ -1,0 +1,43 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: loki-stack
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: grafana/loki-stack
+      sourceRef:
+        kind: HelmRepository
+        name: loki-stack
+        namespace: monitoring
+      version: "2.10.3"
+  values:
+    grafana:
+      enabled: false
+
+    loki:
+      enabled: true
+      isDefault: true
+      url: http://{{(include "loki.serviceName" .)}}:{{ .Values.loki.service.port }}
+      readinessProbe:
+        httpGet:
+          path: /ready
+          port: http-metrics
+        initialDelaySeconds: 45
+      livenessProbe:
+        httpGet:
+          path: /ready
+          port: http-metrics
+        initialDelaySeconds: 45
+      datasource:
+        jsonData: "{}"
+        uid: ""
+
+    promtail:
+      enabled: true
+      config:
+        logLevel: info
+        serverPort: 3101
+        clients:
+          - url: http://{{ .Release.Name }}:3100/loki/api/v1/push

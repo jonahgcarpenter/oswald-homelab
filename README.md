@@ -43,7 +43,6 @@
 - flux oci automation for helm charts
 - split GPU between multiple LXCs instead of using passthrough
 - node exporter for pve-0
-- pvc for prometheus
 
 ## Hardware
 

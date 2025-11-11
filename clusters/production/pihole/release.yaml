@@ -11,7 +11,7 @@ spec:
         kind: HelmRepository
         name: pihole
         namespace: pihole
-      version: "2.31.0"
+      version: "2.34.0"
   values:
     # -- The number of replicas
     replicaCount: 1

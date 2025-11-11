@@ -39,11 +39,11 @@
 ### Problems:
 
 - continue to monitor helper scripts for frigate 16
-- FluxCD alerts from Loki
 - fix WoLAN for talos nodes (talos v1.12 in alpha)
-- check that NUT client works for shutdown
+- flux oci automation for helm charts
 - split GPU between multiple LXCs instead of using passthrough
-- track helm chart versions with flux automations
+- node exporter for pve-0
+- pvc for prometheus
 
 ## Hardware
 

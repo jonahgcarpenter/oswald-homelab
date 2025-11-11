@@ -12,9 +12,9 @@ spec:
         - alert: ProxmoxGuestDown
           expr: |
             (
-              pve_up{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+              pve_up{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
               * on (id, instance) group_left(name, type)
-              pve_guest_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", template!="1"}
+              pve_guest_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter", template!="1"}
             ) == 0
           for: 5m
           labels:
@@ -27,9 +27,9 @@ spec:
         - alert: ProxmoxHostCpuHigh
           expr: |
             (
-              pve_cpu_usage_ratio{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+              pve_cpu_usage_ratio{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
               * on (id, instance) group_left(name)
-              pve_node_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+              pve_node_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
             ) > 0.75
           for: 10m
           labels:
@@ -43,12 +43,12 @@ spec:
           expr: |
             (
               (
-                pve_disk_usage_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", id=~"storage/.+"}
+                pve_disk_usage_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", id=~"storage/.+", job="proxmox-ve-exporter"}
                 /
-                pve_disk_size_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", id=~"storage/.+"}
+                pve_disk_size_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", id=~"storage/.+", job="proxmox-ve-exporter"}
               )
               * on (id, instance) group_left(storage)
-              pve_storage_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", storage!="local"}
+              pve_storage_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", storage!="local", job="proxmox-ve-exporter"}
             ) > 0.75
           for: 5m
           labels:
@@ -62,12 +62,12 @@ spec:
           expr: |
             (
               (
-                pve_memory_usage_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+                pve_memory_usage_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
                 /
-                pve_memory_size_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+                pve_memory_size_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
               )
               * on (id, instance) group_left(name)
-              pve_node_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+              pve_node_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
             ) > 0.75
           for: 10m
           labels:
@@ -82,15 +82,15 @@ spec:
             (
               (
                 (
-                  pve_cpu_usage_ratio{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+                  pve_cpu_usage_ratio{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
                   /
-                  pve_cpu_usage_limit{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+                  pve_cpu_usage_limit{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
                 )
                 * on (id, instance) group_left(name, type)
-                pve_guest_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", template!="1"}
+                pve_guest_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter", template!="1"}
               )
               and on (id, instance)
-              (pve_up{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"} == 1)
+              (pve_up{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"} == 1)
             ) > 0.75
           for: 10m
           labels:
@@ -105,15 +105,15 @@ spec:
             (
               (
                 (
-                  pve_memory_usage_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+                  pve_memory_usage_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
                   /
-                  pve_memory_size_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+                  pve_memory_size_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
                 )
                 * on (id, instance) group_left(name, type)
-                pve_guest_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", template!="1", type="lxc"}
+                pve_guest_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter", template!="1", type="lxc"}
               )
               and on (id, instance)
-              (pve_up{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"} == 1)
+              (pve_up{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"} == 1)
             ) > 0.75
           for: 10m
           labels:
@@ -128,15 +128,15 @@ spec:
             (
               (
                 (
-                  pve_memory_usage_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+                  pve_memory_usage_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
                   /
-                  pve_memory_size_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+                  pve_memory_size_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
                 )
                 * on (id, instance) group_left(name, type)
-                pve_guest_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", template!="1", type="qemu"}
+                pve_guest_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter", template!="1", type="qemu"}
               )
               and on (id, instance)
-              (pve_up{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"} == 1)
+              (pve_up{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"} == 1)
             ) > 0.95
           for: 10m
           labels:
@@ -151,15 +151,15 @@ spec:
             (
               (
                 (
-                  pve_disk_usage_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+                  pve_disk_usage_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
                   /
-                  pve_disk_size_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"}
+                  pve_disk_size_bytes{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
                 )
                 * on (id, instance) group_left(name, type)
-                pve_guest_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", template!="1", type="lxc"}
+                pve_guest_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter", template!="1", type="lxc"}
               )
               and on (id, instance)
-              (pve_up{instance="exporter-proxmox.monitoring.svc.cluster.local:9221"} == 1)
+              (pve_up{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"} == 1)
             ) > 0.75
           for: 5m
           labels:

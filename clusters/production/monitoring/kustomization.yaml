@@ -7,3 +7,4 @@ resources:
   - ./longhorn
   - ./home-assistant
   - ./loki-alloy
+  - ./cluster

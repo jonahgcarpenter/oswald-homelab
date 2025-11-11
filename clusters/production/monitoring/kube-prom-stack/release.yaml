@@ -50,12 +50,12 @@ spec:
           - job_name: "proxmox-exporter"
             static_configs:
               - targets: ["192.168.4.73:9100"]
-          # - job_name: "proxmox-ve-exporter"
-          #   metrics_path: /pve
-          #   params:
-          #     target: ["192.168.4.73"]
-          #   static_configs:
-          #     - targets: ["exporter-proxmox.monitoring.svc.cluster.local:9221"]
+          - job_name: "proxmox-ve-exporter"
+            metrics_path: /pve
+            params:
+              target: ["192.168.4.73"]
+            static_configs:
+              - targets: ["exporter-proxmox.monitoring.svc.cluster.local:9221"]
 
     alertmanager:
       alertmanagerSpec:

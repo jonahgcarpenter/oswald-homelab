@@ -167,3 +167,33 @@ spec:
           annotations:
             summary: "Proxmox LXC {{ $labels.name }} disk usage high"
             description: "The Proxmox LXC '{{ $labels.name }}' (ID: {{ $labels.id }}) has disk usage of {{ $value | humanizePercentage }} (Threshold: 75%)."
+
+        # Notifies if CPU is >80C for 5mins
+        - alert: ProxmoxCPUTempHigh
+          expr: node_hwmon_temp_celsius{job="proxmox-exporter", chip=~"pci.*", sensor="temp1"} > 80
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High CPU Temperature on {{ $labels.instance }}"
+            description: 'The CPU Die temperature is {{ $value | printf "%.1f" }}°C (Threshold: 80°C).'
+
+        # Triggers if MB Temp >60C for 5mins
+        - alert: ProxmoxMotherboardTempHigh
+          expr: node_hwmon_temp_celsius{job="proxmox-exporter", chip=~"platform.*", sensor="temp1"} > 60
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High Motherboard Temperature on {{ $labels.instance }}"
+            description: 'The System/Motherboard temperature is {{ $value | printf "%.1f" }}°C. Check case fans.'
+
+        # Triggers if NVMe >75C for 5mins
+        - alert: ProxmoxNVMeTempHigh
+          expr: node_hwmon_temp_celsius{job="proxmox-exporter", chip=~"nvme.*", sensor="temp1"} > 75
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High NVMe Temperature on {{ $labels.instance }}"
+            description: 'The NVMe drive temperature is {{ $value | printf "%.1f" }}°C (Threshold: 75°C).'

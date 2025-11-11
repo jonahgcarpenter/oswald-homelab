@@ -11,4 +11,4 @@ spec:
         kind: HelmRepository
         name: sealed-secrets
         namespace: sealed-secrets
-      version: "2.17.3"
+      version: "2.17.9"

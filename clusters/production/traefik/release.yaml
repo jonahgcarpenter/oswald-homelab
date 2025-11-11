@@ -11,7 +11,7 @@ spec:
         kind: HelmRepository
         name: traefik
         namespace: traefik
-      version: "35.4.0"
+      version: "37.3.0"
   values:
     ports:
       web:

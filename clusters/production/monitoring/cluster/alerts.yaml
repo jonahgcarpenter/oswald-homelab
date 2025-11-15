@@ -1,0 +1,29 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: alert-manager-talos
+  labels:
+    release: kube-prometheus-stack
+spec:
+  groups:
+    - name: talos.rules
+      rules:
+        # Notifies if CPU is >80C for 5mins
+        - alert: TalosCPUTempHigh
+          expr: node_hwmon_temp_celsius{job="node-exporter", chip=~"pci.*", sensor="temp1"} > 80
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High CPU Temperature on {{ $labels.instance }}"
+            description: 'The CPU Die temperature is {{ $value | printf "%.1f" }}°C (Threshold: 80°C).'
+
+        # Triggers if NVMe >75C for 5mins
+        - alert: TalosNVMeTempHigh
+          expr: node_hwmon_temp_celsius{job="node-exporter", chip=~"nvme.*", sensor="temp1"} > 75
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High NVMe Temperature on {{ $labels.instance }}"
+            description: 'The NVMe drive temperature is {{ $value | printf "%.1f" }}°C (Threshold: 75°C).'

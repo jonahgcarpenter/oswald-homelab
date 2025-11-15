@@ -42,7 +42,6 @@
 - fix WoLAN for talos nodes (talos v1.12 in alpha)
 - flux oci automation for helm charts
 - split GPU between multiple LXCs instead of using passthrough
-- node exporter talos temp alerts
 
 ## Hardware
 

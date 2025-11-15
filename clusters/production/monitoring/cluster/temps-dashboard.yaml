@@ -33,7 +33,7 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 34,
+      "id": 5,
       "links": [],
       "panels": [
         {
@@ -70,6 +70,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "auto",
+                "showValues": false,
                 "spanNulls": false,
                 "stacking": {
                   "group": "A",
@@ -84,7 +85,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": 0
                   },
                   {
                     "color": "red",
@@ -105,8 +107,8 @@ data:
           "options": {
             "legend": {
               "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
+              "displayMode": "table",
+              "placement": "right",
               "showLegend": true
             },
             "tooltip": {
@@ -115,20 +117,34 @@ data:
               "sort": "none"
             }
           },
-          "pluginVersion": "12.0.2",
+          "pluginVersion": "12.2.1",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
                 "uid": "prometheus"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "node_hwmon_temp_celsius{instance=\"$instance\"} > 0",
+              "expr": "node_hwmon_temp_celsius{instance=\"$instance\", chip=~\"pci.*\"} > 0",
               "instant": false,
               "interval": "",
               "intervalFactor": 3,
-              "legendFormat": "{{chip}}-{{sensor}}",
+              "legendFormat": "CPU",
               "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "node_hwmon_temp_celsius{instance=\"$instance\", chip=~\"nvme.*\", sensor=\"temp1\"} > 0",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "NVMe Drive",
+              "range": true,
+              "refId": "B"
             }
           ],
           "title": "Temperature",
@@ -137,7 +153,7 @@ data:
       ],
       "preload": false,
       "refresh": "1m",
-      "schemaVersion": 41,
+      "schemaVersion": 42,
       "tags": [],
       "templating": {
         "list": [

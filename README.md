@@ -68,7 +68,7 @@
 - 500GB NVMe
 - Dual 2.5GB RJ45
 
-### [PVE 0](https://pcpartpicker.com/user/HeyItsJonah/saved/bkgVD3)
+### [PVE 0](https://pcpartpicker.com/user/HeyItsJonah/saved/KfvZzy)
 
 - Ryzen 5 3600 6C/12T 3.6GHz
 - 4x16GB 3200MHz DDR4

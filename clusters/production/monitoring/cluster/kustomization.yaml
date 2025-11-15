@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - temps-dashboard.yaml
+  - alerts.yaml

@@ -39,7 +39,7 @@
 ### Problems:
 
 - continue to monitor helper scripts for frigate 16
-- fix WoLAN for talos nodes (talos v1.12 in alpha)
+- fix WoLAN for talos nodes (talos v1.12 in beta)
 - flux oci automation for helm charts
 
 ## Hardware

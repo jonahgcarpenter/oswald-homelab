@@ -73,7 +73,6 @@
 - 500GB NVMe
 - 2x2TB 3.5" Drive
 - RTX 3060 8GB VRAM
-- Coral TPU USB
 
 ### [Home Assistant](https://www.home-assistant.io/yellow/)
 

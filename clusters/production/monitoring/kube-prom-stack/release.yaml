@@ -31,7 +31,7 @@ spec:
 
     prometheus:
       prometheusSpec:
-        retention: 14d
+        retention: 7d
         retentionSize: "45GB"
 
         storageSpec:

@@ -38,6 +38,7 @@
 
 ### Problems:
 
+- reinstall ollama lxc without openwebui
 - fix WoLAN for talos nodes (talos v1.12 in beta)
 - flux oci automation for helm charts
 

@@ -9,4 +9,4 @@ resources:
   - ./truenas
   - ./npm
   - ./homebridge
-  - ./oswald
+  - ./searxng

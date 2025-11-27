@@ -4,4 +4,3 @@ metadata:
   name: oswald-ai-config
 data:
   LOG_LEVEL: "INFO"
-  CONTEXT_SUMMARY_COUNT: "10"

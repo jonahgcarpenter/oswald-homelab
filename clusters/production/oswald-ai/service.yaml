@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: oswald-ai-service
+  namespace: oswald-ai
+  labels:
+    app: oswald-ai
+spec:
+  type: ClusterIP
+  selector:
+    app: oswald-ai
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8000
+      targetPort: 8000

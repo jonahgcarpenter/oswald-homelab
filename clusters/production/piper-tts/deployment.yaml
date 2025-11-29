@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: piper-tts
+  labels:
+    app: piper-tts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: piper-tts
+  template:
+    metadata:
+      labels:
+        app: piper-tts
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: piper-tts
+          image: lscr.io/linuxserver/piper:2.1.2
+          securityContext:
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+          ports:
+            - containerPort: 10200
+          env:
+            # Voice format: <language>-<voice_name>-<quality>
+            - name: PIPER_VOICE
+              value: "en_US-lessac-medium"
+            - name: TZ
+              value: "Etc/UTC"
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+          volumeMounts:
+            - name: piper-config
+              mountPath: /config
+            - name: temp-data
+              mountPath: /tmp
+            - name: run-data
+              mountPath: /run
+      volumes:
+        - name: piper-config
+          persistentVolumeClaim:
+            claimName: piper-pvc
+        - name: temp-data
+          emptyDir: {}
+        - name: run-data
+          emptyDir: {}

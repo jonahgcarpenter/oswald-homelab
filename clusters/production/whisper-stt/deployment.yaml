@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whisper-stt
+  labels:
+    app: whisper-stt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whisper-stt
+  template:
+    metadata:
+      labels:
+        app: whisper-stt
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: whisper-stt
+          image: lscr.io/linuxserver/faster-whisper:3.0.2
+          securityContext:
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1000m"
+            limits:
+              memory: "4Gi"
+              cpu: "2000m"
+          ports:
+            - containerPort: 10300
+          env:
+            - name: TZ
+              value: "Etc/UTC"
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: WHISPER_MODEL
+              value: "tiny-int8"
+            - name: WHISPER_BEAM
+              value: "1"
+            - name: WHISPER_LANG
+              value: "en"
+          volumeMounts:
+            - name: whisper-config
+              mountPath: /config
+            - name: temp-data
+              mountPath: /tmp
+            - name: run-data
+              mountPath: /run
+      volumes:
+        - name: whisper-config
+          persistentVolumeClaim:
+            claimName: whisper-pvc
+        - name: temp-data
+          emptyDir: {}
+        - name: run-data
+          emptyDir: {}

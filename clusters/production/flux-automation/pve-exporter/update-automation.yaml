@@ -20,5 +20,5 @@ spec:
     push:
       branch: flux-staging
   update:
-    path: ./clusters/production/monitoring/prometheus-exporters
+    path: ./clusters/production/monitoring/proxmox
     strategy: Setters

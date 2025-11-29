@@ -28,6 +28,9 @@
   <img src="https://img.shields.io/badge/Terraform-844FBA?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform"/>
   <img src="https://img.shields.io/badge/Sealed Secrets-0D3ECC?style=for-the-badge&logoColor=white" alt="Sealed Secrets"/>
   <img src="https://img.shields.io/badge/WireGuard-88171A?style=for-the-badge&logo=wireguard&logoColor=white" alt="WireGuard"/>
+  <img src="https://img.shields.io/badge/Loki-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Loki"/>
+  <img src="https://img.shields.io/badge/Piper--TTS-304FFE?style=for-the-badge&logoColor=white" alt="Piper-TTS"/>
+  <img src="https://img.shields.io/badge/Whisper--STT-74AA9C?style=for-the-badge&logo=openai&logoColor=white" alt="Whisper-STT"/>
 </p>
 
 ---
@@ -38,7 +41,6 @@
 
 ### Problems:
 
-- reinstall ollama lxc without openwebui
 - fix WoLAN for talos nodes (talos v1.12 in beta)
 - flux oci automation for helm charts
 

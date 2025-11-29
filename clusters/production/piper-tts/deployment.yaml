@@ -33,7 +33,7 @@ spec:
           env:
             # Voice format: <language>-<voice_name>-<quality>
             - name: PIPER_VOICE
-              value: "en_US-lessac-medium"
+              value: "en_US-danny-low"
             - name: TZ
               value: "Etc/UTC"
             - name: PUID

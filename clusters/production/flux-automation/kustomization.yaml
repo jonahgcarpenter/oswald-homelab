@@ -5,3 +5,5 @@ resources:
   - ./pve-exporter
   - ./kube-vip
   - ./oswald-ai
+  - ./piper-tts
+  - ./whisper-stt

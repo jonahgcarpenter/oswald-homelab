@@ -110,8 +110,8 @@ data:
               fields: ["players", "version", "status"]
 
     - AI:
-        - OpenWebUI:
-            icon: open-webui.png
+        - Oswald-AI:
+            icon: mdi-head-snowflake-outline
             href: https://oswald.home.jonahsserver.com/
 
     - Security:

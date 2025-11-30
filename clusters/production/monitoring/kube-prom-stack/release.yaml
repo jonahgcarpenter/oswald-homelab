@@ -32,7 +32,7 @@ spec:
     prometheus:
       prometheusSpec:
         retention: 7d
-        retentionSize: "45GB"
+        retentionSize: "40GB"
 
         storageSpec:
           volumeClaimTemplate:

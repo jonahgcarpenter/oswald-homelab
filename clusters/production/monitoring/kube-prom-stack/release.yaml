@@ -30,18 +30,18 @@ spec:
           isDefault: false
 
     prometheus:
-      # prometheusSpec:
-      #   retention: 7d
-      #   retentionSize: "40GB"
-      #
-      #   storageSpec:
-      #     volumeClaimTemplate:
-      #       spec:
-      #         storageClassName: longhorn
-      #         accessModes: ["ReadWriteOnce"]
-      #         resources:
-      #           requests:
-      #             storage: 60Gi
+      prometheusSpec:
+        retention: 7d
+        retentionSize: "40GB"
+
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: longhorn
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 60Gi
 
       additionalScrapeConfigs:
         - job_name: "has-exporter"

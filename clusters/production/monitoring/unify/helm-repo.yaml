@@ -1,0 +1,7 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: unpoller
+spec:
+  interval: 30m
+  url: https://unpoller.github.io/helm-chart

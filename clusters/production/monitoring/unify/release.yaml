@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: unpollar
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: unpollar
+      sourceRef:
+        kind: HelmRepository
+        name: unpollar
+        namespace: monitoring
+      version: "2.11.2-Chart6"
+  values:

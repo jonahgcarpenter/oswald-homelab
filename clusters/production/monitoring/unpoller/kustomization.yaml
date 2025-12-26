@@ -5,3 +5,7 @@ resources:
   - sealed-unify-creds.yaml
   - deployment.yaml
   - service.yaml
+  - ap-dashboard.yaml
+  - clients-dashboard.yaml
+  - gateway-dashboard.yaml
+  - switch-dashboard.yaml

@@ -1,0 +1,13 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: unpoller-config
+  namespace: monitoring
+spec:
+  encryptedData:
+    up.conf: AgA9J644311P/ljioMPRvPQAO8qBlvLhvI5vKncnFRoIJtw5PHuXSeKdXZIlZl3orpNsvFaSpAm7fhV6lHUTT2XkW9ngPX8WBU2mzN7YeVhlvKYct0qKYrJPG5QCAgvAbguhZug7d8/gE3VTPG7DjH2WKR10frg9K5xzRTA1g1UE3Y08XdlLDO4As286py0s5evOrWPDLTbVQOLVzvR4b/+aJnpCY9cGCX/uj7rZZsFbxqreQPg1oKHTU9a2Ty3XzYiUdbxyn+TDJo9dCEWedks76pTjATeFjFHezKhvMlStDnWystRCBnl1BtB0n9yikuRsuFipRy/WA+Smftdj/Aziwz3/ETyaLrE8XG15bCtr3qzXhvriQFT8cgDCutgU/krsHEnBCk7sJodZm/N2pf5MjUbNdrQ0h6v+HNxoAW84bMpbPfaSMd0syG2MJBVqbsxja4Zx0yHFwhovt52gYH3lQ8ECX03V/hKmFjwQjcji4+JF/t1WkdroEoBqUiXsQeFmQlwPeyBpq0fn3ibyx3Irfh6jqLoEzPtgOUNqzhzc1A+JYsvt/zpb/xLfNqYVZYBJIgL6tKSLzhtErH1+OLtCUI99mr8t1yZFf6qy0x2x4sOFtPvKj/KOK5bd33QR066Nz2lHbq2R+o4+5j19ZdQ6TpHcVC98nYhSCs1NslkDzYt1SjD1Quvvni+YKMK0XnO8mInAkef7PtTqrdrH2QhtyBjaSx2AZq3vbLlzM3/OuZO68Jh1qgGPMKeVrwte61QNITp+/NqR1VUwdnMxu0llrS5xEJc/bG3Os+Acv+apj1ObtoW0toLiQj8au+39xI9hImFY+jy0xH7glDAmLf2lk5kNtZ0A5vDiEv66+LnbtZ9KrwV0a3FlI7S7+xivRZP+ACCif9xgsB0hzcvYCET25S/U632QUWPUy95R7llsOVVwWRwd3T/gJ0so/SbDDVVtGQQdPK1Rj5KikN7AC1vGipJVoj7KyQX/VbbZEg1U2Vc2dhOsyUXPe43ztXNwc2jAkT5+JCnoYDdxbHh1vg==
+  template:
+    metadata:
+      name: unpoller-config
+      namespace: monitoring
+    type: Opaque

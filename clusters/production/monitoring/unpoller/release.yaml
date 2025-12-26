@@ -13,7 +13,18 @@ spec:
         namespace: monitoring
       version: "2.11.2-Chart6"
   values:
-    dashboards:
-      create: false
-      grafana:
-        create: false
+    upConfig: ""
+
+    extraVolumes:
+      - name: unpoller-config-vol
+        secret:
+          secretName: unpoller-config
+
+    extraVolumeMounts:
+      - name: unpoller-config-vol
+        mountPath: /etc/unpoller/up.conf
+        subPath: up.conf
+        readOnly: true
+
+    prometheus:
+      disable: false

@@ -3,4 +3,5 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - helm-repo.yaml
+  - sealed-unify-creds.yaml
   - release.yaml

@@ -56,6 +56,9 @@ spec:
               target: ["192.168.4.73"]
             static_configs:
               - targets: ["exporter-proxmox.monitoring.svc.cluster.local:9221"]
+          - job_name: "unpoller"
+            static_configs:
+              - targets: ["unpoller.monitoring.svc.cluster.local:9130"]
 
     alertmanager:
       alertmanagerSpec:

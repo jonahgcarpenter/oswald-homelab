@@ -41,8 +41,9 @@
 
 ### Problems:
 
-- fix WoLAN for talos nodes (talos v1.12 in beta)
+- fix WoLAN for talos nodes (talos v1.12 released)
 - flux oci automation for helm charts
+- flux automation for unpoller
 
 ## Hardware
 

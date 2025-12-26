@@ -15,6 +15,11 @@ spec:
   values:
     upConfig: ""
 
+    dashboards:
+      create: false
+      grafana:
+        create: false
+
     extraVolumes:
       - name: unpoller-config-vol
         secret:

@@ -14,9 +14,26 @@ spec:
       labels:
         app: aprilslilpugs
     spec:
+      automountServiceAccountToken: false
+
+      initContainers:
+        - name: fix-permissions
+          image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.0.0-beta.0
+          securityContext:
+            runAsUser: 0
+          command:
+            [
+              "sh",
+              "-c",
+              "chown -R aprilslilpugs:aprilslilpugs /app/public/uploads",
+            ]
+          volumeMounts:
+            - name: uploads-storage
+              mountPath: /app/public/uploads
+
       containers:
         - name: aprilslilpugs
-          image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.0.0-beta.0 # {"$imagepolicy": "flux-system:oswald-ai"}
+          image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.0.0-beta.0 # {"$imagepolicy": "flux-system:aprilslilpugs"}
           envFrom:
             - secretRef:
                 name: aprilslilpugs-secret

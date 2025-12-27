@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aprilslilpugs
+  labels:
+    app: aprilslilpugs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aprilslilpugs
+  template:
+    metadata:
+      labels:
+        app: aprilslilpugs
+    spec:
+      containers:
+        - name: aprilslilpugs
+          image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.0.0-beta.0 # {"$imagepolicy": "flux-system:oswald-ai"}
+          envFrom:
+            - secretRef:
+                name: aprilslilpugs-secret
+          volumeMounts:
+            - name: uploads-storage
+              mountPath: /app/public/uploads
+      volumes:
+        - name: uploads-storage
+          persistentVolumeClaim:
+            claimName: aprilslilpugs-uploads-pvc

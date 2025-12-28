@@ -4,7 +4,7 @@ metadata:
   name: minio
 spec:
   ports:
-    - name: https
+    - name: http
       port: 9001
       targetPort: 9001
       protocol: TCP

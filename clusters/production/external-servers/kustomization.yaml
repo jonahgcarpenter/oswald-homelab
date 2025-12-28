@@ -10,3 +10,4 @@ resources:
   - ./npm
   - ./homebridge
   - ./searxng
+  - ./minio

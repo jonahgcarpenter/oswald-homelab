@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: umami
-          image: ghcr.io/umami-software/umami:v3.0.3 # {"$imagepolicy": "flux-system:umami"}
+          image: ghcr.io/umami-software/umami:3.0.3 # {"$imagepolicy": "flux-system:umami"}
           envFrom:
             - secretRef:
                 name: umami-secret

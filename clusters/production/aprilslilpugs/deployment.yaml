@@ -34,6 +34,15 @@ spec:
       containers:
         - name: aprilslilpugs
           image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.0.0-beta.0 # {"$imagepolicy": "flux-system:aprilslilpugs"}
+
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+
           envFrom:
             - secretRef:
                 name: aprilslilpugs-secret

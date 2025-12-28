@@ -4,7 +4,6 @@ namespace: aprilslilpugs
 resources:
   - namespace.yaml
   - pvc.yaml
-  - network-policy.yaml
   - deployment.yaml
   - service.yaml
   - sealed-secrets.yaml

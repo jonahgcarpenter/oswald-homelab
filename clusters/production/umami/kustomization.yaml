@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: umami
 resources:
   - namespace.yaml
+  - sealed-secrets.yaml
   - deployment.yaml
   - service.yaml
-  - sealed-secrets.yaml
+  - ingress.yaml

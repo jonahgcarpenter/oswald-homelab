@@ -1,8 +1,0 @@
-apiVersion: image.toolkit.fluxcd.io/v1
-kind: ImageRepository
-metadata:
-  name: aprilslilpugs-image
-  namespace: flux-system
-spec:
-  image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs
-  interval: 5m

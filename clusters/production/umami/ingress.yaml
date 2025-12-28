@@ -9,7 +9,7 @@ spec:
     - match: Host(`umami.home.jonahsserver.com`)
       kind: Rule
       services:
-        - name: umami
+        - name: umami-service
           port: 3000
   tls:
     secretName: umami-certificate-secret

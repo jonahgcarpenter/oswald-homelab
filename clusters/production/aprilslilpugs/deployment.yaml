@@ -18,7 +18,7 @@ spec:
 
       initContainers:
         - name: fix-permissions
-          image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.0.0-beta.0
+          image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.0.0-beta.0 # {"$imagepolicy": "flux-system:aprilslilpugs"}
           securityContext:
             runAsUser: 0
           command:

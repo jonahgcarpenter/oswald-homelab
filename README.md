@@ -39,11 +39,6 @@
 
 ### [Add List](https://github.com/stars/jonahgcarpenter/lists/homelab-todo)
 
-### Problems:
-
-- flux oci automation for helm charts
-- flux automation for unpoller
-
 ## Hardware
 
 ### [2x U7 Lite](https://store.ui.com/us/en/category/all-wifi/products/u7-lite)

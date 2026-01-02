@@ -817,7 +817,9 @@ data:
       "preload": false,
       "refresh": "auto",
       "schemaVersion": 41,
-      "tags": [],
+      "tags": [
+        "home-assistant",
+      ],
       "templating": {
         "list": []
       },

@@ -154,7 +154,9 @@ data:
       "preload": false,
       "refresh": "1m",
       "schemaVersion": 42,
-      "tags": [],
+      "tags": [
+        "node-exporter-mixin",
+      ],
       "templating": {
         "list": [
           {

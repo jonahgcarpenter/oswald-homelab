@@ -155,7 +155,7 @@ data:
       "refresh": "1m",
       "schemaVersion": 42,
       "tags": [
-        "node-exporter-mixin",
+        "node-exporter-mixin"
       ],
       "templating": {
         "list": [

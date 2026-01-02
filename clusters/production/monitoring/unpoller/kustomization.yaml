@@ -9,3 +9,4 @@ resources:
   - clients-dashboard.yaml
   - gateway-dashboard.yaml
   - switch-dashboard.yaml
+  - dpi-dashboard.yaml

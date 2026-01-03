@@ -4,3 +4,5 @@ metadata:
   name: oswald-ai-config
 data:
   LOG_LEVEL: "INFO"
+  OLLAMA_BASE_MODEL: "artifish/llama3.2-uncensored:latest"
+  OLLAMA_EMBEDDING_MODEL: "nomic-embed-text:v1.5"

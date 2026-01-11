@@ -9,7 +9,7 @@
     {
       "matchDatasources": ["helm"],
       "groupName": "helm-charts",
-      "addAssignees": ["jonahgcarpenter"]
+      "assignees": ["jonahgcarpenter"]
     }
   ]
 }

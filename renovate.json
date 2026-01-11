@@ -1,18 +1,30 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "enabledManagers": ["flux"],
+  "extends": [
+    "config:recommended"
+  ],
+  "enabledManagers": [
+    "flux"
+  ],
   "flux": {
-    "fileMatch": ["clusters/.+\\.yaml$"]
+    "managerFilePatterns": [
+      "/clusters/.+\\.yaml$/"
+    ]
   },
   "packageRules": [
     {
-      "matchDatasources": ["helm"],
+      "matchDatasources": [
+        "helm"
+      ],
       "groupName": "helm-charts",
-      "assignees": ["jonahgcarpenter"]
+      "assignees": [
+        "jonahgcarpenter"
+      ]
     },
     {
-      "matchDatasources": ["docker"],
+      "matchDatasources": [
+        "docker"
+      ],
       "enabled": false
     }
   ]

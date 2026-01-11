@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: oswald-ai
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.0.0-beta.6 # {"$imagepolicy": "flux-system:oswald-ai"}
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.0.0-beta.6
           envFrom:
             - configMapRef:
                 name: oswald-ai-config

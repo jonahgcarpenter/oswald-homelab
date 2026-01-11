@@ -1,8 +1,0 @@
-apiVersion: image.toolkit.fluxcd.io/v1
-kind: ImageRepository
-metadata:
-  name: piper-tts-image
-  namespace: flux-system
-spec:
-  image: lscr.io/linuxserver/piper
-  interval: 5m

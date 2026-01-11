@@ -2,6 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: vaultwarden
+  namespace: vaultwarden
 spec:
   interval: 30m
   url: https://guerzon.github.io/vaultwarden

@@ -578,7 +578,7 @@ spec:
       # -- Sidecar configuration
       sidecar:
         # -- set this to true to enable podMonitor as sidecar
-        enabled: false
+        enabled: true
         port: 9617
         image:
           # -- the repository to use

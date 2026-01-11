@@ -59,6 +59,10 @@ spec:
           - job_name: "unpoller"
             static_configs:
               - targets: ["unpoller.monitoring.svc.cluster.local:9130"]
+          - job_name: "pihole-exporter"
+            metrics_path: /metrics
+            static_configs:
+              - targets: ["pihole-web.pihole.svc.cluster.local:9617"]
 
     alertmanager:
       alertmanagerSpec:

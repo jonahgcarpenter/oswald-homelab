@@ -1,8 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
-  "enabledManagers": ["flux"],
+  "enabledManagers": ["flux", "kubernetes"],
   "flux": {
+    "managerFilePatterns": ["/clusters/.+\\.yaml$/"]
+  },
+  "kubernetes": {
     "managerFilePatterns": ["/clusters/.+\\.yaml$/"]
   },
   "packageRules": [

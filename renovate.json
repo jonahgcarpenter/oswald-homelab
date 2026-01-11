@@ -10,6 +10,10 @@
       "matchDatasources": ["helm"],
       "groupName": "helm-charts",
       "assignees": ["jonahgcarpenter"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "enabled": false
     }
   ]
 }

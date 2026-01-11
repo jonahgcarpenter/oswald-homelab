@@ -11,7 +11,7 @@ spec:
         kind: HelmRepository
         name: longhorn
         namespace: longhorn-system
-      version: "1.10.0"
+      version: "1.10.1"
   values:
     defaultSettings:
       backupTarget: "cifs://192.168.4.110/kubernetes-backups"

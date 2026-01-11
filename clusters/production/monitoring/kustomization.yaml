@@ -9,3 +9,4 @@ resources:
   - ./loki-alloy
   - ./cluster
   - ./unpoller
+  - ./pihole-exporter

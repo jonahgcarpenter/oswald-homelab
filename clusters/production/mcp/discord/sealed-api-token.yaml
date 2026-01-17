@@ -1,0 +1,13 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: discord-api-token
+  namespace: mcp
+spec:
+  encryptedData:
+    DISCORD_TOKEN: AgCDCdB8illMMMeMs4KQhJEw/RNOgD+tNwXcUUBtkTKD4Knc9RfuZKrdyhF/AH5RdN4Fp7PM77tb0V9CAcUYcZm9Z+3YNig3Fu6z9JU9YgNM7QEkOIkjnnW1ynM99l0kGNQc3U6fEvwQIqjSgo9LLP6n3yYPetPa4woCdJf2YpqgYnF8yhR9uke23vECR1x2e8TzGb0XpNPZcPBlpdar9clY8+/JJlF+cWc1MEZaryw2fMce9P/Jxk4hSHc8RVn82XK7jTi7L9Pov5pjqExwXD7hqqavqWv/aKpst0t8Cz3oS8FNpURSXF8YhdoqS+PYCCElt37MJ7D0TWMSnBP0mtd7SJJQARh25gLgXMvlMXi4LjAqwyNQcBz2eq7dxfSfQ/QEvR4fNw40VdEr4/UCE2yaK1/GP6TuNUp+UFxS7AKFPxWpYqztYfWO9HrHYitNnBFDfVXhgu+9HoxOp3rycMfQJPp7C4v69phbbkoSDXW2U2LUiVryFZAQVm9jvQjfWtjUzKBU5Ck4PHCP1patXz3frdz1VkeaJkBt4jG3M+DqfD8koFtW53zDoUcjfdOEeRbHFUJEulu5Raz9mxGGsH9UpaZya2u+Wiw+4hJbJSSuZEuMORZlAQOD+GoTJ7UfpBOxkRwoON1BoRcEFZ9XyMC+faL6yj6LA2Ce+f/xko2U3STGSFU3ixwdZP6sS2yr+RDMHNP6xY3H3fb24cCKXwoaqMovNEuZIMFJEDdn7N7779d+59NfvtZXkQQn1+6lvBpK17qGIA9j/zlRzo7zF1eP6HKxRVMageo=
+  template:
+    metadata:
+      name: discord-api-token
+      namespace: mcp
+    type: Opaque

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discord-mcp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discord-mcp
+  template:
+    metadata:
+      labels:
+        app: discord-mcp
+    spec:
+      containers:
+        - name: discord-mcp
+          image: saseq/discord-mcp:latest
+          env:
+            - name: DISCORD_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: discord-api-token
+                  key: DISCORD_TOKEN
+            - name: PORT
+              value: "8080"

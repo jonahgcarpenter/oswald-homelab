@@ -17,7 +17,7 @@ spec:
           image: mcp/mcp-discord:latest
           args:
             - "--transport"
-            - "http"
+            - "sse"
             - "--port"
             - "8080"
           env:

@@ -3,8 +3,7 @@ kind: Service
 metadata:
   name: discord-mcp
 spec:
-  type: LoadBalancer
-  externalTrafficPolicy: Local
+  type: NodePort
   selector:
     app: discord-mcp
   ports:

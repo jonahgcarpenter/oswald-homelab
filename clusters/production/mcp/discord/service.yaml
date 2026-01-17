@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: discord-mcp
 spec:
+  type: LoadBalancer
   selector:
     app: discord-mcp
   ports:

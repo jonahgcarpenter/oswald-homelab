@@ -15,6 +15,11 @@ spec:
       containers:
         - name: discord-mcp
           image: mcp/mcp-discord:latest
+          args:
+            - "--transport"
+            - "http"
+            - "--port"
+            - "8080"
           env:
             - name: DISCORD_TOKEN
               valueFrom:

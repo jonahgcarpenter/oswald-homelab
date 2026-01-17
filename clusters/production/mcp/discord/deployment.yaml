@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: discord-mcp
-          image: saseq/discord-mcp:latest
+          image: mcp/mcp-discord:latest
           env:
             - name: DISCORD_TOKEN
               valueFrom:

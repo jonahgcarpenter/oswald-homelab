@@ -4,6 +4,7 @@ metadata:
   name: discord-mcp
 spec:
   type: LoadBalancer
+  externalTrafficPolicy: Local
   selector:
     app: discord-mcp
   ports:

@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: discord-mcp
-          image: mcp/mcp-discord:latest
+          image: barryy625/mcp-discord:latest
           args:
             - "--transport"
-            - "sse"
+            - "http"
             - "--port"
             - "8080"
           env:

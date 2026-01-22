@@ -11,7 +11,7 @@ spec:
         kind: HelmRepository
         name: prometheus-community
         namespace: monitoring
-      version: "81.0.0"
+      version: "81.2.1"
   values:
     grafana:
       admin:

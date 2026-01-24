@@ -4,10 +4,10 @@ resources:
   - namespace.yaml
   - ./pve-0
   - ./portainer
-  - ./crafty
   - ./unify
   - ./truenas
   - ./npm
   - ./homebridge
   - ./searxng
   - ./minio
+  - ./pterodactyl

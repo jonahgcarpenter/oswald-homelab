@@ -12,7 +12,6 @@ spec:
         - name: pterodactyl
           port: 80
           scheme: http
-          serversTransport: pterodactyl-insecure-transport
   tls:
     secretName: pterodactyl-certificate-secret
 ---

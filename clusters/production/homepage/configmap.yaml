@@ -105,14 +105,6 @@ data:
               fields: ["nodes", "servers"]
 
     - Game Servers:
-        - Pterodactyl-Panel:
-            icon: pterodactyl.png
-            href: https://pterodactyl.home.jonahsserver.com/
-            widget:
-              type: pterodactyl
-              url: {{HOMEPAGE_VAR_PTERODACTYL_URL}}
-              key: {{HOMEPAGE_VAR_PTERODACTYL_API_KEY}}
-              fields: ["nodes", "servers"]
         - Vanilla:
             icon: minecraft.png
             href: https://pterodactyl.home.jonahsserver.com/

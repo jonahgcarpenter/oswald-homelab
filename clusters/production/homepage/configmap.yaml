@@ -37,6 +37,9 @@ data:
         - Homebridge:
             icon: homebridge.png
             href: https://homebridge.home.jonahsserver.com
+        - Oswald-AI:
+            icon: mdi-head-snowflake-outline
+            href: https://oswald.home.jonahsserver.com/
 
     - Infrastructure & Data:
         - PVE-0:
@@ -92,27 +95,38 @@ data:
               env: 3
               key: {{HOMEPAGE_VAR_PORTAINER_API_KEY}}
               fields: ["running", "stopped", "total"]
+        - Pterodactyl-Panel:
+            icon: pterodactyl.png
+            href: https://pterodactyl.home.jonahsserver.com/
+            widget:
+              type: pterodactyl
+              url: {{HOMEPAGE_VAR_PTERODACTYL_URL}}
+              key: {{HOMEPAGE_VAR_PTERODACTYL_API_KEY}}
+              fields: ["nodes", "servers"]
 
-    - Minecraft:
+    - Game Servers:
+        - Pterodactyl-Panel:
+            icon: pterodactyl.png
+            href: https://pterodactyl.home.jonahsserver.com/
+            widget:
+              type: pterodactyl
+              url: {{HOMEPAGE_VAR_PTERODACTYL_URL}}
+              key: {{HOMEPAGE_VAR_PTERODACTYL_API_KEY}}
+              fields: ["nodes", "servers"]
         - Vanilla:
             icon: minecraft.png
-            href: https://crafty.home.jonahsserver.com/
+            href: https://pterodactyl.home.jonahsserver.com/
             widget:
               type: minecraft
               url: {{HOMEPAGE_VAR_MINECRAFT_URL_VANILLA}}
               fields: ["players", "version", "status"]
         - Modded:
             icon: minecraft.png
-            href: https://crafty.home.jonahsserver.com/
+            href: https://pterodactyl.home.jonahsserver.com/
             widget:
               type: minecraft
               url: {{HOMEPAGE_VAR_MINECRAFT_URL_MODDED}}
               fields: ["players", "version", "status"]
-
-    - AI:
-        - Oswald-AI:
-            icon: mdi-head-snowflake-outline
-            href: https://oswald.home.jonahsserver.com/
 
     - Security:
         - Vaultwarden:

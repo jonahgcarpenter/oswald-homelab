@@ -16,6 +16,8 @@ spec:
     ipam:
       mode: kubernetes
     kubeProxyReplacement: true
+    l2announcements:
+      enabled: true
     securityContext:
       capabilities:
         ciliumAgent:

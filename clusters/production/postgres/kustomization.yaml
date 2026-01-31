@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: postgres
 resources:
   - namespace.yaml
+  - sealed-credentials.yaml
   - stateful-set.yaml
   - services.yaml

@@ -4,7 +4,7 @@ metadata:
   name: postgres-db
 spec:
   serviceName: "postgres-headless"
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: postgres
@@ -21,7 +21,10 @@ spec:
               name: postgres
           env:
             - name: POSTGRES_PASSWORD
-              value: "mysecretpassword"
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: POSTGRES_PASSWORD
             - name: PGDATA
               value: "/var/lib/postgresql/data/pgdata"
           volumeMounts:

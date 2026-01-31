@@ -63,7 +63,7 @@ data:
         - Unify:
             icon: ubiquiti.png
             href: https://unify.home.jonahsserver.com/
-        - Hubble
+        - Hubble:
             icon: hubble.png
             href: https://hubble.home.jonahsserver.com/
         - PiHole:

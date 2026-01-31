@@ -13,6 +13,10 @@ spec:
         namespace: cilium
       version: "1.18.6"
   values:
+    routingMode: native
+    autoDirectNodeRoutes: true
+    ipv4NativeRoutingCIDR: 10.244.0.0/16
+    tunnel: disabled
     ipam:
       mode: kubernetes
     kubeProxyReplacement: true

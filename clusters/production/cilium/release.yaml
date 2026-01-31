@@ -13,6 +13,8 @@ spec:
         namespace: cilium
       version: "1.18.6"
   values:
+    k8sServiceHost: "192.168.4.230"
+    k8sServicePort: 6443
     ipam:
       mode: kubernetes
     kubeProxyReplacement: true

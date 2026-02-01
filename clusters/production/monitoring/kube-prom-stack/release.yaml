@@ -13,6 +13,13 @@ spec:
         namespace: monitoring
       version: "81.4.2"
   values:
+    kubeProxy:
+      enabled: false
+
+    defaultRules:
+      rules:
+        kubeProxy: false
+
     grafana:
       admin:
         existingSecret: "grafana-admin-credentials"

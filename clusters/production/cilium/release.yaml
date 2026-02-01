@@ -43,6 +43,9 @@ spec:
       ui:
         enabled: true
 
+    gatewayAPI:
+      enabled: true
+
     ipam:
       mode: kubernetes
     kubeProxyReplacement: true

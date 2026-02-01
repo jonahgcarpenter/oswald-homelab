@@ -38,6 +38,9 @@ spec:
 
     prometheus:
       prometheusSpec:
+        serviceMonitorNamespaceSelector: {}
+        serviceMonitorSelectorNilUsesHelmValues: false
+
         retention: 7d
         retentionSize: "80GB"
 

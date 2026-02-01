@@ -133,8 +133,8 @@ spec:
         - alert: LonghornBackupsStale
           annotations:
             summary: "Longhorn backups are not running."
-            description: "The last successful backup for volume '{{$labels.volume}}' was over 24 hours ago. Scheduled backups may be failing or misconfigured."
-          expr: (time() - longhorn_volume_last_backup_at > 86400) and (longhorn_volume_last_backup_at > 0)
+            description: "The last successful backup for volume '{{$labels.volume}}' was over 7 days ago. Scheduled backups may be failing or misconfigured."
+          expr: (time() - longhorn_volume_last_backup_at > 650000) and (longhorn_volume_last_backup_at > 0)
           labels:
             severity: warning
 

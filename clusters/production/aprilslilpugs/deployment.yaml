@@ -17,6 +17,8 @@ spec:
       containers:
         - name: alp-web
           image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.0.3
+          ports:
+            - containerPort: 4000
           envFrom:
             - secretRef:
                 name: alp-web-secrets

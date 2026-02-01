@@ -24,12 +24,6 @@ spec:
         - path:
             type: PathPrefix
             value: /aprilslilpugs
-      filters:
-        - type: URLRewrite
-          urlRewrite:
-            path:
-              type: ReplacePrefixMatch
-              replacePrefixMatch: /
       backendRefs:
         - name: minio-service
           port: 9000

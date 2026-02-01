@@ -1,0 +1,51 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: alp-gateway
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: Same
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: alp-routing-rules
+spec:
+  parentRefs:
+    - name: alp-gateway
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /aprilslilpugs
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: /
+      backendRefs:
+        - name: minio-service
+          port: 9000
+
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /hls
+      backendRefs:
+        - name: hls-service
+          port: 8080
+
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: alp-web-service
+          port: 80

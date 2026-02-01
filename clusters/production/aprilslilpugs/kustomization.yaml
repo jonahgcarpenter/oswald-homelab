@@ -6,3 +6,5 @@ resources:
   - sealed-web-secrets.yaml
   - deployment.yaml
   - service.yaml
+  - external-services.yaml
+  - gateway.yaml

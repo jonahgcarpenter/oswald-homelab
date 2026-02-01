@@ -13,12 +13,35 @@ spec:
         namespace: cilium
       version: "1.18.6"
   values:
+    prometheus:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+
+    operator:
+      prometheus:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+
     hubble:
       enabled: true
+      metrics:
+        serviceMonitor:
+          enabled: true
+        enabled:
+          - dns
+          - drop
+          - tcp
+          - flow
+          - icmp
+          - httpV2
+        enableOpenMetrics: true
       relay:
         enabled: true
       ui:
         enabled: true
+
     ipam:
       mode: kubernetes
     kubeProxyReplacement: true

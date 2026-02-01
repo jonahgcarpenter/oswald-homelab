@@ -15,28 +15,22 @@ spec:
   values:
     prometheus:
       enabled: true
-      serviceMonitor:
-        enabled: true
 
     operator:
       prometheus:
         enabled: true
-        serviceMonitor:
-          enabled: true
 
     hubble:
       enabled: true
       metrics:
-        serviceMonitor:
-          enabled: true
+        enableOpenMetrics: true
         enabled:
           - dns
           - drop
           - tcp
           - flow
+          - port-distribution
           - icmp
-          - httpV2
-        enableOpenMetrics: true
       relay:
         enabled: true
       ui:

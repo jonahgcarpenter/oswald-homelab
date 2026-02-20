@@ -11,7 +11,7 @@ spec:
         kind: HelmRepository
         name: cilium
         namespace: cilium
-      version: "1.19.0"
+      version: "1.19.1"
   values:
     prometheus:
       enabled: true

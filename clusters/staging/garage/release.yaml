@@ -1,0 +1,43 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: garage
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: garage
+      sourceRef:
+        kind: HelmRepository
+        name: garage
+        namespace: garage
+      version: "2.1.0"
+  values:
+    deployment:
+      replicaCount: 3
+    persistence:
+      enabled: true
+      data:
+        storageClass: "longhorn"
+        size: 10Gi
+      meta:
+        storageClass: "longhorn"
+        size: 500Mi
+    garage:
+      replicationFactor: "3"
+      rpc:
+        secret:
+          create: false
+          name: "garage-rpc-secret" # openssl rand -hex 32
+    ingress:
+      s3:
+        api:
+          enable: true
+          className: "traefik"
+          hosts:
+            - host: "s3.home.jonahsserver.com"
+              paths: [{ path: "/", pathType: "prefix" }]
+          tls:
+            - secretName: wildcard-certificate-secret
+              host:
+                - "s3.home.jonahsserver.com"

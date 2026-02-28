@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
   name: oswald-ai-config
 data:
-  LOG_LEVEL: "INFO"
-  OLLAMA_BASE_MODEL: "artifish/llama3.2-uncensored:latest"
-  OLLAMA_EMBEDDING_MODEL: "nomic-embed-text:v1.5"
+  OLLAMA_ROUTER_MODEL: "llama3.2:3b"
+  OLLAMA_COMPLEX_MODEL: "llama2-uncensored:7b"
+  OLLAMA_CODING_MODEL: "llama2-uncensored:7b"
+  OLLAMA_UNCENSORED_MODEL: "llama2-uncensored:7b"
+  OLLAMA_SIMPLE_MODEL: "llama2-uncensored:7b"

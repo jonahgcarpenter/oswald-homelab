@@ -13,6 +13,11 @@ spec:
         namespace: monitoring
       version: "6.53.0"
   values:
+    chunksCache:
+      enabled: false
+    resultsCache:
+      enabled: false
+
     loki:
       auth_enabled: false
       commonConfig:

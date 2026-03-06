@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: portfolio-content
+data:
+  experience.md: |
+    ## Experience
+  projects.md: |
+    ## Projects
+  skills.md: |
+    ## Technical Skills

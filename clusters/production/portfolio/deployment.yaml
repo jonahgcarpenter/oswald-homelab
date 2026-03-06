@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio
+  labels:
+    app: portfolio
+spec:
+  replicas: 2 # High availability: Flux will ensure 2 pods are always running
+  selector:
+    matchLabels:
+      app: portfolio
+  template:
+    metadata:
+      labels:
+        app: portfolio
+    spec:
+      containers:
+        - name: portfolio
+          image: ghcr.io/jonahgcarpenter/portfolio:v2.0.0-beta.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: LOKI_URL
+              value: "http://loki.monitoring.svc.cluster.local:3100"
+
+          # Security Flex: Enforcing Principle of Least Privilege
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+
+          # Readiness/Liveness Probes for Kubernetes self-healing
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+
+          # Mounting the ConfigMap as a directory of files
+          volumeMounts:
+            - name: content-volume
+              mountPath: /app/data
+              readOnly: true
+
+      volumes:
+        - name: content-volume
+          configMap:
+            name: portfolio-content

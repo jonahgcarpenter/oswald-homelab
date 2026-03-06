@@ -37,9 +37,6 @@ data:
         - Homebridge:
             icon: homebridge.png
             href: https://homebridge.home.jonahsserver.com
-        - Oswald-AI:
-            icon: mdi-head-snowflake-outline
-            href: https://oswald.home.jonahsserver.com/
 
     - Infrastructure & Data:
         - PVE-0:

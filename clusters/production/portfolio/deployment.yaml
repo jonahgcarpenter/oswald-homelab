@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: ghcr.io/jonahgcarpenter/portfolio:v2.0.0-beta.0
+          image: ghcr.io/jonahgcarpenter/portfolio/portfolio:v2.0.0-beta.0
           ports:
             - containerPort: 8080
           env:

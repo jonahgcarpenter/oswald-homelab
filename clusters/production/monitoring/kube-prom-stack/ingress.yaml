@@ -12,17 +12,3 @@ spec:
         - name: kube-prometheus-stack-grafana
           namespace: monitoring
           port: 80
-  tls:
-    secretName: grafana-certificate-secret
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: grafana-ui-ingress-certificate
-spec:
-  secretName: grafana-certificate-secret
-  issuerRef:
-    name: cloudflare-clusterissuer
-    kind: ClusterIssuer
-  dnsNames:
-    - grafana.home.jonahsserver.com

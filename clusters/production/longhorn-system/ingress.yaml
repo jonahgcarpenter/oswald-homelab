@@ -12,17 +12,3 @@ spec:
         - name: longhorn-frontend
           namespace: longhorn-system
           port: 80
-  tls:
-    secretName: longhorn-certificate-secret
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: longhorn-ui-ingress-certificate
-spec:
-  secretName: longhorn-certificate-secret
-  issuerRef:
-    name: cloudflare-clusterissuer
-    kind: ClusterIssuer
-  dnsNames:
-    - longhorn.home.jonahsserver.com

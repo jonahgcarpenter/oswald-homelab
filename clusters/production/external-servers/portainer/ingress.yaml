@@ -13,17 +13,3 @@ spec:
           port: 9443
           scheme: https
           serversTransport: portainer-insecure-transport
-  tls:
-    secretName: portainer-certificate-secret
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: portainer-ingress-certificate
-spec:
-  secretName: portainer-certificate-secret
-  issuerRef:
-    name: cloudflare-clusterissuer
-    kind: ClusterIssuer
-  dnsNames:
-    - portainer.home.jonahsserver.com

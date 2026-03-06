@@ -12,17 +12,3 @@ spec:
         - name: homebridge
           port: 8581
           scheme: http
-  tls:
-    secretName: homebridge-certificate-secret
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: homebridge-ingress-certificate
-spec:
-  secretName: homebridge-certificate-secret
-  issuerRef:
-    name: cloudflare-clusterissuer
-    kind: ClusterIssuer
-  dnsNames:
-    - homebridge.home.jonahsserver.com

@@ -12,17 +12,3 @@ spec:
         - name: npm
           port: 81
           scheme: http
-  tls:
-    secretName: npm-certificate-secret
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: npm-ingress-certificate
-spec:
-  secretName: npm-certificate-secret
-  issuerRef:
-    name: cloudflare-clusterissuer
-    kind: ClusterIssuer
-  dnsNames:
-    - npm.home.jonahsserver.com

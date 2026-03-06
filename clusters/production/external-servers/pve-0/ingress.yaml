@@ -13,17 +13,3 @@ spec:
           port: 8006
           scheme: https
           serversTransport: pve-0-insecure-transport
-  tls:
-    secretName: pve-0-certificate-secret
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: pve-0-ingress-certificate
-spec:
-  secretName: pve-0-certificate-secret
-  issuerRef:
-    name: cloudflare-clusterissuer
-    kind: ClusterIssuer
-  dnsNames:
-    - pve-0.home.jonahsserver.com

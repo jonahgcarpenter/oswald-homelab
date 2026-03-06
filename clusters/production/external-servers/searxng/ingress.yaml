@@ -12,17 +12,3 @@ spec:
         - name: searxng
           port: 8888
           scheme: http
-  tls:
-    secretName: searxng-certificate-secret
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: searxng-ingress-certificate
-spec:
-  secretName: searxng-certificate-secret
-  issuerRef:
-    name: cloudflare-clusterissuer
-    kind: ClusterIssuer
-  dnsNames:
-    - searxng.home.jonahsserver.com

@@ -12,17 +12,3 @@ spec:
         - name: vaultwarden
           namespace: vaultwarden
           port: 80
-  tls:
-    secretName: vaultwarden-certificate-secret
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: vaultwarden-ui-ingress-certificate
-spec:
-  secretName: vaultwarden-certificate-secret
-  issuerRef:
-    name: cloudflare-clusterissuer
-    kind: ClusterIssuer
-  dnsNames:
-    - vaultwarden.home.jonahsserver.com

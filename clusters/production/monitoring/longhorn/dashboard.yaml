@@ -337,7 +337,7 @@ data:
                 "type": "prometheus",
                 "uid": "prometheus"
               },
-              "expr": "count(longhorn_volume_state==2) OR on() vector(0)",
+              "expr": "count(longhorn_volume_state{state="attached"} == 1) or vector(0)",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -401,7 +401,7 @@ data:
                 "type": "prometheus",
                 "uid": "prometheus"
               },
-              "expr": "count(longhorn_volume_state==3) OR on() vector(0)",
+              "expr": "count(longhorn_volume_state{state="detached"} == 1) or vector(0)",
               "interval": "",
               "legendFormat": "",
               "refId": "A"

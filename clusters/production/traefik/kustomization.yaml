@@ -5,3 +5,5 @@ resources:
   - namespace.yaml
   - helm-repo.yaml
   - release.yaml
+  - wildcard-cert.yaml
+  - tls-store.yaml

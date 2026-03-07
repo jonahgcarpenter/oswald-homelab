@@ -50,3 +50,39 @@ spec:
         - name: content-volume
           configMap:
             name: portfolio-content
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-tunnel
+  labels:
+    app: portfolio-tunnel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolio-tunnel
+  template:
+    metadata:
+      labels:
+        app: portfolio-tunnel
+    spec:
+      containers:
+        - name: cloudflared
+          image: cloudflare/cloudflared:latest
+          args:
+            - tunnel
+            - --no-autoupdate
+            - run
+          env:
+            - name: TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: portfolio-tunnel-credentials
+                  key: TUNNEL_TOKEN
+          # Security Flex: Locking down the tunnel pod
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 65532 # Standard non-root user for distroless images

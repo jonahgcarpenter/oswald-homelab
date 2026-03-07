@@ -11,8 +11,7 @@ spec:
     # to reach the Go web server on port 8080
     - fromEndpoints:
         - matchLabels:
-            "k8s:io.kubernetes.pod.namespace": "cloudflare-tunnel"
-            "app": "cloudflare-tunnel"
+            "app": "portfolio-tunnel"
       toPorts:
         - ports:
             - port: "8080"
@@ -38,4 +37,44 @@ spec:
       toPorts:
         - ports:
             - port: "3100"
+              protocol: TCP
+---
+kind: CiliumNetworkPolicy
+metadata:
+  name: portfolio-tunnel-lockdown
+spec:
+  endpointSelector:
+    matchLabels:
+      app: portfolio-tunnel
+  egress:
+    # Allow DNS resolution
+    - toEndpoints:
+        - matchLabels:
+            "k8s:io.kubernetes.pod.namespace": "kube-system"
+            "k8s-app": "kube-dns"
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
+
+    # Allow outbound connection to Cloudflare's Edge Network
+    - toEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "7844"
+              protocol: TCP
+            - port: "443"
+              protocol: TCP
+
+    # Allow routing traffic to the portfolio app
+    - toEndpoints:
+        - matchLabels:
+            "app": "portfolio"
+      toPorts:
+        - ports:
+            - port: "8080"
               protocol: TCP

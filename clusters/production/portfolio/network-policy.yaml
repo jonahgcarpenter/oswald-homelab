@@ -39,6 +39,7 @@ spec:
             - port: "3100"
               protocol: TCP
 ---
+apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
   name: portfolio-tunnel-lockdown

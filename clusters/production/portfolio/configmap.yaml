@@ -3,9 +3,13 @@ kind: ConfigMap
 metadata:
   name: portfolio-content
 data:
-  experience.md: |
-    ## Experience
-  projects.md: |
-    ## Projects
-  skills.md: |
-    ## Technical Skills
+  about-me.md: |
+    # About Me
+  resume.md: |
+    # Resume
+  calc-translation.md: |
+    # CALC-Translation [repo](https://github.com/jcarpenter-uam/calc-translation)
+  homelab.md: |
+    # Homelab [repo](https://github.com/jonahgcarpenter/oswald-homelab)
+  oswald-ai.md: |
+    # Oswald-AI [repo](https://github.com/jonahgcarpenter/oswald-ai)

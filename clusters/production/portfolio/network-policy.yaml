@@ -16,6 +16,16 @@ spec:
         - ports:
             - port: "8080"
               protocol: TCP
+
+    # Allow Prometheus to scrape metrics
+    - fromEndpoints:
+        - matchLabels:
+            "k8s:io.kubernetes.pod.namespace": "monitoring"
+      toPorts:
+        - ports:
+            - port: "8080"
+              protocol: TCP
+
   egress:
     # Allow DNS resolution (Required to find Loki's service name)
     - toEndpoints:

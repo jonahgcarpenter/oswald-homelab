@@ -7,4 +7,4 @@ resources:
   - sealed-tunnel-secret.yaml
   - deployment.yaml
   - service.yaml
-  # - network-policy.yaml
+  - network-policy.yaml

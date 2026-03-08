@@ -10,3 +10,4 @@ resources:
   - ./cluster
   - ./unpoller
   - ./pihole-exporter
+  - ./portfolio

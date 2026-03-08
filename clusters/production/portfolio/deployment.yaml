@@ -5,7 +5,7 @@ metadata:
   labels:
     app: portfolio
 spec:
-  replicas: 2 # High availability: Flux will ensure 2 pods are always running
+  replicas: 1
   selector:
     matchLabels:
       app: portfolio
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: ghcr.io/jonahgcarpenter/portfolio/portfolio:v2.0.0-beta.2
+          image: ghcr.io/jonahgcarpenter/portfolio/portfolio:v2.0.0-beta.3
           ports:
             - containerPort: 8080
           env:

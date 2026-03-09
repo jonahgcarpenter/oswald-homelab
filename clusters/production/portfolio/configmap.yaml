@@ -57,7 +57,7 @@ data:
 
     ## Projects
 
-    I am going to keep these overviews brief, as they only serve as high level explanations for the uninitiated. The deeper more tecnical explinations can be found on each projects respective page. This list is composed of my currently in production applications, as always there is much more dead weight on my github where any and everything I build is in a public repo
+    I am going to keep these overviews brief, as they only serve as high level explanations for the uninitiated. The deeper more tecnical explinations can be found on each projects respective page. This list is comprised of my currently in production applications, as always there is much more dead weight on my github where any and everything I build is in a public repo
 
     **CALC-Translation** | Python, React
 
@@ -79,11 +79,11 @@ data:
 
     ## Overview
 
-    Most meeting transcription bots are awful. They join your calls as creepy "ghost" participants, introduce latency, and completely fail if you switch languages halfway through or join a meeting ten minutes late
+    Most meeting transcription bots are awful. They join your calls as "ghost" participants, introduce latency, and completely fail if you switch languages halfway through or join a meeting ten minutes late
 
     CALC Translation is my answer to that. It is a comprehensive, real-time transcription and translation platform engineered to integrate directly with data streams, providing low-latency, accurate captions across multiple languages without the friction of traditional bot participants
 
-    Now this project was given to me basically just to see what was possible before buying a finished alternative, and I have gotten this far as a solo engineer. As a solo I have been forced to lean more into AI than I would like causing the codebase to become something I am not proud of. I grow more and more discusted by this project by the day, but it's kind of my job
+    Now this project was given to me as a challenge just to see what was possible before buying a finished alternative, and everyone has turned out pleased with the result. As a solo I have been forced to lean more into AI than I would like causing the codebase to become something I am not proud of. I grow more and more discusted by this project by the day, but it's kind of my job
 
     ## Architecture & Stack
 

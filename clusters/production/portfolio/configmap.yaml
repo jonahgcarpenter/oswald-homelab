@@ -10,11 +10,11 @@ data:
 
     I thrive in the space where software and systems engineering intersect. I actively design and manage a comprehensive, self-hosted bare-metal Kubernetes environment utilizing technologies like Proxmox, Talos, and Flux CD, backed by enterprise-grade network engineering
 
-    I enjoy tackling complex, end-to-end challenges. Whether I am architecting memory-driven AI agents, engineering real-time transcription and translation platforms, or building full-stack web applications with integrated live-streaming capabilities, I am driven by a desire to understand how systems work under the hood and a commitment to building infrastructure that is as arousing as the code it runs
+    I enjoy tackling complex, end-to-end challenges. Whether I am architecting memory-driven AI agents, engineering real-time transcription and translation platforms, or building my own infrastructure, I am driven by a desire to understand how systems work under the hood and a commitment to building infrastructure that is as arousing as the code it runs
 
     ## Why the portfolio?
 
-    LinkedIn has become nothing but AI slop, ignorant attention seeking post, and paywall blocked features. Seeing as I never took my profile seriously, and half of the job postings on there are probably fake to begin with it was time to just delete the app. But I know that most recruiters or hiring managers will not care to look on github, so I need somewhere to display my work. This is where the over-engineered portfolio comes in...
+    LinkedIn has become nothing but AI slop, attention seeking post, and paywall blocked features. Seeing as I never took my profile seriously anyways, and half of the job postings on there are probably fake to begin with it was time to just delete the app. But I know that most recruiters or hiring managers will not care to look on github, so I need somewhere to display my work. This is where the over-engineered portfolio comes in...
 
     I had a few basic requirements when starting this:
 

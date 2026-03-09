@@ -27,7 +27,6 @@ data:
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
       "links": [],
-      "liveNow": false,
       "panels": [
         {
           "collapsed": false,
@@ -47,6 +46,25 @@ data:
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
           "gridPos": {
             "h": 8,
             "w": 6,
@@ -54,36 +72,88 @@ data:
             "y": 1
           },
           "id": 2,
-          "title": "Active SSE Connections",
-          "type": "stat",
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "percentChangeColorMode": "standard",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "12.4.0",
           "targets": [
             {
               "expr": "portfolio_active_sse_connections{job=\"portfolio-exporter\"}",
               "refId": "A"
             }
-          ]
+          ],
+          "title": "Active SSE Connections",
+          "type": "stat"
         },
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "fillOpacity": 100,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineWidth": 0,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
           "gridPos": {
             "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 9
+            "w": 18,
+            "x": 6,
+            "y": 1
           },
           "id": 10,
-          "title": "Total Page Views by Section",
-          "type": "barchart",
-          "targets": [
-            {
-              "expr": "sum by (section) (portfolio_http_requests_total{job=\"portfolio-exporter\"})",
-              "legendFormat": "{{section}}",
-              "refId": "A"
-            }
-          ],
           "options": {
             "barRadius": 0,
             "barWidth": 0.9,
@@ -106,48 +176,117 @@ data:
             "showValue": "never",
             "stacking": "none",
             "tooltip": {
+              "hideZeros": false,
               "mode": "single",
               "sort": "none"
             },
             "xTickLabelRotation": 0,
             "xTickLabelSpacing": 0
           },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "fixedColor": "#58a6ff",
-                "mode": "fixed"
-              },
-              "custom": {
-                "fillOpacity": 100,
-                "lineWidth": 0
-              },
-              "mappings": []
-            },
-            "overrides": []
-          }
+          "pluginVersion": "12.4.0",
+          "targets": [
+            {
+              "expr": "round(sum by (section) (increase(portfolio_http_requests_total{job=\"portfolio-exporter\"}[$__range])))",
+              "format": "time_series",
+              "instant": true,
+              "legendFormat": "{{section}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Total Page Views by Section",
+          "type": "barchart"
         },
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
           "gridPos": {
             "h": 8,
-            "w": 18,
-            "x": 6,
-            "y": 1
+            "w": 24,
+            "x": 0,
+            "y": 9
           },
           "id": 3,
-          "title": "Page Views Rate (per Section)",
-          "type": "timeseries",
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.4.0",
           "targets": [
             {
               "expr": "rate(portfolio_http_requests_total{job=\"portfolio-exporter\"}[5m])",
               "legendFormat": "{{section}}",
               "refId": "A"
             }
-          ]
+          ],
+          "title": "Page Views Rate (per Section)",
+          "type": "timeseries"
         },
         {
           "collapsed": false,
@@ -167,6 +306,62 @@ data:
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
           "gridPos": {
             "h": 8,
             "w": 12,
@@ -174,8 +369,20 @@ data:
             "y": 18
           },
           "id": 5,
-          "title": "Heap Memory Utilization",
-          "type": "timeseries",
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.4.0",
           "targets": [
             {
               "expr": "go_memstats_heap_inuse_bytes{job=\"portfolio-exporter\"}",
@@ -187,12 +394,70 @@ data:
               "legendFormat": "Idle",
               "refId": "B"
             }
-          ]
+          ],
+          "title": "Heap Memory Utilization",
+          "type": "timeseries"
         },
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
           },
           "gridPos": {
             "h": 8,
@@ -201,15 +466,29 @@ data:
             "y": 18
           },
           "id": 6,
-          "title": "Active Goroutines",
-          "type": "timeseries",
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.4.0",
           "targets": [
             {
               "expr": "go_goroutines{job=\"portfolio-exporter\"}",
               "legendFormat": "Goroutines",
               "refId": "A"
             }
-          ]
+          ],
+          "title": "Active Goroutines",
+          "type": "timeseries"
         },
         {
           "collapsed": false,
@@ -229,6 +508,62 @@ data:
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
           "gridPos": {
             "h": 8,
             "w": 12,
@@ -236,20 +571,90 @@ data:
             "y": 27
           },
           "id": 8,
-          "title": "CPU Usage Rate",
-          "type": "timeseries",
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.4.0",
           "targets": [
             {
               "expr": "rate(process_cpu_seconds_total{job=\"portfolio-exporter\"}[5m])",
               "legendFormat": "CPU Time",
               "refId": "A"
             }
-          ]
+          ],
+          "title": "CPU Usage Rate",
+          "type": "timeseries"
         },
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
           },
           "gridPos": {
             "h": 8,
@@ -258,38 +663,51 @@ data:
             "y": 27
           },
           "id": 9,
-          "title": "Resident Memory (RSS)",
-          "type": "timeseries",
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.4.0",
           "targets": [
             {
               "expr": "process_resident_memory_bytes{job=\"portfolio-exporter\"}",
               "legendFormat": "RSS Bytes",
               "refId": "A"
             }
-          ]
+          ],
+          "title": "Resident Memory (RSS)",
+          "type": "timeseries"
         }
       ],
+      "preload": false,
       "refresh": "5s",
-      "schemaVersion": 38,
-      "style": "dark",
-      "tags": ["portfolio", "golang"],
+      "schemaVersion": 42,
+      "tags": [
+        "portfolio",
+        "golang"
+      ],
       "templating": {
         "list": [
           {
             "current": {
-              "selected": false,
               "text": "Prometheus",
-              "value": "Prometheus"
+              "value": "prometheus"
             },
-            "hide": 0,
             "includeAll": false,
-            "multi": false,
             "name": "DS_PROMETHEUS",
             "options": [],
             "query": "prometheus",
             "refresh": 1,
             "regex": "",
-            "skipUrlSync": false,
             "type": "datasource"
           }
         ]
@@ -302,5 +720,6 @@ data:
       "timezone": "browser",
       "title": "Portfolio Metrics",
       "uid": "portfolio-metrics-01",
-      "version": 1
+      "version": 7,
+      "weekStart": ""
     }

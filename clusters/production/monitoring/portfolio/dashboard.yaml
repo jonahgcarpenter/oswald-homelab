@@ -72,7 +72,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 27
+            "y": 9
           },
           "id": 10,
           "title": "Total Page Views by Section",
@@ -134,7 +134,7 @@ data:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 9
+            "y": 17
           },
           "id": 4,
           "panels": [],
@@ -150,7 +150,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 10
+            "y": 18
           },
           "id": 5,
           "title": "Heap Memory Utilization",
@@ -177,7 +177,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 10
+            "y": 18
           },
           "id": 6,
           "title": "Active Goroutines",
@@ -196,7 +196,7 @@ data:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 18
+            "y": 26
           },
           "id": 7,
           "panels": [],
@@ -212,7 +212,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 19
+            "y": 27
           },
           "id": 8,
           "title": "CPU Usage Rate",
@@ -234,7 +234,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 19
+            "y": 27
           },
           "id": 9,
           "title": "Resident Memory (RSS)",

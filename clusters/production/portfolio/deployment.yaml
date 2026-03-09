@@ -16,14 +16,14 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: ghcr.io/jonahgcarpenter/portfolio/portfolio:v2.0.1-beta.0
+          image: ghcr.io/jonahgcarpenter/portfolio/portfolio:v2.0.1
           ports:
             - containerPort: 8080
           env:
             - name: LOKI_URL
               value: "http://loki.monitoring.svc.cluster.local:3100"
 
-          # Security Flex: Enforcing Principle of Least Privilege
+          # Enforcing Principle of Least Privilege
           securityContext:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
@@ -80,7 +80,7 @@ spec:
                 secretKeyRef:
                   name: portfolio-tunnel-credentials
                   key: TUNNEL_TOKEN
-          # Security Flex: Locking down the tunnel pod
+          # Locking down the tunnel pod
           securityContext:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false

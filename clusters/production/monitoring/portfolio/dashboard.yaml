@@ -93,10 +93,17 @@ data:
               "calcs": [],
               "displayMode": "list",
               "placement": "bottom",
-              "showLegend": false
+              "showLegend": true
             },
             "orientation": "auto",
-            "showValue": "always",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showValue": "never",
             "stacking": "none",
             "tooltip": {
               "mode": "single",
@@ -104,6 +111,20 @@ data:
             },
             "xTickLabelRotation": 0,
             "xTickLabelSpacing": 0
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "#58a6ff",
+                "mode": "fixed"
+              },
+              "custom": {
+                "fillOpacity": 100,
+                "lineWidth": 0
+              },
+              "mappings": []
+            },
+            "overrides": []
           }
         },
         {

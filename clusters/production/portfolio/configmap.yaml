@@ -122,6 +122,8 @@ data:
 
     Having my own infra allows me to explore and learn at my own will. It also gives me the opportunity to continue building more stupid software projects, because I pay nothing to host it
 
+    By far my favorite project because it encapsulates my favorite aspects of engineering, and it is one project I always have ideas for. I hope to build a dedicated low power NVR server, and a standalone NAS at some point for better isolation, but unfortunately money does not grow on trees
+
     ## The Metal
 
     While this is not a typical production environment, I treat it like one. I'm spending too much time and money on this for shit to be broken

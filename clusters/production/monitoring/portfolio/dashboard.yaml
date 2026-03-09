@@ -70,6 +70,49 @@ data:
           },
           "gridPos": {
             "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 27
+          },
+          "id": 10,
+          "title": "Total Page Views by Section",
+          "type": "barchart",
+          "targets": [
+            {
+              "expr": "sum by (section) (portfolio_http_requests_total{job=\"portfolio-exporter\"})",
+              "legendFormat": "{{section}}",
+              "refId": "A"
+            }
+          ],
+          "options": {
+            "barRadius": 0,
+            "barWidth": 0.9,
+            "fullHighlight": false,
+            "groupWidth": 0.7,
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "orientation": "auto",
+            "showValue": "always",
+            "stacking": "none",
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            },
+            "xTickLabelRotation": 0,
+            "xTickLabelSpacing": 0
+          }
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "gridPos": {
+            "h": 8,
             "w": 18,
             "x": 6,
             "y": 1

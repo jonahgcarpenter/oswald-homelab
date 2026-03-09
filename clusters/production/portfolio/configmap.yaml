@@ -6,23 +6,30 @@ data:
   about-me.md: |
     # About Me
 
-    Howdy, my name is Jonah Carpenter. I am a Software Engineer with a focus on infrastructure, DevOps, and backend development. I am worried about the whole pie, writing robust scalable full-stack applications, and ironing out the CI/CD pipelines that deploy the applications on solid infrastructure
+    Howdy, I'm Jonah Carpenter. I am a Software Engineer specializing in infrastructure, DevOps, and backend development. I care about the whole pie—from writing robust, scalable applications to ironing out the CI/CD pipelines that deploy them onto solid infrastructure. 
 
-    I thrive in the space where software and systems engineering intersect. I actively design and manage a comprehensive, self-hosted bare-metal Kubernetes environment utilizing technologies like Proxmox, Talos, and Flux CD, backed by enterprise-grade network engineering
+    I thrive in the space where software and systems engineering intersect. At home, I actively design and manage a comprehensive, self-hosted bare-metal Kubernetes environment powered by Proxmox, Talos, and Flux CD, all backed by enterprise-grade network engineering. 
 
-    I enjoy tackling complex, end-to-end challenges. Whether I am architecting memory-driven AI agents, engineering real-time transcription and translation platforms, or building my own infrastructure, I am driven by a desire to understand how systems work under the hood and a commitment to building infrastructure that is as arousing as the code it runs
+    Whether I am architecting memory-driven AI agents, engineering real-time transcription platforms, or building out my own infrastructure, I am driven by a desire to understand exactly how systems work under the hood. My ultimate commitment is to build infrastructure that is as arousing as the code it runs.
 
-    ## Why the portfolio?
+    ## The Anti-Portfolio
 
-    LinkedIn has become nothing but AI slop, attention seeking post, and paywall blocked features. Seeing as I never took my profile seriously anyways, and half of the job postings on there are probably fake to begin with it was time to just delete the app. But I know that most recruiters or hiring managers will not care to look on github, so I need somewhere to display my work. This is where the over-engineered portfolio comes in...
+    LinkedIn has devolved into a feed of AI-generated slop, attention-seeking posts, and paywalled features. Knowing half the job postings are likely fake anyway, I deleted the app. However, since most recruiters and hiring managers won't go hunting through my GitHub repositories, I needed a place to display my work. 
 
-    I had a few basic requirements when starting this:
+    Enter this over-engineered "portfolio." 
 
-    - To avoid creating another shity react app, and the fact that I hate frontend anyways. It had to be very minimal
-    - Focus on my strengths: Backend, DevOps
-    - Has to be easy to update, I shouldn't have to be in a terminal to fix a spelling error
+    When building this site, I had a few strict requirements to ensure it actually reflected my skills:
 
-    For a very short explanation it works like this. The backend is a Go server that reads markdown files from a Kubernetes configmap, caches them for quick loading times, and handles Server-Side Events (SSE) for instant reloading. The frontend is a single HTML file that displays these markdown files and listens for those SSE messages. I also added a metrics endpoint for tracking page visits, active connections, and other basic OS/Go metrics. Then to top it all off I display the live flux-system namespace logs from the Kubernetes cluster this application lives on. Now don't get excited...I wasn't stupid enough to give this application Kubernetes API access, I am simply using Loki's API and a polling interval. Yes you will see some warnings or deprecation messages, but "If it ain't broke, don't fix it"
+    * **Zero Frontend Bloat:** I have no interest in building another bloated React app. The design had to be strictly minimal. 
+    * **Play to My Strengths:** The focus had to be on what I actually do well: Backend and DevOps.
+    * **Frictionless Updates:** I shouldn't have to spin up a terminal or trigger a massive rebuild just to fix a spelling error.
+
+    **How it works under the hood:**
+    The backend is a lightweight **Go** server that reads Markdown files directly from a Kubernetes ConfigMap. It caches them for lightning-fast load times and utilizes Server-Sent Events (SSE) for instant reloading on the client side. The frontend? Literally a single HTML file that renders the Markdown and listens for those SSE messages. 
+
+    Because I can't leave well enough alone, I also built out a metrics endpoint for tracking page visits, active connections, and system vitals. To top it off, the site streams the live `flux-system` namespace logs directly from the Kubernetes cluster it lives on. 
+
+    And before you panic—no, I wasn't stupid enough to give this application raw Kubernetes API access. It's simply polling Loki's API. You might see a few warnings or deprecation messages roll by in the logs, but remember the golden rule of infrastructure: *"If it ain't broke, don't fix it."*
   resume.md: |
     # Resume
 

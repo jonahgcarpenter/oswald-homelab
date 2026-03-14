@@ -9,4 +9,4 @@ data:
   OLLAMA_CODING_MODEL: "qwen2.5-coder:7b"
   OLLAMA_SEARCHER_MODEL: "qwen3:8b"
   OLLAMA_COMPLEX_MODEL: "qwen3:8b"
-  OLLAMA_SIMPLE_MODEL: "qwen3.5:4b"
+  OLLAMA_SIMPLE_MODEL: "llama2-uncensored:7b"

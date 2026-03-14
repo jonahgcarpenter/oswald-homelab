@@ -1,0 +1,62 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: searxng-config
+  labels:
+    app: searxng
+data:
+  settings.yml: |
+    search:
+      formats:
+        - html
+        - json
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: searxng
+  labels:
+    app: searxng
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: searxng
+  template:
+    metadata:
+      labels:
+        app: searxng
+    spec:
+      containers:
+        - name: searxng
+          image: searxng/searxng:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: BASE_URL
+              value: "http://searxng:8080/"
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/searxng/settings.yml
+              subPath: settings.yml
+      volumes:
+        - name: config-volume
+          configMap:
+            name: searxng-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: searxng
+  labels:
+    app: searxng
+spec:
+  selector:
+    app: searxng
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

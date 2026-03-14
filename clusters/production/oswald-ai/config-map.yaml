@@ -3,8 +3,10 @@ kind: ConfigMap
 metadata:
   name: oswald-ai-config
 data:
-  OLLAMA_ROUTER_MODEL: "llama3.2:3b"
-  OLLAMA_COMPLEX_MODEL: "llama2-uncensored:7b"
-  OLLAMA_CODING_MODEL: "llama2-uncensored:7b"
+  LOG_LEVEL: debug
+  OLLAMA_ROUTER_MODEL: "qwen3.5:0.8b"
   OLLAMA_UNCENSORED_MODEL: "llama2-uncensored:7b"
-  OLLAMA_SIMPLE_MODEL: "llama2-uncensored:7b"
+  OLLAMA_CODING_MODEL: "qwen2.5-coder:7b"
+  OLLAMA_SEARCHER_MODEL: "qwen3:8b"
+  OLLAMA_COMPLEX_MODEL: "qwen3:8b"
+  OLLAMA_SIMPLE_MODEL: "qwen3.5:4b"

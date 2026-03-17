@@ -5,3 +5,5 @@ metadata:
 data:
   LOG_LEVEL: debug
   OLLAMA_ROUTER_MODEL: "qwen3.5:0.8b"
+  SEARXNG_URL: "http://searxng:8080"
+  QUERY_MAX_ITERATIONS: 5

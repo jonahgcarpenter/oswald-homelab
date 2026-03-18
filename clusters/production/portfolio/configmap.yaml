@@ -173,7 +173,7 @@ data:
 
     ## Overview
 
-    My homelab needed a brain and a sense of humor. But I don't want some generic wrapper or to give Sam Altman all my money. The goal was to create a fully local, uncensored, unforgiving AI.
+    My homelab needed a brain and a sense of humor. But I don't want some generic wrapper or to give Sam Altman all my money. The goal was to create a fully local, uncensored, unforgiving AI. As it turns out keeping the model fully uncensored without training your own model is the most complex part.
 
     **To be clear: This project previously reached a fully functioning state.** I built a complete V1 using **Python, LangChain, and MCP**, which featured fully operational RAG (Retrieval-Augmented Generation) and tool use. It worked well, but "working" isn't the same as "optimal." 
 

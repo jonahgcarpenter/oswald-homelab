@@ -4,5 +4,4 @@ metadata:
   name: oswald-ai-config
 data:
   LOG_LEVEL: debug
-  OLLAMA_ROUTER_MODEL: "qwen3.5:0.8b"
   SEARXNG_URL: "http://searxng:8080"

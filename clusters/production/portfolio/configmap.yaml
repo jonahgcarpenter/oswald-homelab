@@ -181,7 +181,7 @@ data:
 
     ## Architecture
 
-    Since we are mid-rewrite, the `master` branch still holds the legacy Python version. Meanwhile, I am exploring a new foundation based on the principles OpenClaw opened my eyes to. Right now, the Go version is basically an Ollama wrapper—which I swore to destroy—but for the time being, everyone seems to find the unhinged behavior of a simple uncensored model enjoyable. The goal is to return Oswald to his fully agentic glory using this new stack:
+    Since we are mid-rewrite, the project is evolving rapidly. Right now, the Go version has evolved past a simple Ollama wrapper into a custom two-stage orchestration pipeline. It works beautifully for delivering unhinged, uncensored behavior, but this is just the foundation for the new stack:
 
     - **Backend:** I have recently been loving Golang. The compiler yells at you before you push garbage to prod, and it compiles to a single binary, meaning the Docker containers are tiny compared to Python. I know Bun exists for JavaScript/TypeScript so I could really just copy OpenClaw, but that's no fun. RAM is also way too expensive to be running JavaScript on the backend, what's wrong with you...
     - **Current Pipeline:** Before answering, a small, fast query model evaluates prompts to decide if real-time web intelligence is needed, utilizing SearXNG for searches. The raw intel is then passed to a larger, completely uncensored local model to generate the final sarcastic response.

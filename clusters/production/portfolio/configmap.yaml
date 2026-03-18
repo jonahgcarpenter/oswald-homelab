@@ -76,7 +76,7 @@ data:
 
     **Oswald-AI** | Golang
 
-    An uncensored, witty AI agent integrated directly into Discord to serve as a highly capable digital manservant. Utilizing the Model Context Protocol (MCP) to perform complex agentic tasks. Unlike boring stateless bots, it leverages a memory-driven architecture backed by self-hosted tools like Ollama to learn user routines, recall preferences, and execute commands with its own distinct touch of dry wit
+    An uncensored, witty AI agent integrated directly into Discord to serve as a highly capable digital manservant. Built in pure Go, it utilizes a two-stage agentic pipeline: a fast query model evaluates prompts to gather real-time web intelligence via SearXNG, while a larger, uncensored model (backed by self-hosted Ollama) delivers brutally honest answers. Fully local, completely stateless, and zero-dependency, it provides real-time answers with a distinct touch of unhinged humor.
 
     **April's Lil Pugs** | TypeScript, Golang
 

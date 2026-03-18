@@ -183,23 +183,22 @@ data:
 
     Since we are mid-rewrite, the `master` branch still holds the legacy Python version. Meanwhile, I am exploring a new foundation based on the principles OpenClaw opened my eyes to. Right now, the Go version is basically an Ollama wrapper—which I swore to destroy—but for the time being, everyone seems to find the unhinged behavior of a simple uncensored model enjoyable. The goal is to return Oswald to his fully agentic glory using this new stack:
 
-    - **Backend:** I have recently been loving **Golang**. The compiler yells at you before you push garbage to prod, and it compiles to a single binary, meaning the Docker containers are tiny compared to Python. I know Bun exists for JavaScript/TypeScript so I could really just copy OpenClaw, but that's no fun. RAM is also way too expensive to be running JavaScript on the backend, what's wrong with you...
-    - **Memory/State:** I like the markdown idea here. It's the best format to give to LLMs, and it means I don't have to deploy or handle anything database-related.
-    - **Tools:** MCP is the only real option, but finding the best open-source MCP servers gets a little annoying. I went down the hand-written tools road before, and that was a nightmare.
+    - **Backend:** I have recently been loving Golang. The compiler yells at you before you push garbage to prod, and it compiles to a single binary, meaning the Docker containers are tiny compared to Python. I know Bun exists for JavaScript/TypeScript so I could really just copy OpenClaw, but that's no fun. RAM is also way too expensive to be running JavaScript on the backend, what's wrong with you...
+    - **Current Pipeline:** Before answering, a small, fast query model evaluates prompts to decide if real-time web intelligence is needed, utilizing SearXNG for searches. The raw intel is then passed to a larger, completely uncensored local model to generate the final sarcastic response.
     - **Interfaces:** Since the GPU was donated by a friend, I felt obligated to give them access to Oswald. Discord was the only real choice since it's widely used (pending age verification), and I really liked Grok's UX. Simply type `@Oswald <prompt>` and you're off to the races.
 
-    ## The Plan
+    ## The Plan (Roadmap to Agentic Glory)
 
-    Most of this project's rewrite is up in the air, but here is what I want and how I think I can make it happen:
+    Most of this project's rewrite is establishing the bedrock for a much larger agentic ecosystem. The current build is stateless and limited to web search tools, but here is what I want and how I think I can make it happen:
 
     **Multi-User Memory:**
-    Oswald should handle multi-user workloads without giving me my friends' memories. My idea here is exploring keyed markdown files for memory storage, paired with some form of lightweight indexing to keep things quick and light on resources. That way, each user has their own contextual history and limits, allowing Oswald to interact with each person on a personal level—similar to the evil corporate versions, but local.
+    Currently, the bot is completely stateless. Oswald should handle multi-turn, multi-user workloads without giving me my friends' memories. My idea here is exploring keyed markdown files for memory storage, paired with some form of lightweight indexing to keep things quick and light on resources. That way, each user has their own contextual history and limits, allowing Oswald to interact with each person on a uniquely personal level—similar to the evil corporate versions, but local.
 
-    **Smart Routing:**
-    Web search is a big issue given his uncensored nature, and different models have their own specialties. I think a router model at the gate will help. At the very beginning of the interaction, I want a tiny model to route traffic depending on the prompt category: complex, coding, unsafe, or simple. Different models for different tasks means I can apply specific guardrails for uncensored prompts, which is highly necessary when giving the model access to direct search functionality.
+    **Expanded Agentic Tooling & MCP:**
+    While the current router model handles web search decisions brilliantly at the gate, the goal is to expand this into full tool-calling for the uncensored model. MCP (Model Context Protocol) is the target here. Finding the best open-source MCP servers gets a little annoying, but going down the hand-written tools road before was a nightmare. I want the router model to intelligently delegate complex, coding, or unsafe prompts to specific tools and guardrails before handing them off.
 
     **Homelab & Smart Home Integration:**
-    I am generally going to utilize this project more than anyone else, which means I have plans specifically for my use. Direct access to my homelab or smart home would be nice, as I am not a fan of Alexa+. STT (Speech-to-Text) and TTS (Text-to-Speech) functionality is a must-have, but the hardware is going to get annoying. I really like the whole-home audio functionality from Alexa, so that can't be lost. I continue to see more and more about "jailbreaking" old Alexa hardware, so that might be the path forward compared to buying a whole new fleet of smart speakers
+    I am generally going to utilize this project more than anyone else. Direct access to manage my Proxmox nodes and Talos Linux Kubernetes cluster would be incredible, allowing Oswald to act as a snarky DevOps copilot for the infrastructure he runs on. Beyond that, STT (Speech-to-Text) and TTS (Text-to-Speech) functionality is a must-have to replace Alexa. I continue to see more about "jailbreaking" old Alexa hardware, which might be the best path forward to maintain whole-home audio without buying a whole new fleet of smart speakers.
   aprils-lil-pugs.md: |
     # April's Lil Pugs [repo](https://github.com/jonahgcarpenter/aprilslilpugs)
 

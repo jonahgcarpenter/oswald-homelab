@@ -33,3 +33,39 @@ spec:
         - name: storage-volume
           persistentVolumeClaim:
             claimName: aprilslilpugs-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alp-web-tunnel
+  labels:
+    app: alp-web-tunnel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alp-web-tunnel
+  template:
+    metadata:
+      labels:
+        app: alp-web-tunnel
+    spec:
+      containers:
+        - name: cloudflared
+          image: cloudflare/cloudflared:2026.3.0
+          args:
+            - tunnel
+            - --no-autoupdate
+            - run
+          env:
+            - name: TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: alp-web-tunnel-credentials
+                  key: TUNNEL_TOKEN
+          # Locking down the tunnel pod
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 65532 # Standard non-root user for distroless images

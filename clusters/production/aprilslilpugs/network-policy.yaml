@@ -1,0 +1,75 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: alp-web-lockdown
+spec:
+  endpointSelector:
+    matchLabels:
+      app: alp-web
+  ingress:
+    # Allow external traffic (from your Cloudflare Tunnel/Ingress Controller)
+    # to reach the Go web server on port 8080
+    - fromEndpoints:
+        - matchLabels:
+            "app": "alp-web-tunnel"
+      toPorts:
+        - ports:
+            - port: "8080"
+              protocol: TCP
+
+  egress:
+    # Allow DNS resolution
+    - toEndpoints:
+        - matchLabels:
+            "k8s:io.kubernetes.pod.namespace": "kube-system"
+            "k8s-app": "kube-dns"
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
+---
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: alp-web-tunnel-lockdown
+spec:
+  endpointSelector:
+    matchLabels:
+      app: alp-web-tunnel
+  egress:
+    # Allow DNS resolution
+    - toEndpoints:
+        - matchLabels:
+            "k8s:io.kubernetes.pod.namespace": "kube-system"
+            "k8s-app": "kube-dns"
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
+
+    # Allow outbound connection to Cloudflare's Edge Network
+    - toEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "7844"
+              protocol: UDP
+            - port: "7844"
+              protocol: TCP
+            - port: "443"
+              protocol: TCP
+
+    # Allow routing traffic to the portfolio app
+    - toEndpoints:
+        - matchLabels:
+            "app": "alp-web"
+      toPorts:
+        - ports:
+            - port: "8080"
+              protocol: TCP

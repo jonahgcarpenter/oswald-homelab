@@ -14,6 +14,7 @@ spec:
       labels:
         app: alp-web
     spec:
+      # Block API token and kernel syscalls
       automountServiceAccountToken: false
       securityContext:
         fsGroup: 1000
@@ -27,6 +28,7 @@ spec:
           ports:
             - containerPort: 4000
 
+          # Enforcing Principle of Least Privilege
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
@@ -36,6 +38,7 @@ spec:
               drop:
                 - ALL
 
+          # Resouce Limits
           resources:
             requests:
               cpu: "50m"
@@ -47,18 +50,16 @@ spec:
           envFrom:
             - secretRef:
                 name: alp-web-secrets
+
+          # Mounting the storage directory
           volumeMounts:
             - name: storage-volume
               mountPath: /app/storage
-            - name: tmp-volume
-              mountPath: /tmp
 
       volumes:
         - name: storage-volume
           persistentVolumeClaim:
             claimName: aprilslilpugs-pvc
-        - name: tmp-volume
-          emptyDir: {}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -76,6 +77,7 @@ spec:
       labels:
         app: alp-web-tunnel
     spec:
+      # Block API token and kernel syscalls
       automountServiceAccountToken: false
       securityContext:
         seccompProfile:
@@ -89,6 +91,7 @@ spec:
             - --no-autoupdate
             - run
 
+          # Resouce Limits
           resources:
             requests:
               cpu: "10m"
@@ -104,6 +107,7 @@ spec:
                   name: alp-web-tunnel-credentials
                   key: TUNNEL_TOKEN
 
+          # Enforcing Principle of Least Privilege
           securityContext:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false

@@ -14,6 +14,13 @@ spec:
       labels:
         app: portfolio
     spec:
+      # Block API token and kernel syscalls
+      automountServiceAccountToken: false
+      securityContext:
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+
       containers:
         - name: portfolio
           image: ghcr.io/jonahgcarpenter/portfolio/portfolio:v2.0.1
@@ -29,16 +36,18 @@ spec:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
             runAsUser: 1000
+            capabilities:
+              drop:
+                - ALL
 
-          # Readiness/Liveness Probes for Kubernetes self-healing
-          readinessProbe:
-            httpGet:
-              path: /healthz
-              port: 8080
-          livenessProbe:
-            httpGet:
-              path: /healthz
-              port: 8080
+          # Resouce Limits
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "32Mi"
+            limits:
+              cpu: "100m"
+              memory: "128Mi"
 
           # Mounting the ConfigMap as a directory of files
           volumeMounts:
@@ -67,6 +76,12 @@ spec:
       labels:
         app: portfolio-tunnel
     spec:
+      # Block API token and kernel syscalls
+      automountServiceAccountToken: false
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+
       containers:
         - name: cloudflared
           image: cloudflare/cloudflared:2026.3.0
@@ -74,15 +89,29 @@ spec:
             - tunnel
             - --no-autoupdate
             - run
+
+          # Resouce Limits
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "32Mi"
+            limits:
+              cpu: "100m"
+              memory: "128Mi"
+
           env:
             - name: TUNNEL_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: portfolio-tunnel-credentials
                   key: TUNNEL_TOKEN
-          # Locking down the tunnel pod
+
+          # Enforcing Principle of Least Privilege
           securityContext:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
             runAsNonRoot: true
-            runAsUser: 65532 # Standard non-root user for distroless images
+            runAsUser: 65532
+            capabilities:
+              drop:
+                - ALL

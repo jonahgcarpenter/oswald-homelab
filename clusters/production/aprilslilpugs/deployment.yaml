@@ -19,7 +19,7 @@ spec:
         fsGroupChangePolicy: "OnRootMismatch"
       containers:
         - name: alp-web
-          image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.0.4-beta.0
+          image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.0.4
           ports:
             - containerPort: 4000
           securityContext:

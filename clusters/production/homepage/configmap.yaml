@@ -72,29 +72,11 @@ data:
               version: 6
               key: {{HOMEPAGE_VAR_PIHOLE_PASSWORD}}
               fields: ["queries", "blocked", "blocked_percent", "gravity"]
-        - NPM:
-            icon: nginx-proxy-manager.png
-            href: https://npm.home.jonahsserver.com/
-            widget:
-              type: npm
-              url: {{HOMEPAGE_VAR_NPM_URL}}
-              username: {{HOMEPAGE_VAR_NPM_USERNAME}}
-              password: {{HOMEPAGE_VAR_NPM_PASSWORD}}
-              fields: ["enabled", "disabled", "total"]
 
     - Monitoring & Management:
         - Grafana:
             icon: grafana.png
             href: https://grafana.home.jonahsserver.com/
-        - Portainer:
-            icon: portainer.png
-            href: https://portainer.home.jonahsserver.com/
-            widget:
-              type: portainer
-              url: {{HOMEPAGE_VAR_PORTAINER_URL}}
-              env: 3
-              key: {{HOMEPAGE_VAR_PORTAINER_API_KEY}}
-              fields: ["running", "stopped", "total"]
         - Pterodactyl-Panel:
             icon: pterodactyl.png
             href: https://pterodactyl.home.jonahsserver.com/
@@ -103,22 +85,6 @@ data:
               url: {{HOMEPAGE_VAR_PTERODACTYL_URL}}
               key: {{HOMEPAGE_VAR_PTERODACTYL_API_KEY}}
               fields: ["nodes", "servers"]
-
-    - Game Servers:
-        - Vanilla:
-            icon: minecraft.png
-            href: https://pterodactyl.home.jonahsserver.com/
-            widget:
-              type: minecraft
-              url: {{HOMEPAGE_VAR_MINECRAFT_URL_VANILLA}}
-              fields: ["players", "version", "status"]
-        - Modded:
-            icon: minecraft.png
-            href: https://pterodactyl.home.jonahsserver.com/
-            widget:
-              type: minecraft
-              url: {{HOMEPAGE_VAR_MINECRAFT_URL_MODDED}}
-              fields: ["players", "version", "status"]
 
     - Security:
         - Vaultwarden:

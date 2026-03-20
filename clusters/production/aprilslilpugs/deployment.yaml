@@ -22,3 +22,11 @@ spec:
           envFrom:
             - secretRef:
                 name: alp-web-secrets
+          volumeMounts:
+            - name: storage-volume
+              mountPath: /app/storage
+
+      volumes:
+        - name: storage-volume
+          persistentVolumeClaim:
+            claimName: aprilslilpugs-pvc

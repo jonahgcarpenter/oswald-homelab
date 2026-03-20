@@ -14,7 +14,33 @@ spec:
             "app": "alp-web-tunnel"
       toPorts:
         - ports:
-            - port: "8080"
+            - port: "4000"
+              protocol: TCP
+
+    # Allow outbound to Gmail SMTP
+    - toFQDNs:
+        - matchName: "smtp.gmail.com"
+      toPorts:
+        - ports:
+            - port: "587" # Standard SMTP TLS port
+              protocol: TCP
+            - port: "465" # Standard SMTP SSL port
+              protocol: TCP
+
+    # Allow outbound to Local Database
+    - toCIDR:
+        - "192.168.4.166/24"
+      toPorts:
+        - ports:
+            - port: "5432"
+              protocol: TCP
+
+    # Allow outbound to Home Assistant
+    - toFQDNs:
+        - matchName: "has.carpentersserver.com"
+      toPorts:
+        - ports:
+            - port: "8123" # Standard Home Assistant port
               protocol: TCP
 
   egress:
@@ -71,5 +97,5 @@ spec:
             "app": "alp-web"
       toPorts:
         - ports:
-            - port: "8080"
+            - port: "4000"
               protocol: TCP

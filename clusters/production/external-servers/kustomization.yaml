@@ -3,11 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - ./pve-0
-  - ./portainer
   - ./unify
   - ./truenas
-  - ./npm
   - ./homebridge
-  - ./searxng
-  - ./minio
   - ./pterodactyl

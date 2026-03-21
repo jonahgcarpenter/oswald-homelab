@@ -1,14 +1,14 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: pterodactyl-ingress
+  name: pterodactyl-panel-ingress
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`pterodactyl.home.jonahsserver.com`)
+    - match: Host(`pterodactyl-panel.home.jonahsserver.com`)
       kind: Rule
       services:
-        - name: pterodactyl
+        - name: pterodactyl-panel
           port: 80
           scheme: http

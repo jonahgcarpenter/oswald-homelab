@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: pterodactyl
+  name: pterodactyl-panel
 spec:
   ports:
     - name: http

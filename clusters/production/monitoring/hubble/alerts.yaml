@@ -30,20 +30,10 @@ spec:
 
         # Command & Control / Exfiltration (DNS)
         - alert: HubbleHighNXDomainRate
-          expr: sum by (source_workload, query) (rate(hubble_dns_responses_total{rcode="NXDomain"}[5m])) > 10
+          expr: sum(rate(hubble_dns_responses_total{rcode="Non-Existent Domain"}[5m])) > 10
           for: 5m
           labels:
             severity: critical
           annotations:
-            summary: "High NXDomain rate for {{ $labels.source_workload }}"
+            summary: "High Non-Existent Domain rate for {{ $labels.source_workload }}"
             description: "Workload {{ $labels.source_workload }} is aggressively querying a non-existent domain ({{ $labels.query }}). This is highly indicative of malware C2 beaconing or a misconfigured app."
-
-        # Layer 7 Credential Stuffing / Exploit Attempts
-        - alert: HubbleHttpErrorSpike
-          expr: sum by (source_workload, destination_workload) (rate(hubble_http_responses_total{status=~"401|403"}[5m])) > 10
-          for: 5m
-          labels:
-            severity: warning
-          annotations:
-            summary: "HTTP 401/403 spike from {{ $labels.source_workload }}"
-            description: "High rate of HTTP authorization/authentication errors between {{ $labels.source_workload }} and {{ $labels.destination_workload }}. Possible privilege escalation or credential stuffing attempt."

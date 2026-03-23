@@ -18,16 +18,11 @@ spec:
         hostPath: /sys/kernel/tracing
         mountPath: /sys/kernel/tracing
 
-    prometheus:
-      serviceMonitor:
-        enabled: true
-        labels:
-          release: kube-prometheus-stack
+    serviceMonitor:
+      enabled: true
 
     tetragonOperator:
       prometheus:
         enabled: true
         serviceMonitor:
           enabled: true
-          labels:
-            release: kube-prometheus-stack

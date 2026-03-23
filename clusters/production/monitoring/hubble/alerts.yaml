@@ -10,7 +10,7 @@ spec:
       rules:
         # Lateral Movement / Policy Denials
         - alert: HubblePolicyDenied
-          expr: sum(rate(hubble_drop_total{reason="Policy denied"}[5m])) > 5
+          expr: sum(rate(hubble_drop_total{reason="POLICY_DENIED"}[5m])) > 5
           for: 5m
           labels:
             severity: warning

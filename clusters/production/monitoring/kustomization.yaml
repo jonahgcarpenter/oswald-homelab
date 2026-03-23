@@ -11,3 +11,5 @@ resources:
   - ./unpoller
   - ./pihole-exporter
   - ./portfolio
+  - ./cilium
+  - ./hubble

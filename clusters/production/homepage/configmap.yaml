@@ -79,7 +79,7 @@ data:
             href: https://grafana.home.jonahsserver.com/
         - Pterodactyl-Panel:
             icon: pterodactyl.png
-            href: https://pterodactyl.home.jonahsserver.com/
+            href: https://pterodactyl-panel.home.jonahsserver.com/
             widget:
               type: pterodactyl
               url: {{HOMEPAGE_VAR_PTERODACTYL_URL}}

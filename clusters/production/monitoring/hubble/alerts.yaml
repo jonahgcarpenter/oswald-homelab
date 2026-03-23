@@ -10,13 +10,13 @@ spec:
       rules:
         # Lateral Movement / Policy Denials
         - alert: HubblePolicyDenied
-          expr: sum by (source_workload, destination_workload) (rate(hubble_drop_total{reason="Policy denied"}[5m])) > 5
+          expr: sum(increase(hubble_drop_total{reason="POLICY_DENIED"}[1m])) > 0
           for: 5m
           labels:
             severity: warning
           annotations:
-            summary: "Policy denied traffic from {{ $labels.source_workload }}"
-            description: "Workload {{ $labels.source_workload }} is experiencing a high rate of policy denials when attempting to communicate with {{ $labels.destination_workload }}."
+            summary: "Network policy denied traffic detected"
+            description: "The cluster has dropped packets due to a Network Policy denial. Check Hubble UI or Grafana for specific pod details."
 
         # Network Reconnaissance / Port Scanning
         - alert: HubblePortScanDetected

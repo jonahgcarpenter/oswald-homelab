@@ -20,7 +20,7 @@ spec:
 
         # Network Reconnaissance / Port Scanning
         - alert: HubblePortScanDetected
-          expr: sum by (source_workload) (rate(hubble_flows_processed_total{verdict="DROPPED"}[5m])) > 50
+          expr: sum(rate(hubble_flows_processed_total{verdict="DROPPED"}[5m])) > 20
           for: 5m
           labels:
             severity: critical

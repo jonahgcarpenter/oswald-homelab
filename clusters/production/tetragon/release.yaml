@@ -19,8 +19,9 @@ spec:
         serviceMonitor:
           enabled: true
       extraHostPathMounts:
-        - name: sys-kernel-tracing
-          mountPath: /sys/kernel/tracing
+        - name: sys-kernel-debug
+          hostPath: /sys/kernel/tracing
+          mountPath: /sys/kernel/debug
     tetragonOperator:
       prometheus:
         enabled: true

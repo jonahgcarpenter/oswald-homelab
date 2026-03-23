@@ -21,9 +21,13 @@ spec:
     prometheus:
       serviceMonitor:
         enabled: true
+        labels:
+          release: kube-prometheus-stack
 
     tetragonOperator:
       prometheus:
         enabled: true
         serviceMonitor:
           enabled: true
+          labels:
+            release: kube-prometheus-stack

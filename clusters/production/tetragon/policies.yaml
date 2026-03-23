@@ -4,8 +4,8 @@ metadata:
   name: "security-starter-pack"
 spec:
   kprobes:
-    # Monitors whenever a process attempts to read critical credentials.
-    # On Talos, these should almost never be touched by standard user pods.
+    # Monitors attempts to read critical system files.
+    # On Talos, seeing a standard pod touch these is a major red flag.
     - call: "security_file_permission"
       syscall: false
       args:
@@ -16,14 +16,14 @@ spec:
             - index: 0
               operator: "Prefix"
               values:
-                - "/etc/shadow" # User password hashes
-                - "/etc/kubernetes/pki" # Cluster certificates
-                - "/root/.ssh" # Root SSH keys
+                - "/etc/shadow" # Password hashes
+                - "/etc/kubernetes/pki" # Cluster certs
+                - "/root/.ssh" # SSH keys
           matchActions:
             - action: Post
 
-    # Monitors every TCP connection attempt to an external destination.
-    # Essential for catching "reverse shells" or data exfiltration.
+    # Monitors every new TCP connection attempt.
+    # Vital for catching reverse shells or pods "calling home."
     - call: "tcp_connect"
       syscall: false
       args:
@@ -33,8 +33,8 @@ spec:
         - matchActions:
             - action: Post
 
-    # Hooks into the kernel function that changes a process's security credentials.
-    # Triggers if a process gains new capabilities (like CAP_SYS_ADMIN).
+    # Detects when a process changes its security credentials.
+    # This fires if a process gains root-like capabilities (CAP_SYS_ADMIN).
     - call: "commit_creds"
       syscall: false
       args:
@@ -44,7 +44,8 @@ spec:
         - matchActions:
             - action: Post
 
-    # Monitors when common "attacker tools" are executed.
+    # Monitors when common "attacker" binaries are executed.
+    # Replaced "In" with "Equal" as it supports multiple values.
     - call: "sys_execve"
       syscall: true
       args:
@@ -53,7 +54,7 @@ spec:
       selectors:
         - matchArgs:
             - index: 0
-              operator: "In"
+              operator: "Equal"
               values:
                 - "/usr/bin/curl"
                 - "/usr/bin/wget"

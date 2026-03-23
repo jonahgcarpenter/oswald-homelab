@@ -9,7 +9,7 @@ spec:
     receiver: "has-webhook-receiver"
     matchers:
       - name: alertname
-        value: "Watchdog"
+        value: "Watchdog|InfoInhibitor"
         matchType: "!~"
     groupBy:
       - alertname

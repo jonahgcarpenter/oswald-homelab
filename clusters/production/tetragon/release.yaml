@@ -18,11 +18,12 @@ spec:
         hostPath: /sys/kernel/tracing
         mountPath: /sys/kernel/tracing
 
-    serviceMonitor:
-      enabled: true
+    tetragon:
+      prometheus:
+        serviceMonitor:
+          enabled: true
 
     tetragonOperator:
       prometheus:
-        enabled: true
         serviceMonitor:
           enabled: true

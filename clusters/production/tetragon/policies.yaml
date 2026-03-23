@@ -1,0 +1,63 @@
+apiVersion: cilium.io/v1alpha1
+kind: TracingPolicy
+metadata:
+  name: "security-starter-pack"
+spec:
+  kprobes:
+    # Monitors whenever a process attempts to read critical credentials.
+    # On Talos, these should almost never be touched by standard user pods.
+    - call: "security_file_permission"
+      syscall: false
+      args:
+        - index: 0
+          type: "file"
+      selectors:
+        - matchArgs:
+            - index: 0
+              operator: "Prefix"
+              values:
+                - "/etc/shadow" # User password hashes
+                - "/etc/kubernetes/pki" # Cluster certificates
+                - "/root/.ssh" # Root SSH keys
+          matchActions:
+            - action: Post
+
+    # Monitors every TCP connection attempt to an external destination.
+    # Essential for catching "reverse shells" or data exfiltration.
+    - call: "tcp_connect"
+      syscall: false
+      args:
+        - index: 0
+          type: "sock"
+      selectors:
+        - matchActions:
+            - action: Post
+
+    # Hooks into the kernel function that changes a process's security credentials.
+    # Triggers if a process gains new capabilities (like CAP_SYS_ADMIN).
+    - call: "commit_creds"
+      syscall: false
+      args:
+        - index: 0
+          type: "cred"
+      selectors:
+        - matchActions:
+            - action: Post
+
+    # Monitors when common "attacker tools" are executed.
+    - call: "sys_execve"
+      syscall: true
+      args:
+        - index: 0
+          type: "string"
+      selectors:
+        - matchArgs:
+            - index: 0
+              operator: "In"
+              values:
+                - "/usr/bin/curl"
+                - "/usr/bin/wget"
+                - "/usr/bin/nc"
+                - "/usr/bin/ncat"
+          matchActions:
+            - action: Post

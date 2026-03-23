@@ -4,3 +4,4 @@ namespace: tetragon
 resources:
   - namespace.yaml
   - release.yaml
+  - policies.yaml

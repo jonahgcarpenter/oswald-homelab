@@ -13,15 +13,15 @@ spec:
         namespace: cilium
       version: "1.6.0"
   values:
-    tetragon:
-      prometheus:
+    extraHostPathMounts:
+      - name: sys-kernel-tracing
+        hostPath: /sys/kernel/tracing
+        mountPath: /sys/kernel/tracing
+
+    prometheus:
+      serviceMonitor:
         enabled: true
-        serviceMonitor:
-          enabled: true
-      extraHostPathMounts:
-        - name: sys-kernel-debug
-          hostPath: /sys/kernel/tracing
-          mountPath: /sys/kernel/debug
+
     tetragonOperator:
       prometheus:
         enabled: true

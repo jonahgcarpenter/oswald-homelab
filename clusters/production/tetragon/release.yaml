@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: tetragon
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: tetragon
+      sourceRef:
+        kind: HelmRepository
+        name: cilium
+        namespace: cilium
+      version: "1.6.0"
+  values:
+    tetragon:
+      prometheus:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+    tetragonOperator:
+      prometheus:
+        enabled: true
+        serviceMonitor:
+          enabled: true

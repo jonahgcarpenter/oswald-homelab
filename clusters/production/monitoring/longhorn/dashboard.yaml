@@ -465,7 +465,7 @@ data:
                 "type": "prometheus",
                 "uid": "prometheus"
               },
-              "expr": "count(longhorn_volume_robustness==2) OR on() vector(0)",
+              "expr": "count(longhorn_volume_robustness{state="degraded"} == 1) or vector(0)",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -529,7 +529,7 @@ data:
                 "type": "prometheus",
                 "uid": "prometheus"
               },
-              "expr": "count(longhorn_volume_robustness==3) OR on() vector(0)",
+              "expr": "count(longhorn_volume_robustness{state="faulted"} == 1) or vector(0)",
               "interval": "",
               "legendFormat": "",
               "refId": "A"

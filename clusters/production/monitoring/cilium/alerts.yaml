@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: alert-manager-cilium
+  labels:
+    release: kube-prometheus-stack
+spec:
+  groups:
+    - name: cilium.rules
+      rules:
+        # Infrastructure Health (eBPF Maps)
+        - alert: CiliumBpfMapPressureHigh
+          expr: max by (node) (cilium_bpf_map_pressure) > 0.8
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Critical eBPF map pressure on node {{ $labels.node }}"
+            description: "The eBPF map pressure on node {{ $labels.node }} has reached {{ $value | humanizePercentage }}. If this reaches 100%, Cilium will begin failing to apply security policies or drop traffic."

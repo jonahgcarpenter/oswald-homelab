@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - dashboard.yaml
+  - alerts.yaml

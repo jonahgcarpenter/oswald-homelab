@@ -6,4 +6,3 @@ resources:
   - cilium-alerts.yaml
   - hubble-dashboard.yaml
   - hubble-alerts.yaml
-  - tetragon-alerts.yaml

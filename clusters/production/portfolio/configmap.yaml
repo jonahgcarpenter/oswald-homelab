@@ -14,7 +14,7 @@ data:
 
     ## The Anti-Portfolio
 
-    LinkedIn has devolved into a feed of AI-generated slop, attention-seeking posts, and paywalled features. Knowing half the job postings are likely fake anyway, I deleted the app. However, since most recruiters and hiring managers won't go hunting through my GitHub repositories, I needed a place to display my work. 
+    LinkedIn has devolved into a feed of AI-generated slop, attention-seeking posts, and paywalled features. Due to this, I decided to delete my account. However, since most recruiters and hiring managers won't go hunting through my GitHub repositories, I needed a place to display my work. 
 
     Enter this over-engineered "portfolio." 
 
@@ -80,7 +80,7 @@ data:
 
     **April's Lil Pugs** | TypeScript, Golang
 
-    Full-stack website developed to manage dog breeding operations, puppy galleries, and customer interactions. Built with a React frontend and a Go backend backed by a PostgreSQL database and S3 object storage, the platform provides secure administrative tools for tracking adult dogs, litters, and individual puppies. Additionally, it features an automated waitlist system for prospective owners and a self hosted live camera feed of the play pen
+    Full-stack website developed to manage dog breeding operations, puppy galleries, and customer interactions. Built with a React frontend and a Go backend backed by a PostgreSQL database, the platform provides secure administrative tools for tracking adult dogs, litters, and individual puppies. Additionally, it features an automated waitlist system for prospective owners and a self hosted live camera feed of the play pen
   calc-translation.md: |
     # CALC-Translation [repo](https://github.com/jcarpenter-uam/calc-translation)
 
@@ -212,14 +212,7 @@ data:
 
     - **Backend:** Golang, NGINX RTMS/HLS
     - **Frontend:** Vite React with TailwindCSS
-    - **Object Storage:** MinIO S3
     - **Camera:** Cheap Eufy RTSP security camera
-
-    ## S3 Object Storage
-
-    When you run a breeder platform, you are managing high-resolution puppy pictures and documents especially with how good smart phone cameras have gotten. Shoving binary image data into a database is a rookie mistake (which I made at one point in this project) that destroys performance, and paying AWS for S3 buckets for a small side-business is a waste of money.
-
-    To solve this, I utilize **MinIO**, a high-performance, S3-compatible object storage server running entirely at home. But now that MinIO is officially deprecated I think I will go back to local storage to reduce complexity, while this solution was fun to explore its just not needed here. There are also some other issues when dealing with images which I solved using the backend. Go doesn't just pass URLs around. I wrote dedicated utilities to handle multipart file parsing, secure image processing, and direct bucket interactions over the S3 protocol. These utils ensure images are actually images and alter the format and compression to shrink file size as much as possible without quality loss
 
     ## Live Stream
 

@@ -21,13 +21,6 @@ spec:
           image: lscr.io/linuxserver/piper:2.2.2
           securityContext:
             readOnlyRootFilesystem: true
-          # resources:
-          #   requests:
-          #     memory: "512Mi"
-          #     cpu: "500m"
-          #   limits:
-          #     memory: "1Gi"
-          #     cpu: "2000m"
           ports:
             - containerPort: 10200
           env:

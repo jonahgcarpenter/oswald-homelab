@@ -21,13 +21,6 @@ spec:
           image: lscr.io/linuxserver/faster-whisper:3.1.0
           securityContext:
             readOnlyRootFilesystem: true
-          # resources:
-          #   requests:
-          #     memory: "2Gi"
-          #     cpu: "1000m"
-          #   limits:
-          #     memory: "4Gi"
-          #     cpu: "2000m"
           ports:
             - containerPort: 10300
           env:

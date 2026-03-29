@@ -27,7 +27,6 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 32,
       "links": [],
       "panels": [
         {
@@ -64,6 +63,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "never",
+                "showValues": false,
                 "spanNulls": false,
                 "stacking": {
                   "group": "A",
@@ -78,7 +78,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": 0
                   },
                   {
                     "color": "red",
@@ -111,14 +112,14 @@ data:
               "sort": "none"
             }
           },
-          "pluginVersion": "12.0.2",
+          "pluginVersion": "12.4.2",
           "targets": [
             {
               "datasource": {
                 "type": "loki",
                 "uid": "P8E80F9AEF21F6940"
               },
-              "expr": "sum(count_over_time({namespace=\"$namespace\", app=\"$workload\", instance=~\"$pod\"} |~ \"$search\"[$__interval]))",
+              "expr": "sum(count_over_time({namespace=~\"$namespace\", app=~\"$workload\", pod=~\"$pod\"} |~ \"$search\"[$__interval]))",
               "refId": "A"
             }
           ],
@@ -148,19 +149,21 @@ data:
             "enableLogDetails": true,
             "prettifyLogMessage": false,
             "showCommonLabels": false,
-            "showLabels": true,
+            "showControls": false,
+            "showLabels": false,
             "showTime": true,
             "sortOrder": "Descending",
+            "unwrappedColumns": false,
             "wrapLogMessage": true
           },
-          "pluginVersion": "12.0.2",
+          "pluginVersion": "12.4.2",
           "targets": [
             {
               "datasource": {
                 "type": "loki",
                 "uid": "P8E80F9AEF21F6940"
               },
-              "expr": "{namespace=\"$namespace\", app=\"$workload\", instance=~\"$pod\"} |~ \"$search\"",
+              "expr": "{namespace=~\"$namespace\", app=~\"$workload\", pod=~\"$pod\"} |~ \"$search\" | line_format \"\\033[36m[{{.pod}}]\\033[0m {{__line__}}\"",
               "refId": "A"
             }
           ],
@@ -170,7 +173,7 @@ data:
       ],
       "preload": false,
       "refresh": "",
-      "schemaVersion": 41,
+      "schemaVersion": 42,
       "tags": [
         "loki",
         "logs"
@@ -178,35 +181,29 @@ data:
       "templating": {
         "list": [
           {
-            "current": {
-              "text": "kube-system",
-              "value": "kube-system"
-            },
-            "datasource": "prometheus",
-            "definition": "label_values(kube_pod_info, namespace)",
-            "includeAll": false,
-            "name": "namespace",
-            "options": [],
-            "query": "label_values(kube_pod_info, namespace)",
-            "refresh": 1,
-            "regex": "",
-            "type": "query"
-          },
-          {
             "allValue": ".*",
             "current": {
-              "text": "",
-              "value": ""
+              "text": [
+                "flux-system"
+              ],
+              "value": [
+                "flux-system"
+              ]
             },
-            "datasource": "prometheus",
-            "definition": "label_values(mixin_pod_workload{namespace=\"$namespace\"}, workload)",
-            "includeAll": false,
-            "name": "workload",
+            "datasource": {
+              "type": "loki",
+              "uid": "P8E80F9AEF21F6940"
+            },
+            "definition": "label_values(namespace)",
+            "includeAll": true,
+            "multi": true,
+            "name": "namespace",
             "options": [],
-            "query": "label_values(mixin_pod_workload{namespace=\"$namespace\"}, workload)",
+            "query": "label_values(namespace)",
             "refresh": 1,
             "regex": "",
-            "sort": 5,
+            "regexApplyTo": "value",
+            "sort": 1,
             "type": "query"
           },
           {
@@ -215,14 +212,46 @@ data:
               "text": "All",
               "value": "$__all"
             },
-            "datasource": "prometheus",
-            "definition": "label_values(mixin_pod_workload{namespace=\"$namespace\", workload=\"$workload\"}, pod)",
+            "datasource": {
+              "type": "loki",
+              "uid": "P8E80F9AEF21F6940"
+            },
+            "definition": "label_values({namespace=~\"$namespace\"}, app)",
             "includeAll": true,
-            "name": "pod",
+            "multi": true,
+            "name": "workload",
             "options": [],
-            "query": "label_values(mixin_pod_workload{namespace=\"$namespace\", workload=\"$workload\"}, pod)",
+            "query": "label_values({namespace=~\"$namespace\"}, app)",
             "refresh": 1,
             "regex": "",
+            "regexApplyTo": "value",
+            "sort": 1,
+            "type": "query"
+          },
+          {
+            "allValue": ".*",
+            "current": {
+              "text": [
+                "source-controller-5bd498f4d5-9pb42"
+              ],
+              "value": [
+                "source-controller-5bd498f4d5-9pb42"
+              ]
+            },
+            "datasource": {
+              "type": "loki",
+              "uid": "P8E80F9AEF21F6940"
+            },
+            "definition": "label_values({namespace=~\"$namespace\", app=~\"$workload\"}, pod)",
+            "includeAll": true,
+            "multi": true,
+            "name": "pod",
+            "options": [],
+            "query": "label_values({namespace=~\"$namespace\", app=~\"$workload\"}, pod)",
+            "refresh": 1,
+            "regex": "",
+            "regexApplyTo": "value",
+            "sort": 1,
             "type": "query"
           },
           {
@@ -260,8 +289,9 @@ data:
           "1d"
         ]
       },
-      "timezone": "",
+      "timezone": "browser",
       "title": "Loki Logs",
       "uid": "liz0yRCZz",
-      "version": 2
+      "version": 4,
+      "weekStart": ""
     }

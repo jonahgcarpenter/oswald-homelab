@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: oswald-ai
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.1.0
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.1.1
           envFrom:
             - configMapRef:
                 name: oswald-ai-config

@@ -21,6 +21,29 @@ spec:
         fsGroupChangePolicy: "Always"
         seccompProfile:
           type: RuntimeDefault
+
+      initContainers:
+        - name: init-storage
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.3.0
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop:
+                - ALL
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              if [ ! -f /mnt/storage/soul.md ]; then
+                cp /home/oswald-ai/config/soul.md /mnt/storage/soul.md
+                echo "Seeded default soul.md into volume."
+              fi
+          volumeMounts:
+            - name: storage-volume
+              mountPath: /mnt/storage
+
       containers:
         - name: oswald-ai
           image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.3.0
@@ -47,8 +70,8 @@ spec:
               mountPath: /home/oswald-ai/config/soul.md
               subPath: soul.md
             - name: storage-volume
-              mountPath: /home/oswald-ai/config/accounts/links.json
-              subPath: accounts/links.json
+              mountPath: /home/oswald-ai/config/accounts
+              subPath: accounts
             - name: storage-volume
               mountPath: /home/oswald-ai/config/memory
               subPath: memory

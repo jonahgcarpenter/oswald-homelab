@@ -14,11 +14,46 @@ spec:
       labels:
         app: oswald-ai
     spec:
+      # Block API token and kernel syscalls
+      automountServiceAccountToken: false
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: "Always"
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: oswald-ai
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.2.0
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.3.0
+
+          # Enforcing Principle of Least Privilege
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop:
+                - ALL
+
           envFrom:
             - configMapRef:
                 name: oswald-ai-config
             - secretRef:
                 name: oswald-ai-secret
+
+          # Mounting the storage directory
+          volumeMounts:
+            - name: storage-volume
+              mountPath: /home/oswald-ai/config/soul.md
+              subPath: soul.md
+            - name: storage-volume
+              mountPath: /home/oswald-ai/config/accounts/links.json
+              subPath: accounts/links.json
+            - name: storage-volume
+              mountPath: /home/oswald-ai/config/memory
+              subPath: memory
+
+      volumes:
+        - name: storage-volume
+          persistentVolumeClaim:
+            claimName: oswald-ai-pvc

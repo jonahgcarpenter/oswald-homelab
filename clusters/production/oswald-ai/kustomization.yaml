@@ -5,6 +5,7 @@ resources:
   - namespace.yaml
   - sealed-secrets.yaml
   - config-map.yaml
+  - pvc.yaml
   - deployment.yaml
   - service.yaml
   - searxng.yaml

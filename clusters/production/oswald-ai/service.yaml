@@ -14,7 +14,20 @@ spec:
       protocol: TCP
       port: 8080
       targetPort: 8080
-    - name: webhook
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oswald-ai-webhook
+  namespace: oswald-ai
+  labels:
+    app: oswald-ai
+spec:
+  type: LoadBalancer
+  selector:
+    app: oswald-ai
+  ports:
+    - name: http
       protocol: TCP
       port: 8090
       targetPort: 8090

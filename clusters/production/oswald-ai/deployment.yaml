@@ -5,7 +5,7 @@ metadata:
   labels:
     app: oswald-ai
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: oswald-ai
@@ -22,31 +22,9 @@ spec:
         seccompProfile:
           type: RuntimeDefault
 
-      initContainers:
-        - name: init-storage
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.3.0
-          securityContext:
-            allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
-            runAsNonRoot: true
-            runAsUser: 1000
-            capabilities:
-              drop:
-                - ALL
-          command: ["/bin/sh", "-c"]
-          args:
-            - |
-              if [ ! -f /mnt/storage/soul.md ]; then
-                cp /home/oswald-ai/config/soul.md /mnt/storage/soul.md
-                echo "Seeded default soul.md into volume."
-              fi
-          volumeMounts:
-            - name: storage-volume
-              mountPath: /mnt/storage
-
       containers:
         - name: oswald-ai
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.3.0
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.4.0-beta.0
 
           # Enforcing Principle of Least Privilege
           securityContext:

@@ -24,7 +24,7 @@ spec:
 
       containers:
         - name: oswald-ai
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.4.0-beta.0
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.4.0
 
           # Enforcing Principle of Least Privilege
           securityContext:

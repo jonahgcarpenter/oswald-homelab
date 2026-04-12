@@ -1,0 +1,43 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: alert-manager-unifi
+  labels:
+    release: kube-prometheus-stack
+spec:
+  groups:
+    - name: unifi.rules
+      rules:
+        # Unifi Device Offline
+        - alert: UniFiDeviceOffline
+          expr: >
+            unpoller_device_uptime_seconds == 0
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "UniFi Device Offline: {{ $labels.name }}"
+            description: "The device {{ $labels.name }} ({{ $labels.mac }}) at site {{ $labels.site_name }} has dropped off the network."
+
+        # Infrastructure Port Anomalies (Flapping or STP loops)
+        - alert: InfrastructurePortAnomaly
+          expr: unpoller_port_anomaly_count > 0
+          for: 1m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Port Anomaly Detected: '{{ $labels.name }}'"
+            description: "The infrastructure port '{{ $labels.name }}' on {{ $labels.device_name }} is reporting a {{ $labels.anomaly_type }} anomaly. Check the physical cable or network topology."
+
+        # Port Link Speed Downgraded (e.g., 2.5GbE -> 1GbE or 1GbE -> FE)
+        - alert: UniFiPortSpeedDegraded
+          expr: >
+            unpoller_device_port_port_speed_bps > 0
+            and
+            unpoller_device_port_port_speed_bps < max_over_time(unpoller_device_port_port_speed_bps[7d])
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Port Link Speed Degraded: '{{ $labels.name }}'"
+            description: "'{{ $labels.port_id }}' is currently negotiating at {{ $value }} Mbps. This is lower than its 7-day historical maximum, indicating a likely physical layer issue (bad cable/termination) or a downgraded device."

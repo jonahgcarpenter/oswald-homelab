@@ -10,3 +10,4 @@ resources:
   - gateway-dashboard.yaml
   - switch-dashboard.yaml
   - dpi-dashboard.yaml
+  - alerts.yaml

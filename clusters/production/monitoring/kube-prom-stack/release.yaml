@@ -66,7 +66,7 @@ spec:
               target: ["192.168.4.73"]
             static_configs:
               - targets: ["exporter-proxmox.monitoring.svc.cluster.local:9221"]
-          - job_name: "mac-exporter"
+          - job_name: "node-exporter" # MAC
             static_configs:
               - targets: ["192.168.1.251:9100"]
           - job_name: "unpoller"

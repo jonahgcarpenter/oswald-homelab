@@ -88,9 +88,11 @@ data:
 
     ## Overview
 
+    > Currently focusing on a full rewrite using Bun (TypeScript). This is aimed to fix some issues, properly utilize SDKs vs APIs, and create a single frontend codebase for Desktop/Web versions.
+
     Most meeting transcription bots are awful. They join your calls as "ghost" participants, introduce latency, and completely fail if you switch languages halfway through or join a meeting ten minutes late
 
-    CALC Translation is my answer to that. It is a comprehensive, real-time transcription and translation platform engineered to integrate directly with data streams, providing low-latency, accurate captions across multiple languages without the friction of traditional bot participants
+    CALC Translation is my answer to that. It is a comprehensive, real-time transcription and translation platform engineered to integrate directly with the 16-bit PCM data streams, providing low-latency, accurate captions across multiple languages without the friction of traditional bot participants
 
     Now this project was given to me as a challenge just to see what was possible before buying a finished alternative, and everyone has turned out pleased with the result. As a solo I have been forced to lean more into AI than I would like causing the codebase to become something I am not proud of. I grow more and more discusted by this project by the day, but it's kind of my job
 
@@ -102,7 +104,7 @@ data:
 
     - **Zoom RTMS:** To avoid the "ghost bot" problem, I wrote an isolated Node.js microservice utilizing WebSockets and Zoom's RTMS (Real-time Media Stream) SDK. This worker extracts the raw audio directly from the Zoom server backend and pipes it to my processing engine
 
-    - **Evil Frontend:** Yes, I said I hate React, which is why I built two frontend clients... But for a highly dynamic, multi-lingual interface receiving hundreds of Server-Sent Events/WebSocket messages a minute, pure HTML/JS becomes a spaghetti mess. The web client is **Vite and TailwindCSS**, localized using **i18next**, and served statically via the FastAPI backend. There is also a second desktop client using **Electron** which comes with a few extra featureas due to OS level APIs, but most of the code is copy paste
+    - **Evil Frontend:** Yes, I said I hate React, which is why I built two frontend clients... But for a highly dynamic, multi-lingual interface receiving hundreds of Server-Sent Events/WebSocket messages a minute, pure HTML/JS becomes a spaghetti mess. The web client is **Vite and TailwindCSS**, localized using **i18next**. There is also a second desktop client using **Electron** which comes with a few extra featureas due to OS level APIs, but most of the code is copy paste
 
     ## Highlights
 

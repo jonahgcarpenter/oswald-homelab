@@ -70,7 +70,7 @@ data:
 
     **CALC-Translation** | Python, React
 
-    A real-time transcription and translation platform designed to provide low-latency, accurate captions for meetings in multiple languages. It features dual operation modes—integrating directly with Zoom or running standalone for local audio—alongside helpful tools like AI-generated meeting summaries and Microsoft 365 calendar synchronization. Additionally, it utilizes a "Smart Backfill" feature to instantly translate past session history, ensuring that users who join late or switch languages do not lose any context
+    A real-time transcription and translation platform designed to provide low-latency (<1000ms), accurate captions or translations for meetings in multiple languages. It features dual operation modes—integrating directly with Zoom or running standalone for local audio—alongside helpful tools like AI-generated meeting summaries and Microsoft 365 calendar synchronization. Additionally, it utilizes a "Smart Backfill" feature to instantly translate past session history, ensuring that users who join late or switch languages do not lose any context
 
     **Homelab** | Kubernetes, Proxmox
 
@@ -78,11 +78,11 @@ data:
 
     **Oswald-AI** | Golang
 
-    An uncensored, witty AI agent integrated directly into Discord to serve as a highly capable digital manservant. Built in pure Go, it utilizes a two-stage agentic pipeline: a fast query model evaluates prompts to gather real-time web intelligence via SearXNG, while a larger, uncensored model (backed by self-hosted Ollama) delivers brutally honest answers. Fully local, completely stateless, and zero-dependency, it provides real-time answers with a distinct touch of unhinged humor.
+    An uncensored, witty AI agent integrated directly into Discord, iMessage, and WebSocket gateways to serve as a highly capable digital manservant. Built in pure Go, it runs a single iterative agent loop backed by self-hosted Ollama that dynamically executes tool calls to gather real-time SearXNG web intelligence and manage user profiles. Fully local and zero cloud dependencies, it features a three-tier stateful memory architecture and multimodal image processing to deliver highly contextual, brutally honest answers with a distinct touch of unhinged humor.
 
     **April's Lil Pugs** | TypeScript, Golang
 
-    Full-stack website developed to manage dog breeding operations, puppy galleries, and customer interactions. Built with a React frontend and a Go backend backed by a PostgreSQL database, the platform provides secure administrative tools for tracking adult dogs, litters, and individual puppies. Additionally, it features an automated waitlist system for prospective owners and a self hosted live camera feed of the play pen
+    Full-stack website developed to manage dog breeding operations, puppy galleries, and customer interactions. Built with a React frontend and a Go backend backed by a PostgreSQL database, the platform is mostly a boring CRUD app. Mainly, it features a self hosted live camera feed of the play pen using zero cloud dependencies.
   calc-translation.md: |
     # CALC-Translation [repo](https://github.com/jcarpenter-uam/calc-translation)
 

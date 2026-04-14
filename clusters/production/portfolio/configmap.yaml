@@ -88,8 +88,6 @@ data:
 
     ## Overview
 
-    > Currently focusing on a full rewrite using Bun (TypeScript). This is aimed to fix some issues, properly utilize SDKs vs APIs, and create a single frontend codebase for Desktop/Web versions.
-
     Most meeting transcription bots are awful. They join your calls as "ghost" participants, introduce latency, and completely fail if you switch languages halfway through or join a meeting ten minutes late
 
     CALC Translation is my answer to that. It is a comprehensive, real-time transcription and translation platform engineered to integrate directly with the 16-bit PCM data streams, providing low-latency, accurate captions across multiple languages without the friction of traditional bot participants
@@ -124,9 +122,7 @@ data:
 
     Project Oswald is my comprehensive, self-hosted bare-metal environment. It serves as my testing ground for CI/CD pipelines, high-availability storage, hardware passthrough, and local AI model hosting. It is built entirely on Infrastructure as Code (IaC) and GitOps principles because executing manual kubectl apply commands in 2026 is absolutely unacceptable
 
-    Having my own infra allows me to explore and learn at my own will. It also gives me the opportunity to continue building more stupid software projects, because I pay nothing to host it
-
-    By far my favorite project because it encapsulates my favorite aspects of engineering, and it is one project I always have ideas for. I hope to build a dedicated low power NVR server, and a standalone NAS at some point for better isolation, but unfortunately money does not grow on trees
+    Having my own infra allows me to explore and learn at my own will, and helps me regain my data privacy. It also gives me the opportunity to continue building more stupid software projects, because I pay nothing to host it
 
     ## The Metal
 
@@ -134,7 +130,7 @@ data:
 
     - **Networking:** Routing is handled by a **UDM-SE** linked to a **24 PoE Switch**. This gives me ample 2.5GbE and 10G SFP+ capacity to handle high-throughput storage and cluster traffic without bottlenecks. To pair I have dual **U7** APs because I really hate video buffering
     - **Kubernetes:** Powered by a fleet of 3 Mini PCs. These are my dedicated, highly-available Kubernetes nodes. The goal is deploy everything within Kubernetes, I like the developer experience more
-    - **PVE-0:** The hand me downs from old builds, and a gifted GPU from a friend. This server is dedicated to higher compute needs, virtualized NAS, GPU access and for a while anything publicly facing to provide isolation
+    - **PVE-0:** The hand me downs from old builds, and a gifted GPU from a friend. This server is dedicated to higher compute needs, virtualized NAS, GPU access, and anything that cannot be dockerized for kubernetes
     - **Home Assistant:** A standalone HAS Yellow to handle all my automation needs. I can't live without this, so It has to be fully standalone. Every other server could die and my home assistant would still work flawlessly
 
     ## Networking

@@ -181,8 +181,6 @@ data:
 
     ## Architecture
 
-    Since we are mid-rewrite, the project is evolving rapidly. Right now, the Go version has evolved past a simple Ollama wrapper into a custom two-stage orchestration pipeline. It works beautifully for delivering unhinged, uncensored behavior, but this is just the foundation for the new stack:
-
     - **Backend:** I have recently been loving Golang. The compiler yells at you before you push garbage to prod, and it compiles to a single binary, meaning the Docker containers are tiny compared to Python. I know Bun exists for JavaScript/TypeScript so I could really just copy OpenClaw, but that's no fun. RAM is also way too expensive to be running JavaScript on the backend, what's wrong with you...
     - **The Pipeline:** The old two-stage router model is dead. Oswald now operates on a single iterative agent loop backed by self-hosted Ollama. It dynamically evaluates prompts, executes tool calls—like pulling real-time web intelligence via SearXNG or managing memory—and synthesizes everything into a brutally honest final response in one smooth pass.
     - **Multimodal:** He can see now. I added image processing support so he can roast whatever screenshots or photos you send him.

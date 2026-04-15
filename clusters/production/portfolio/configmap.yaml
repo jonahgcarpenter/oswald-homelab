@@ -6,11 +6,11 @@ data:
   about-me.md: |
     # About Me
 
-    Howdy, I'm Jonah Carpenter. I am a Software Engineer specializing in infrastructure, DevOps, and backend development. I care about the whole pie—from writing robust, scalable applications to ironing out the CI/CD pipelines that deploy them onto solid infrastructure. 
+    Howdy, I'm Jonah Carpenter. I'm a Software Engineer who actually cares about the hardware my code runs on. I handle everything from writing the backend logic to building the deployment pipelines so it doesn't crash in production.
 
-    I thrive in the space where software and systems engineering intersect. At home, I actively design and manage a comprehensive, self-hosted bare-metal Kubernetes environment powered by Proxmox, Talos, and FluxCD, all backed by enterprise-grade network engineering. 
+    Instead of using corporate buzzwords about "intersecting spaces," I just build stuff. At home, that means running a bare-metal Kubernetes cluster, Proxmox, and Unifi networking gear meant for a small business.
 
-    Whether I am architecting memory-driven AI agents, engineering real-time transcription platforms, or building out my own infrastructure, I am driven by a desire to understand exactly how systems work under the hood. My ultimate commitment is to build infrastructure that is as arousing as the code it runs.
+    Whether I'm writing completely local uncensored AI agents from scratch, building custom video pipelines, or racking more servers, I'm driven by a need to understand exactly how things work under the hood. My ultimate goal is simple: build infrastructure that is as arousing as the code it runs.
 
     ## Self-Hosting
 

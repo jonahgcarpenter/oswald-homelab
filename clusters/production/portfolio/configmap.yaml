@@ -20,9 +20,9 @@ data:
 
     ## Software Engineering
 
-    DevOps and infrastructure are my favorites, but sometimes you run out of things to install or fix (maybe I'm just that good at implementing stable solutions?), and at this point, both homelabs basically run themselves.
+    While I will always have a soft spot for DevOps and infrastructure, my core discipline is Software Engineering. Racking servers and building out a bare-metal cluster is fun, but I like extending my skills for others to use, and my friends and family couldn't tell you the difference between HTTP and HTTPS.
 
-    This is where I get my hands dirty building custom solutions for things that don't exist, or when an existing solution doesn't cut it for me. For my projects, I always try to learn new languages or concepts, because getting hands-on is the best way to learn. Also, as a strict requirement, everything must be fully local and free. I mean, why else would I have set all this infrastructure up just to continue handing out my data or paying fees?
+    I don't just spin up pre-built containers, that would be no fun. When an existing solution doesn't cut it, I build it myself from the ground up. As a strict requirement, everything I write for myself must be fully local and free. I mean, why else would I have set all this infrastructure up just to continue handing out my data or paying fees?
 
     Lastly, I take immense pride in my personal projects, no matter how stupid the premise might be. I will happily spend an embarrassing amount of time agonizing over the perfect directory structure, religiously enforcing formatters, and ensuring the codebase is actually diagnosable for when "future me" inevitably has to update it. And because everything I build is ultimately destined to run on my own bare-metal Kubernetes cluster, security is never an afterthought. If an app or service is going to live on my infrastructure, it's going to be locked down.
 

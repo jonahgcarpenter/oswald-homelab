@@ -130,20 +130,20 @@ data:
 
     - **Networking:** Routing is handled by a **UDM-SE** linked to a **24 PoE Switch**. This gives me ample 2.5GbE and 10G SFP+ capacity to handle high-throughput storage and cluster traffic without bottlenecks. To pair I have dual **U7** APs because I really hate video buffering
     - **Kubernetes:** Powered by a fleet of 3 Mini PCs. These are my dedicated, highly-available Kubernetes nodes. The goal is deploy everything within Kubernetes, I like the developer experience more
-    - **PVE-0:** The hand me downs from old builds, and a gifted GPU from a friend. This server is dedicated to higher compute needs, virtualized NAS, GPU access, and anything that cannot be dockerized for kubernetes
+    - **PVE-0:** The hand me downs from old builds, and a gifted GPU from a friend. This server is dedicated to higher compute needs, virtualized NAS, GPU access, and anything that cannot be dockerized for Kubernetes
     - **Home Assistant:** A standalone HAS Yellow to handle all my automation needs. I can't live without this, so It has to be fully standalone. Every other server could die and my home assistant would still work flawlessly
 
     ## Networking
 
     VLANS for security, IDS/IPS protection, and Firewall rules to block entire countries. This allows me to sleep at night while having public exposed services, and keeps the thermostat from brute forcing my proxmox login.
 
-    VPN is a must, none of my servers are public so I need a way to be at home when I am not at home. Plus it keeps you more secure while out and about, and means the office wifi restrictions don't apply to you. **WireGuard** is great for this, I don't want anyone convincing me of Tailscale either, they make you pay real money to use an application you host at home. It's a wireguard wrapper with bloat and should be publicly shamed
+    VPN is a must, most of my servers are not public so I need a way to be at home when I am not at home. Plus it keeps you more secure while out and about, and means the office wifi restrictions don't apply to you. **WireGuard** is great for this, I don't want anyone convincing me of Tailscale either, they make you pay real money to use an application you host at home. It's a wireguard wrapper with bloat and should be publicly shamed
 
     My family also loves this. Everyone using the same VPN server means Netflix only sees one public IP, no more extra $15 a month for "out of house" accounts
 
     ## Kubernetes Ecosystem
 
-    The entire lifecycle of this cluster is automated. If the house burns down, I only need to replace the hardware; the state is securely stored and recoverable.
+    The entire lifecycle of this cluster is automated. If the house burns down, I only need to replace the hardware and hopefully a hard drive with a backup; the state is securely stored and recoverable.
 
     **FluxCD** handles my CD pipeline, this means I live by the principles of GitOps where the codebase on github is the absolute source of truth. This makes things super easy between my desktop and laptop or even if I want to edit a deployment on my phone. Yes, I hear ArgoCD is more feature rich but I dont need the extra bloat. Plus web-uis are for the weak, real developers live in a terminal
 
@@ -175,30 +175,30 @@ data:
 
     My homelab needed a brain and a sense of humor. But I don't want some generic wrapper or to give Sam Altman all my money. The goal was to create a fully local, uncensored, unforgiving AI. As it turns out keeping the model fully uncensored without training your own model is the most complex part.
 
-    **To be clear: This project previously reached a fully functioning state.** I built a complete V1 using **Python, LangChain, and MCP**, which featured fully operational RAG (Retrieval-Augmented Generation) and tool use. It worked well, but "working" isn't the same as "optimal." 
+    I built a complete V1 using **Python, LangChain, and MCP**, which featured fully operational RAG (Retrieval-Augmented Generation) and tool use. It worked well, but "working" isn't the same as "optimal." 
 
-    After OpenClaw released, I realized my agentic architecture needed a massive overhaul. They had built the censored version of what I was attempting to create months before—in TypeScript, of all languages. I decided to tear down the functional Python build, and the project is currently undergoing a ground-up rewrite to fix architectural bottlenecks. Needless to say, this project is always changing.
+    After OpenClaw released, I realized my agentic architecture needed a massive overhaul. They had built the censored version of what I was attempting to create months before—in TypeScript, of all languages. I decided to tear down the functional Python build, and rewite everything in Go because I like the langauge more
 
     ## Architecture
 
     Since we are mid-rewrite, the project is evolving rapidly. Right now, the Go version has evolved past a simple Ollama wrapper into a custom two-stage orchestration pipeline. It works beautifully for delivering unhinged, uncensored behavior, but this is just the foundation for the new stack:
 
     - **Backend:** I have recently been loving Golang. The compiler yells at you before you push garbage to prod, and it compiles to a single binary, meaning the Docker containers are tiny compared to Python. I know Bun exists for JavaScript/TypeScript so I could really just copy OpenClaw, but that's no fun. RAM is also way too expensive to be running JavaScript on the backend, what's wrong with you...
-    - **Current Pipeline:** Before answering, a small, fast query model evaluates prompts to decide if real-time web intelligence is needed, utilizing SearXNG for searches. The raw intel is then passed to a larger, completely uncensored local model to generate the final sarcastic response.
-    - **Interfaces:** Since the GPU was donated by a friend, I felt obligated to give them access to Oswald. Discord was the only real choice since it's widely used (pending age verification), and I really liked Grok's UX. Simply type `@Oswald <prompt>` and you're off to the races.
+    - **The Pipeline:** The old two-stage router model is dead. Oswald now operates on a single iterative agent loop backed by self-hosted Ollama. It dynamically evaluates prompts, executes tool calls—like pulling real-time web intelligence via SearXNG or managing memory—and synthesizes everything into a brutally honest final response in one smooth pass.
+    - **Multimodal:** He can see now. I added image processing support so he can roast whatever screenshots or photos you send him.
+    - **Interfaces:** Since the GPU was donated by a friend, I felt obligated to give them access to Oswald. It started with Discord since it's widely used, but the gateway architecture has expanded. You can now reach him via Discord, native iMessage, or through a WebSocket gateway (Frontend TBD????).
 
-    ## The Plan (Roadmap to Agentic Glory)
+    ## The Memory System
 
-    Most of this project's rewrite is establishing the bedrock for a much larger agentic ecosystem. The current build is stateless and limited to web search tools, but here is what I want and how I think I can make it happen:
+    Oswald is no longer a goldfish. Ditching the stateless design was the biggest leap forward. To handle multi-turn, multi-user workloads without bleeding my context into my friends' chats, Oswald uses a custom three-tier memory architecture:
+    1. **Session Memory:** Standard short-term context for the active conversation.
+    2. **Persistent User Facts:** Long-term memory where Oswald actively extracts and saves facts about specific users to his database. He remembers who you are and tailors the abuse accordingly.
+    3. **The Soul File:** A core personality file that dictates his system prompt and baseline behavior, which Oswald can edit using a tool call.
 
-    **Multi-User Memory:**
-    Currently, the bot is completely stateless. Oswald should handle multi-turn, multi-user workloads without giving me my friends' memories. My idea here is exploring keyed markdown files for memory storage, paired with some form of lightweight indexing to keep things quick and light on resources. That way, each user has their own contextual history and limits, allowing Oswald to interact with each person on a uniquely personal level—similar to the evil corporate versions, but local.
+    ## My Plan
 
-    **Expanded Agentic Tooling & MCP:**
-    While the current router model handles web search decisions brilliantly at the gate, the goal is to expand this into full tool-calling for the uncensored model. MCP (Model Context Protocol) is the target here. Finding the best open-source MCP servers gets a little annoying, but going down the hand-written tools road before was a nightmare. I want the router model to intelligently delegate complex, coding, or unsafe prompts to specific tools and guardrails before handing them off.
+    Up until now, Oswald has mostly been a way to dive deep into local LLMs and roast my friends in Discord. The actual endgame, though, is a fully local, unapologetically sarcastic digital butler. The vision is a zero-dependency system that can orchestrate my homelab, remember exactly who I am, and send a birthday text to my mom to save my skin, all while maintaining a brutally honest sense of humor.
 
-    **Homelab & Smart Home Integration:**
-    I am generally going to utilize this project more than anyone else. Direct access to manage my Proxmox nodes and Talos Linux Kubernetes cluster would be incredible, allowing Oswald to act as a snarky DevOps copilot for the infrastructure he runs on. Beyond that, STT (Speech-to-Text) and TTS (Text-to-Speech) functionality is a must-have to replace Alexa. I continue to see more about "jailbreaking" old Alexa hardware, which might be the best path forward to maintain whole-home audio without buying a whole new fleet of smart speakers.
   aprils-lil-pugs.md: |
     # April's Lil Pugs [repo](https://github.com/jonahgcarpenter/aprilslilpugs)
 

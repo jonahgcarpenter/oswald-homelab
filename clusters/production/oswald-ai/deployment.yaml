@@ -53,8 +53,12 @@ spec:
             - name: storage-volume
               mountPath: /home/oswald-ai/config/memory
               subPath: memory
+            - name: ephemeral-debug-volume
+              mountPath: /tmp
 
       volumes:
         - name: storage-volume
           persistentVolumeClaim:
             claimName: oswald-ai-pvc
+        - name: ephemeral-debug-volume
+          emptyDir: {}

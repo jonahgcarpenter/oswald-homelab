@@ -5,7 +5,7 @@ metadata:
   labels:
     app: oswald-ai
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: oswald-ai
@@ -24,7 +24,7 @@ spec:
 
       containers:
         - name: oswald-ai
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.4.1-beta.0
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.4.1-beta.1
 
           # Enforcing Principle of Least Privilege
           securityContext:

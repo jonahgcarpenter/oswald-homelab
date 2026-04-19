@@ -30,9 +30,10 @@ spec:
             description: "The infrastructure port '{{ $labels.name }}' on {{ $labels.device_name }} is reporting a {{ $labels.anomaly_type }} anomaly. Check the physical cable or network topology."
 
         # Port Link Speed Downgraded (e.g., 2.5GbE -> 1GbE or 1GbE -> FE)
+        # Excludes my desktop since this is shutdown normally
         - alert: UniFiPortSpeedDegraded
           expr: >
-            unpoller_device_port_port_speed_bps > 0
+            unpoller_device_port_port_speed_bps{port_id!="USW Pro Max 24 PoE Port 1"} > 0
             and
             unpoller_device_port_port_speed_bps < max_over_time(unpoller_device_port_port_speed_bps[7d])
           for: 5m

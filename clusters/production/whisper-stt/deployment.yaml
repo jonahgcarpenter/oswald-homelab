@@ -23,13 +23,6 @@ spec:
             readOnlyRootFilesystem: true
           ports:
             - containerPort: 10300
-          resources:
-            # requests:
-            #   cpu: "2"
-            #   memory: "500Mi"
-            # limits:
-            #   cpu: "4"
-            #   memory: "2Gi"
           env:
             - name: TZ
               value: "Etc/UTC"
@@ -38,7 +31,7 @@ spec:
             - name: PGID
               value: "1000"
             - name: WHISPER_MODEL
-              value: "tiny-int8"
+              value: "base"
             - name: WHISPER_BEAM
               value: "1"
             - name: WHISPER_LANG

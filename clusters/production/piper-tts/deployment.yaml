@@ -23,13 +23,6 @@ spec:
             readOnlyRootFilesystem: true
           ports:
             - containerPort: 10200
-          # resources:
-          #   requests:
-          #     cpu: "1"
-          #     memory: "250Mi"
-          #   limits:
-          #     cpu: "6"
-          #     memory: "1Gi"
           env:
             - name: PIPER_VOICE
               value: "en_US-danny-low"

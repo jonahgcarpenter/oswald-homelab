@@ -28,7 +28,7 @@ spec:
               cpu: "1"
               memory: "250Mi"
             limits:
-              cpu: "4"
+              cpu: "6"
               memory: "1Gi"
           env:
             - name: PIPER_VOICE

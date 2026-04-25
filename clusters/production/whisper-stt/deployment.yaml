@@ -23,6 +23,13 @@ spec:
             readOnlyRootFilesystem: true
           ports:
             - containerPort: 10300
+          resources:
+            requests:
+              cpu: "2"
+              memory: "500Mi"
+            limits:
+              cpu: "4"
+              memory: "2Gi"
           env:
             - name: TZ
               value: "Etc/UTC"
@@ -36,6 +43,8 @@ spec:
               value: "1"
             - name: WHISPER_LANG
               value: "en"
+            - name: OMP_NUM_THREADS
+              value: "4"
           volumeMounts:
             - name: whisper-config
               mountPath: /config

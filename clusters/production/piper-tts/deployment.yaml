@@ -23,8 +23,14 @@ spec:
             readOnlyRootFilesystem: true
           ports:
             - containerPort: 10200
+          resources:
+            requests:
+              cpu: "1"
+              memory: "250Mi"
+            limits:
+              cpu: "4"
+              memory: "1Gi"
           env:
-            # Voice format: <language>-<voice_name>-<quality>
             - name: PIPER_VOICE
               value: "en_US-danny-low"
             - name: TZ
@@ -33,6 +39,8 @@ spec:
               value: "1000"
             - name: PGID
               value: "1000"
+            - name: OMP_NUM_THREADS
+              value: "4"
           volumeMounts:
             - name: piper-config
               mountPath: /config

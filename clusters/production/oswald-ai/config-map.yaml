@@ -6,4 +6,3 @@ data:
   LOG_LEVEL: debug
   SEARXNG_URL: "http://searxng:8080"
   OLLAMA_MODEL: "fredrezones55/Qwen3.5-Uncensored-HauhauCS-Aggressive:4b"
-  AGENT_TRACE_PATH: "/tmp/agent_debug"

@@ -5,7 +5,7 @@ metadata:
   labels:
     app: oswald-ai
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: oswald-ai
@@ -24,7 +24,7 @@ spec:
 
       containers:
         - name: oswald-ai
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.4.1
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.5.0-beta.2
 
           # Enforcing Principle of Least Privilege
           securityContext:
@@ -53,12 +53,8 @@ spec:
             - name: storage-volume
               mountPath: /home/oswald-ai/config/memory
               subPath: memory
-            - name: ephemeral-debug-volume
-              mountPath: /tmp
 
       volumes:
         - name: storage-volume
           persistentVolumeClaim:
             claimName: oswald-ai-pvc
-        - name: ephemeral-debug-volume
-          emptyDir: {}

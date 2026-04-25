@@ -24,12 +24,12 @@ spec:
           ports:
             - containerPort: 10300
           resources:
-            requests:
-              cpu: "2"
-              memory: "500Mi"
-            limits:
-              cpu: "4"
-              memory: "2Gi"
+            # requests:
+            #   cpu: "2"
+            #   memory: "500Mi"
+            # limits:
+            #   cpu: "4"
+            #   memory: "2Gi"
           env:
             - name: TZ
               value: "Etc/UTC"

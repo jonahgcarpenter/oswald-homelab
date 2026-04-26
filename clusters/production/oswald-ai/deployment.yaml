@@ -6,8 +6,6 @@ metadata:
     app: oswald-ai
 spec:
   replicas: 1
-  strategy:
-    type: Recreate
   selector:
     matchLabels:
       app: oswald-ai

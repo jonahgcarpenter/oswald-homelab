@@ -1118,7 +1118,7 @@ data:
                       "hidden": false,
                       "query": {
                         "datasource": {
-                          "name": "P8E80F9AEF21F6940"
+                          "name": "loki"
                         },
                         "group": "loki",
                         "kind": "DataQuery",

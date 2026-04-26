@@ -613,6 +613,25 @@ data:
             "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true },
             "tooltip": { "mode": "multi", "sort": "desc" }
           }
+        },
+        {
+          "id": 21,
+          "title": "Namespace Logs: oswald-ai",
+          "type": "logs",
+          "gridPos": { "h": 10, "w": 24, "x": 0, "y": 60 },
+          "targets": [
+            {
+              "datasource": "loki",
+              "expr": "{namespace=\"oswald-ai\"}",
+              "refId": "A"
+            }
+          ],
+          "options": {
+            "showLabels": false,
+            "showTime": true,
+            "sortOrder": "Descending",
+            "wrapLogMessage": true
+          }
         }
       ],
       "schemaVersion": 38,

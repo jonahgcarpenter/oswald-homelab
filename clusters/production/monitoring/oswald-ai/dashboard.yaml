@@ -7,1967 +7,1428 @@ metadata:
 data:
   oswald-ai-dashboard.json: |-
     {
-      "annotations": [
-        {
-          "kind": "AnnotationQuery",
-          "spec": {
-            "builtIn": true,
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": {
+              "type": "grafana",
+              "uid": "-- Grafana --"
+            },
             "enable": true,
             "hide": true,
             "iconColor": "rgba(0, 211, 255, 1)",
             "name": "Annotations & Alerts",
-            "query": {
-              "datasource": {
-                "name": "-- Grafana --"
-              },
-              "group": "grafana",
-              "kind": "DataQuery",
-              "spec": {},
-              "version": "v0"
-            }
+            "type": "dashboard"
+          },
+          {
+            "builtIn": 1,
+            "datasource": {
+              "type": "grafana",
+              "uid": "-- Grafana --"
+            },
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+          },
+          {
+            "builtIn": 1,
+            "datasource": {
+              "type": "grafana",
+              "uid": "grafana"
+            },
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
           }
+        ]
+      },
+      "editable": true,
+      "fiscalYearStartMonth": 0,
+      "graphTooltip": 0,
+      "liveNow": false,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "Average completed requests per minute over the last 5 minutes across all gateways.",
+          "fieldConfig": {
+            "defaults": {
+              "decimals": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            }
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 8,
+            "x": 0,
+            "y": 0
+          },
+          "id": 1,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "percentChangeColorMode": "standard",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "sum(rate(oswald_requests_total[5m])) * 60",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "Request Rate (per minute)",
+          "type": "stat"
         },
         {
-          "kind": "AnnotationQuery",
-          "spec": {
-            "builtIn": true,
-            "enable": true,
-            "hide": true,
-            "iconColor": "rgba(0, 211, 255, 1)",
-            "name": "Annotations & Alerts",
-            "query": {
-              "datasource": {
-                "name": "-- Grafana --"
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "Current number of requests actively being processed right now.",
+          "fieldConfig": {
+            "defaults": {
+              "decimals": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
               },
-              "group": "grafana",
-              "kind": "DataQuery",
-              "spec": {},
-              "version": "v0"
+              "unit": "short"
             }
-          }
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 8,
+            "x": 8,
+            "y": 0
+          },
+          "id": 2,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "percentChangeColorMode": "standard",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "sum(oswald_active_requests)",
+              "refId": "A"
+            }
+          ],
+          "title": "In-Flight Requests",
+          "type": "stat"
         },
         {
-          "kind": "AnnotationQuery",
-          "spec": {
-            "builtIn": true,
-            "enable": true,
-            "hide": true,
-            "iconColor": "rgba(0, 211, 255, 1)",
-            "name": "Annotations & Alerts",
-            "query": {
-              "datasource": {
-                "name": "grafana"
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "Current number of requests waiting in the broker queue.",
+          "fieldConfig": {
+            "defaults": {
+              "decimals": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
               },
-              "group": "grafana",
-              "kind": "DataQuery",
-              "spec": {},
-              "version": "v0"
+              "unit": "short"
             }
-          }
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 8,
+            "x": 16,
+            "y": 0
+          },
+          "id": 3,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "percentChangeColorMode": "standard",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "oswald_broker_queue_depth",
+              "refId": "A"
+            }
+          ],
+          "title": "Broker Queue Depth",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "Total requests received from each gateway across the dashboard time range.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "hidden",
+                "fillOpacity": 80,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineWidth": 1,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "discord",
+                  "scope": "series"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#5865f2",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "imessage",
+                  "scope": "series"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "semi-dark-green",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 4
+          },
+          "id": 5,
+          "options": {
+            "barRadius": 0,
+            "barWidth": 0.97,
+            "fullHighlight": false,
+            "groupWidth": 0.7,
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "orientation": "horizontal",
+            "showValue": "always",
+            "stacking": "none",
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            },
+            "xField": "Time",
+            "xTickLabelRotation": 0,
+            "xTickLabelSpacing": 0
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum by (gateway) (increase(oswald_requests_total[$__range]) + ((oswald_requests_total unless oswald_requests_total offset $__range) > bool 0))",
+              "format": "time_series",
+              "instant": true,
+              "legendFormat": "{{gateway}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Requests by Gateway (selected range)",
+          "type": "barchart"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "End-to-end request duration by gateway. p50 is the median request time; p95 shows the slowest 5% tail in seconds.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 2,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "s"
+            }
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 12
+          },
+          "id": 7,
+          "options": {
+            "annotations": {
+              "clustering": -1,
+              "multiLane": false
+            },
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "histogram_quantile(0.50, sum by (le, gateway) (rate(oswald_request_duration_seconds_bucket[5m])))",
+              "legendFormat": "p50 {{gateway}}",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "histogram_quantile(0.95, sum by (le, gateway) (rate(oswald_request_duration_seconds_bucket[5m])))",
+              "legendFormat": "p95 {{gateway}}",
+              "refId": "B"
+            }
+          ],
+          "title": "Request Latency by Gateway (p50, p95, seconds)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "How long requests wait in the broker queue before processing starts. Higher values usually indicate backlog or worker saturation.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 3,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "s"
+            }
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 12
+          },
+          "id": 8,
+          "options": {
+            "annotations": {
+              "clustering": -1,
+              "multiLane": false
+            },
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "histogram_quantile(0.95, sum by (le, gateway) (rate(oswald_broker_queue_wait_seconds_bucket[5m])))",
+              "legendFormat": "{{gateway}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Broker Queue Wait Time (p95, seconds)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "Users with the highest total request counts across the selected time range.",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
+                "footer": {
+                  "reducers": []
+                },
+                "inspect": false
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            }
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 20
+          },
+          "id": 9,
+          "options": {
+            "cellHeight": "sm",
+            "showHeader": true
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "topk(15, sum by (user_id) (increase(oswald_user_requests_total[$__range]) + ((oswald_user_requests_total unless oswald_user_requests_total offset $__range) > bool 0)))",
+              "format": "table",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Most Active Users (selected range)",
+          "transformations": [
+            {
+              "id": "labelsToFields",
+              "options": {
+                "mode": "columns"
+              }
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time": true
+                },
+                "indexByName": {
+                  "Value": 1,
+                  "user_id": 0
+                },
+                "renameByName": {
+                  "Value": "requests",
+                  "user_id": "user_id"
+                }
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "Tools with the most successful calls across the selected time range.",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
+                "footer": {
+                  "reducers": []
+                },
+                "inspect": false
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            }
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 20
+          },
+          "id": 10,
+          "options": {
+            "cellHeight": "sm",
+            "showHeader": true
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "sort_desc(sum by (tool) (increase(oswald_tools_total{result=\"success\"}[$__range]) + ((oswald_tools_total{result=\"success\"} unless oswald_tools_total{result=\"success\"} offset $__range) > bool 0)))",
+              "format": "table",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Most Used Tools (selected range)",
+          "transformations": [
+            {
+              "id": "labelsToFields",
+              "options": {
+                "mode": "columns"
+              }
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time": true
+                },
+                "indexByName": {
+                  "Value": 1,
+                  "tool": 0
+                },
+                "renameByName": {
+                  "Value": "calls",
+                  "tool": "tool"
+                }
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "Error totals by component and error type across the selected time range.",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
+                "footer": {
+                  "reducers": []
+                },
+                "inspect": false
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            }
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 16,
+            "y": 20
+          },
+          "id": 11,
+          "options": {
+            "cellHeight": "sm",
+            "showHeader": true
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "sort_desc(sum by (component, type) (increase(oswald_errors_total[$__range])))",
+              "format": "table",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Top Errors (selected range)",
+          "transformations": [
+            {
+              "id": "labelsToFields",
+              "options": {
+                "mode": "columns"
+              }
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time": true
+                },
+                "indexByName": {
+                  "Value": 2,
+                  "component": 0,
+                  "type": 1
+                },
+                "renameByName": {
+                  "Value": "count",
+                  "component": "component",
+                  "type": "type"
+                }
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "Model output speed by model. Higher values mean faster token generation; p50 is typical speed and p95 shows the faster end.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 1,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            }
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 28
+          },
+          "id": 14,
+          "options": {
+            "annotations": {
+              "clustering": -1,
+              "multiLane": false
+            },
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "histogram_quantile(0.50, sum by (le, model) (rate(oswald_llm_tokens_per_second_bucket[5m])))",
+              "legendFormat": "p50 {{model}}",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "histogram_quantile(0.95, sum by (le, model) (rate(oswald_llm_tokens_per_second_bucket[5m])))",
+              "legendFormat": "p95 {{model}}",
+              "refId": "B"
+            }
+          ],
+          "title": "Model Generation Speed (tokens/sec, higher is better)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "Delay before the model starts returning output. Lower is better; p95 highlights slower starts.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 2,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "s"
+            }
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 28
+          },
+          "id": 15,
+          "options": {
+            "annotations": {
+              "clustering": -1,
+              "multiLane": false
+            },
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "histogram_quantile(0.50, sum by (le, model) (rate(oswald_llm_time_to_first_token_seconds_bucket[5m])))",
+              "legendFormat": "p50 {{model}}",
+              "range": true,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "histogram_quantile(0.95, sum by (le, model) (rate(oswald_llm_time_to_first_token_seconds_bucket[5m])))",
+              "legendFormat": "p95 {{model}}",
+              "refId": "B"
+            }
+          ],
+          "title": "Time to First Token (p50, p95, seconds)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "How full the available prompt/context budget is. High p95 values mean requests often approach compaction or truncation pressure.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 2,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percentunit"
+            }
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 36
+          },
+          "id": 17,
+          "options": {
+            "annotations": {
+              "clustering": -1,
+              "multiLane": false
+            },
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "histogram_quantile(0.50, sum by (le, model, kind) (rate(oswald_memory_prompt_budget_utilization_bucket[5m])))",
+              "legendFormat": "p50 {{model}} / {{kind}}",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "histogram_quantile(0.95, sum by (le, model, kind) (rate(oswald_memory_prompt_budget_utilization_bucket[5m])))",
+              "legendFormat": "p95 {{model}} / {{kind}}",
+              "refId": "B"
+            }
+          ],
+          "title": "Prompt Budget Utilization (p50, p95, %)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "Compaction activity over time: compaction rate plus the p95 number of turn pairs compacted when compaction happens.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 2,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            }
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 36
+          },
+          "id": 18,
+          "options": {
+            "annotations": {
+              "clustering": -1,
+              "multiLane": false
+            },
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "rate(oswald_memory_compactions_total[5m])",
+              "legendFormat": "compactions",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "histogram_quantile(0.95, sum by (le) (rate(oswald_memory_compacted_turn_pairs_bucket[5m])))",
+              "legendFormat": "p95 compacted pairs",
+              "refId": "B"
+            }
+          ],
+          "title": "Memory Compactions and Compacted Pairs",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "Total inbound messages across the selected time range, grouped by gateway and request kind.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "hidden",
+                "fillOpacity": 80,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineWidth": 1,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "short"
+            }
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 44
+          },
+          "id": 19,
+          "options": {
+            "barRadius": 0,
+            "barWidth": 0.97,
+            "fullHighlight": false,
+            "groupWidth": 0.7,
+            "legend": {
+              "calcs": [],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "orientation": "horizontal",
+            "showValue": "always",
+            "stacking": "none",
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            },
+            "xTickLabelRotation": 0,
+            "xTickLabelSpacing": 0
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum by (gateway_kind) (label_join(increase(oswald_gateway_messages_received_total[$__range]) + ((oswald_gateway_messages_received_total unless oswald_gateway_messages_received_total offset $__range) > bool 0), \"gateway_kind\", \" / \", \"gateway\", \"kind\"))",
+              "format": "time_series",
+              "instant": true,
+              "legendFormat": "{{gateway_kind}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Inbound Messages by Gateway/Kind (selected range)",
+          "type": "barchart"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 24,
+            "x": 0,
+            "y": 53
+          },
+          "id": 21,
+          "options": {
+            "dedupStrategy": "none",
+            "enableInfiniteScrolling": false,
+            "enableLogDetails": true,
+            "prettifyLogMessage": true,
+            "showControls": false,
+            "showFieldSelector": false,
+            "showLabels": false,
+            "showLevel": true,
+            "showTime": true,
+            "sortOrder": "Descending",
+            "syntaxHighlighting": false,
+            "timestampResolution": "ms",
+            "unwrappedColumns": false,
+            "wrapLogMessage": false
+          },
+          "pluginVersion": "13.0.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "loki",
+                "uid": "P8E80F9AEF21F6940"
+              },
+              "direction": "backward",
+              "editorMode": "code",
+              "expr": "{namespace=\"oswald-ai\"}",
+              "queryType": "range",
+              "refId": "A"
+            }
+          ],
+          "title": "",
+          "type": "logs"
         }
       ],
-      "cursorSync": "Off",
-      "editable": true,
-      "elements": {
-        "panel-1": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "sum(rate(oswald_requests_total[5m])) * 60",
-                          "legendFormat": ""
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": []
-              }
-            },
-            "description": "Average completed requests per minute over the last 5 minutes across all gateways.",
-            "id": 1,
-            "links": [],
-            "title": "Request Rate (per minute)",
-            "vizConfig": {
-              "group": "stat",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "decimals": 0,
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        },
-                        {
-                          "color": "red",
-                          "value": 80
-                        }
-                      ]
-                    },
-                    "unit": "short"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "colorMode": "value",
-                  "graphMode": "area",
-                  "justifyMode": "auto",
-                  "orientation": "auto",
-                  "percentChangeColorMode": "standard",
-                  "reduceOptions": {
-                    "calcs": [
-                      "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                  },
-                  "showPercentChange": false,
-                  "textMode": "auto",
-                  "wideLayout": true
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-10": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "sort_desc(sum by (tool) (increase(oswald_tools_total{result=\"success\"}[$__range]) + ((oswald_tools_total{result=\"success\"} unless oswald_tools_total{result=\"success\"} offset $__range) > bool 0)))",
-                          "format": "table",
-                          "instant": true
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": [
-                  {
-                    "group": "labelsToFields",
-                    "kind": "Transformation",
-                    "spec": {
-                      "options": {
-                        "mode": "columns"
-                      }
-                    }
-                  },
-                  {
-                    "group": "organize",
-                    "kind": "Transformation",
-                    "spec": {
-                      "options": {
-                        "excludeByName": {
-                          "Time": true
-                        },
-                        "indexByName": {
-                          "Value": 1,
-                          "tool": 0
-                        },
-                        "renameByName": {
-                          "Value": "calls",
-                          "tool": "tool"
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
-            },
-            "description": "Tools with the most successful calls across the selected time range.",
-            "id": 10,
-            "links": [],
-            "title": "Most Used Tools (selected range)",
-            "vizConfig": {
-              "group": "table",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "custom": {
-                      "align": "auto",
-                      "cellOptions": {
-                        "type": "auto"
-                      },
-                      "footer": {
-                        "reducers": []
-                      },
-                      "inspect": false
-                    },
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        },
-                        {
-                          "color": "red",
-                          "value": 80
-                        }
-                      ]
-                    },
-                    "unit": "short"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "cellHeight": "sm",
-                  "showHeader": true
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-11": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "sort_desc(sum by (component, type) (increase(oswald_errors_total[$__range])))",
-                          "format": "table",
-                          "instant": true
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": [
-                  {
-                    "group": "labelsToFields",
-                    "kind": "Transformation",
-                    "spec": {
-                      "options": {
-                        "mode": "columns"
-                      }
-                    }
-                  },
-                  {
-                    "group": "organize",
-                    "kind": "Transformation",
-                    "spec": {
-                      "options": {
-                        "excludeByName": {
-                          "Time": true
-                        },
-                        "indexByName": {
-                          "Value": 2,
-                          "component": 0,
-                          "type": 1
-                        },
-                        "renameByName": {
-                          "Value": "count",
-                          "component": "component",
-                          "type": "type"
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
-            },
-            "description": "Error totals by component and error type across the selected time range.",
-            "id": 11,
-            "links": [],
-            "title": "Top Errors (selected range)",
-            "vizConfig": {
-              "group": "table",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "custom": {
-                      "align": "auto",
-                      "cellOptions": {
-                        "type": "auto"
-                      },
-                      "footer": {
-                        "reducers": []
-                      },
-                      "inspect": false
-                    },
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        },
-                        {
-                          "color": "red",
-                          "value": 80
-                        }
-                      ]
-                    },
-                    "unit": "short"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "cellHeight": "sm",
-                  "showHeader": true
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-14": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "histogram_quantile(0.50, sum by (le, model) (rate(oswald_llm_tokens_per_second_bucket[5m])))",
-                          "legendFormat": "p50 {{model}}"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  },
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "histogram_quantile(0.95, sum by (le, model) (rate(oswald_llm_tokens_per_second_bucket[5m])))",
-                          "legendFormat": "p95 {{model}}"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "B"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": []
-              }
-            },
-            "description": "Model output speed by model. Higher values mean faster token generation; p50 is typical speed and p95 shows the faster end.",
-            "id": 14,
-            "links": [],
-            "title": "Model Generation Speed (tokens/sec, higher is better)",
-            "vizConfig": {
-              "group": "timeseries",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "color": {
-                      "mode": "palette-classic"
-                    },
-                    "custom": {
-                      "axisBorderShow": false,
-                      "axisCenteredZero": false,
-                      "axisColorMode": "text",
-                      "axisLabel": "",
-                      "axisPlacement": "auto",
-                      "barAlignment": 0,
-                      "barWidthFactor": 0.6,
-                      "drawStyle": "line",
-                      "fillOpacity": 0,
-                      "gradientMode": "none",
-                      "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                      },
-                      "insertNulls": false,
-                      "lineInterpolation": "linear",
-                      "lineWidth": 1,
-                      "pointSize": 5,
-                      "scaleDistribution": {
-                        "type": "linear"
-                      },
-                      "showPoints": "auto",
-                      "showValues": false,
-                      "spanNulls": false,
-                      "stacking": {
-                        "group": "A",
-                        "mode": "none"
-                      },
-                      "thresholdsStyle": {
-                        "mode": "off"
-                      }
-                    },
-                    "decimals": 1,
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        },
-                        {
-                          "color": "red",
-                          "value": 80
-                        }
-                      ]
-                    },
-                    "unit": "short"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "annotations": {
-                    "clustering": -1,
-                    "multiLane": false
-                  },
-                  "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                  },
-                  "tooltip": {
-                    "hideZeros": false,
-                    "mode": "multi",
-                    "sort": "desc"
-                  }
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-15": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "editorMode": "code",
-                          "expr": "histogram_quantile(0.50, sum by (le, model) (rate(oswald_llm_time_to_first_token_seconds_bucket[5m])))",
-                          "legendFormat": "p50 {{model}}",
-                          "range": true
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  },
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "histogram_quantile(0.95, sum by (le, model) (rate(oswald_llm_time_to_first_token_seconds_bucket[5m])))",
-                          "legendFormat": "p95 {{model}}"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "B"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": []
-              }
-            },
-            "description": "Delay before the model starts returning output. Lower is better; p95 highlights slower starts.",
-            "id": 15,
-            "links": [],
-            "title": "Time to First Token (p50, p95, seconds)",
-            "vizConfig": {
-              "group": "timeseries",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "color": {
-                      "mode": "palette-classic"
-                    },
-                    "custom": {
-                      "axisBorderShow": false,
-                      "axisCenteredZero": false,
-                      "axisColorMode": "text",
-                      "axisLabel": "",
-                      "axisPlacement": "auto",
-                      "barAlignment": 0,
-                      "barWidthFactor": 0.6,
-                      "drawStyle": "line",
-                      "fillOpacity": 0,
-                      "gradientMode": "none",
-                      "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                      },
-                      "insertNulls": false,
-                      "lineInterpolation": "linear",
-                      "lineWidth": 1,
-                      "pointSize": 5,
-                      "scaleDistribution": {
-                        "type": "linear"
-                      },
-                      "showPoints": "auto",
-                      "showValues": false,
-                      "spanNulls": false,
-                      "stacking": {
-                        "group": "A",
-                        "mode": "none"
-                      },
-                      "thresholdsStyle": {
-                        "mode": "off"
-                      }
-                    },
-                    "decimals": 2,
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        },
-                        {
-                          "color": "red",
-                          "value": 80
-                        }
-                      ]
-                    },
-                    "unit": "s"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "annotations": {
-                    "clustering": -1,
-                    "multiLane": false
-                  },
-                  "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                  },
-                  "tooltip": {
-                    "hideZeros": false,
-                    "mode": "multi",
-                    "sort": "desc"
-                  }
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-17": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "histogram_quantile(0.50, sum by (le, model, kind) (rate(oswald_memory_prompt_budget_utilization_bucket[5m])))",
-                          "legendFormat": "p50 {{model}} / {{kind}}"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  },
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "histogram_quantile(0.95, sum by (le, model, kind) (rate(oswald_memory_prompt_budget_utilization_bucket[5m])))",
-                          "legendFormat": "p95 {{model}} / {{kind}}"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "B"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": []
-              }
-            },
-            "description": "How full the available prompt/context budget is. High p95 values mean requests often approach compaction or truncation pressure.",
-            "id": 17,
-            "links": [],
-            "title": "Prompt Budget Utilization (p50, p95, %)",
-            "vizConfig": {
-              "group": "timeseries",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "color": {
-                      "mode": "palette-classic"
-                    },
-                    "custom": {
-                      "axisBorderShow": false,
-                      "axisCenteredZero": false,
-                      "axisColorMode": "text",
-                      "axisLabel": "",
-                      "axisPlacement": "auto",
-                      "barAlignment": 0,
-                      "barWidthFactor": 0.6,
-                      "drawStyle": "line",
-                      "fillOpacity": 0,
-                      "gradientMode": "none",
-                      "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                      },
-                      "insertNulls": false,
-                      "lineInterpolation": "linear",
-                      "lineWidth": 1,
-                      "pointSize": 5,
-                      "scaleDistribution": {
-                        "type": "linear"
-                      },
-                      "showPoints": "auto",
-                      "showValues": false,
-                      "spanNulls": false,
-                      "stacking": {
-                        "group": "A",
-                        "mode": "none"
-                      },
-                      "thresholdsStyle": {
-                        "mode": "off"
-                      }
-                    },
-                    "decimals": 2,
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        },
-                        {
-                          "color": "red",
-                          "value": 80
-                        }
-                      ]
-                    },
-                    "unit": "percentunit"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "annotations": {
-                    "clustering": -1,
-                    "multiLane": false
-                  },
-                  "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                  },
-                  "tooltip": {
-                    "hideZeros": false,
-                    "mode": "multi",
-                    "sort": "desc"
-                  }
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-18": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "rate(oswald_memory_compactions_total[5m])",
-                          "legendFormat": "compactions"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  },
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "histogram_quantile(0.95, sum by (le) (rate(oswald_memory_compacted_turn_pairs_bucket[5m])))",
-                          "legendFormat": "p95 compacted pairs"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "B"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": []
-              }
-            },
-            "description": "Compaction activity over time: compaction rate plus the p95 number of turn pairs compacted when compaction happens.",
-            "id": 18,
-            "links": [],
-            "title": "Memory Compactions and Compacted Pairs",
-            "vizConfig": {
-              "group": "timeseries",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "color": {
-                      "mode": "palette-classic"
-                    },
-                    "custom": {
-                      "axisBorderShow": false,
-                      "axisCenteredZero": false,
-                      "axisColorMode": "text",
-                      "axisLabel": "",
-                      "axisPlacement": "auto",
-                      "barAlignment": 0,
-                      "barWidthFactor": 0.6,
-                      "drawStyle": "line",
-                      "fillOpacity": 0,
-                      "gradientMode": "none",
-                      "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                      },
-                      "insertNulls": false,
-                      "lineInterpolation": "linear",
-                      "lineWidth": 1,
-                      "pointSize": 5,
-                      "scaleDistribution": {
-                        "type": "linear"
-                      },
-                      "showPoints": "auto",
-                      "showValues": false,
-                      "spanNulls": false,
-                      "stacking": {
-                        "group": "A",
-                        "mode": "none"
-                      },
-                      "thresholdsStyle": {
-                        "mode": "off"
-                      }
-                    },
-                    "decimals": 2,
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        },
-                        {
-                          "color": "red",
-                          "value": 80
-                        }
-                      ]
-                    },
-                    "unit": "short"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "annotations": {
-                    "clustering": -1,
-                    "multiLane": false
-                  },
-                  "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                  },
-                  "tooltip": {
-                    "hideZeros": false,
-                    "mode": "multi",
-                    "sort": "desc"
-                  }
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-19": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "editorMode": "code",
-                          "expr": "sum by (gateway_kind) (label_join(increase(oswald_gateway_messages_received_total[$__range]) + ((oswald_gateway_messages_received_total unless oswald_gateway_messages_received_total offset $__range) > bool 0), \"gateway_kind\", \" / \", \"gateway\", \"kind\"))",
-                          "format": "time_series",
-                          "instant": true,
-                          "legendFormat": "{{gateway_kind}}"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": []
-              }
-            },
-            "description": "Total inbound messages across the selected time range, grouped by gateway and request kind.",
-            "id": 19,
-            "links": [],
-            "title": "Inbound Messages by Gateway/Kind (selected range)",
-            "vizConfig": {
-              "group": "barchart",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "color": {
-                      "mode": "palette-classic"
-                    },
-                    "custom": {
-                      "axisBorderShow": false,
-                      "axisCenteredZero": false,
-                      "axisColorMode": "text",
-                      "axisLabel": "",
-                      "axisPlacement": "hidden",
-                      "fillOpacity": 80,
-                      "gradientMode": "none",
-                      "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                      },
-                      "lineWidth": 1,
-                      "scaleDistribution": {
-                        "type": "linear"
-                      },
-                      "thresholdsStyle": {
-                        "mode": "off"
-                      }
-                    },
-                    "decimals": 0,
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        }
-                      ]
-                    },
-                    "unit": "short"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "barRadius": 0,
-                  "barWidth": 0.97,
-                  "fullHighlight": false,
-                  "groupWidth": 0.7,
-                  "legend": {
-                    "calcs": [],
-                    "displayMode": "table",
-                    "placement": "bottom",
-                    "showLegend": true
-                  },
-                  "orientation": "horizontal",
-                  "showValue": "always",
-                  "stacking": "none",
-                  "tooltip": {
-                    "hideZeros": false,
-                    "mode": "single",
-                    "sort": "none"
-                  },
-                  "xTickLabelRotation": 0,
-                  "xTickLabelSpacing": 0
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-2": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "sum(oswald_active_requests)"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": []
-              }
-            },
-            "description": "Current number of requests actively being processed right now.",
-            "id": 2,
-            "links": [],
-            "title": "In-Flight Requests",
-            "vizConfig": {
-              "group": "stat",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "decimals": 0,
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        },
-                        {
-                          "color": "red",
-                          "value": 80
-                        }
-                      ]
-                    },
-                    "unit": "short"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "colorMode": "value",
-                  "graphMode": "area",
-                  "justifyMode": "auto",
-                  "orientation": "auto",
-                  "percentChangeColorMode": "standard",
-                  "reduceOptions": {
-                    "calcs": [
-                      "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                  },
-                  "showPercentChange": false,
-                  "textMode": "auto",
-                  "wideLayout": true
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-21": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "loki"
-                        },
-                        "group": "loki",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "direction": "backward",
-                          "editorMode": "code",
-                          "expr": "{namespace=\"oswald-ai\"}",
-                          "queryType": "range"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": []
-              }
-            },
-            "description": "",
-            "id": 21,
-            "links": [],
-            "title": "",
-            "vizConfig": {
-              "group": "logs",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {},
-                  "overrides": []
-                },
-                "options": {
-                  "dedupStrategy": "none",
-                  "enableInfiniteScrolling": false,
-                  "enableLogDetails": true,
-                  "prettifyLogMessage": true,
-                  "showControls": false,
-                  "showFieldSelector": false,
-                  "showLabels": false,
-                  "showLevel": true,
-                  "showTime": true,
-                  "sortOrder": "Descending",
-                  "syntaxHighlighting": false,
-                  "timestampResolution": "ms",
-                  "unwrappedColumns": false,
-                  "wrapLogMessage": false
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-3": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "oswald_broker_queue_depth"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": []
-              }
-            },
-            "description": "Current number of requests waiting in the broker queue.",
-            "id": 3,
-            "links": [],
-            "title": "Broker Queue Depth",
-            "vizConfig": {
-              "group": "stat",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "decimals": 0,
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        },
-                        {
-                          "color": "red",
-                          "value": 80
-                        }
-                      ]
-                    },
-                    "unit": "short"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "colorMode": "value",
-                  "graphMode": "area",
-                  "justifyMode": "auto",
-                  "orientation": "auto",
-                  "percentChangeColorMode": "standard",
-                  "reduceOptions": {
-                    "calcs": [
-                      "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                  },
-                  "showPercentChange": false,
-                  "textMode": "auto",
-                  "wideLayout": true
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-5": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "editorMode": "code",
-                          "expr": "sum by (gateway) (increase(oswald_requests_total[$__range]) + ((oswald_requests_total unless oswald_requests_total offset $__range) > bool 0))",
-                          "format": "time_series",
-                          "instant": true,
-                          "legendFormat": "{{gateway}}"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": []
-              }
-            },
-            "description": "Total requests received from each gateway across the dashboard time range.",
-            "id": 5,
-            "links": [],
-            "title": "Requests by Gateway (selected range)",
-            "vizConfig": {
-              "group": "barchart",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "color": {
-                      "mode": "palette-classic"
-                    },
-                    "custom": {
-                      "axisBorderShow": false,
-                      "axisCenteredZero": false,
-                      "axisColorMode": "text",
-                      "axisLabel": "",
-                      "axisPlacement": "hidden",
-                      "fillOpacity": 80,
-                      "gradientMode": "none",
-                      "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                      },
-                      "lineWidth": 1,
-                      "scaleDistribution": {
-                        "type": "linear"
-                      },
-                      "thresholdsStyle": {
-                        "mode": "off"
-                      }
-                    },
-                    "decimals": 0,
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        }
-                      ]
-                    },
-                    "unit": "short"
-                  },
-                  "overrides": [
-                    {
-                      "matcher": {
-                        "id": "byName",
-                        "options": "discord",
-                        "scope": "series"
-                      },
-                      "properties": [
-                        {
-                          "id": "color",
-                          "value": {
-                            "fixedColor": "#5865f2",
-                            "mode": "fixed"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "matcher": {
-                        "id": "byName",
-                        "options": "imessage",
-                        "scope": "series"
-                      },
-                      "properties": [
-                        {
-                          "id": "color",
-                          "value": {
-                            "fixedColor": "semi-dark-green",
-                            "mode": "fixed"
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                "options": {
-                  "barRadius": 0,
-                  "barWidth": 0.97,
-                  "fullHighlight": false,
-                  "groupWidth": 0.7,
-                  "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                  },
-                  "orientation": "horizontal",
-                  "showValue": "always",
-                  "stacking": "none",
-                  "tooltip": {
-                    "hideZeros": false,
-                    "mode": "single",
-                    "sort": "none"
-                  },
-                  "xField": "Time",
-                  "xTickLabelRotation": 0,
-                  "xTickLabelSpacing": 0
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-7": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "histogram_quantile(0.50, sum by (le, gateway) (rate(oswald_request_duration_seconds_bucket[5m])))",
-                          "legendFormat": "p50 {{gateway}}"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  },
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "histogram_quantile(0.95, sum by (le, gateway) (rate(oswald_request_duration_seconds_bucket[5m])))",
-                          "legendFormat": "p95 {{gateway}}"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "B"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": []
-              }
-            },
-            "description": "End-to-end request duration by gateway. p50 is the median request time; p95 shows the slowest 5% tail in seconds.",
-            "id": 7,
-            "links": [],
-            "title": "Request Latency by Gateway (p50, p95, seconds)",
-            "vizConfig": {
-              "group": "timeseries",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "color": {
-                      "mode": "palette-classic"
-                    },
-                    "custom": {
-                      "axisBorderShow": false,
-                      "axisCenteredZero": false,
-                      "axisColorMode": "text",
-                      "axisLabel": "",
-                      "axisPlacement": "auto",
-                      "barAlignment": 0,
-                      "barWidthFactor": 0.6,
-                      "drawStyle": "line",
-                      "fillOpacity": 0,
-                      "gradientMode": "none",
-                      "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                      },
-                      "insertNulls": false,
-                      "lineInterpolation": "linear",
-                      "lineWidth": 1,
-                      "pointSize": 5,
-                      "scaleDistribution": {
-                        "type": "linear"
-                      },
-                      "showPoints": "auto",
-                      "showValues": false,
-                      "spanNulls": false,
-                      "stacking": {
-                        "group": "A",
-                        "mode": "none"
-                      },
-                      "thresholdsStyle": {
-                        "mode": "off"
-                      }
-                    },
-                    "decimals": 2,
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        },
-                        {
-                          "color": "red",
-                          "value": 80
-                        }
-                      ]
-                    },
-                    "unit": "s"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "annotations": {
-                    "clustering": -1,
-                    "multiLane": false
-                  },
-                  "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                  },
-                  "tooltip": {
-                    "hideZeros": false,
-                    "mode": "multi",
-                    "sort": "desc"
-                  }
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-8": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "histogram_quantile(0.95, sum by (le, gateway) (rate(oswald_broker_queue_wait_seconds_bucket[5m])))",
-                          "legendFormat": "{{gateway}}"
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": []
-              }
-            },
-            "description": "How long requests wait in the broker queue before processing starts. Higher values usually indicate backlog or worker saturation.",
-            "id": 8,
-            "links": [],
-            "title": "Broker Queue Wait Time (p95, seconds)",
-            "vizConfig": {
-              "group": "timeseries",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "color": {
-                      "mode": "palette-classic"
-                    },
-                    "custom": {
-                      "axisBorderShow": false,
-                      "axisCenteredZero": false,
-                      "axisColorMode": "text",
-                      "axisLabel": "",
-                      "axisPlacement": "auto",
-                      "barAlignment": 0,
-                      "barWidthFactor": 0.6,
-                      "drawStyle": "line",
-                      "fillOpacity": 0,
-                      "gradientMode": "none",
-                      "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                      },
-                      "insertNulls": false,
-                      "lineInterpolation": "linear",
-                      "lineWidth": 1,
-                      "pointSize": 5,
-                      "scaleDistribution": {
-                        "type": "linear"
-                      },
-                      "showPoints": "auto",
-                      "showValues": false,
-                      "spanNulls": false,
-                      "stacking": {
-                        "group": "A",
-                        "mode": "none"
-                      },
-                      "thresholdsStyle": {
-                        "mode": "off"
-                      }
-                    },
-                    "decimals": 3,
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        },
-                        {
-                          "color": "red",
-                          "value": 80
-                        }
-                      ]
-                    },
-                    "unit": "s"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "annotations": {
-                    "clustering": -1,
-                    "multiLane": false
-                  },
-                  "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                  },
-                  "tooltip": {
-                    "hideZeros": false,
-                    "mode": "multi",
-                    "sort": "desc"
-                  }
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        },
-        "panel-9": {
-          "kind": "Panel",
-          "spec": {
-            "data": {
-              "kind": "QueryGroup",
-              "spec": {
-                "queries": [
-                  {
-                    "kind": "PanelQuery",
-                    "spec": {
-                      "hidden": false,
-                      "query": {
-                        "datasource": {
-                          "name": "prometheus"
-                        },
-                        "group": "prometheus",
-                        "kind": "DataQuery",
-                        "spec": {
-                          "expr": "topk(15, sum by (user_id) (increase(oswald_user_requests_total[$__range]) + ((oswald_user_requests_total unless oswald_user_requests_total offset $__range) > bool 0)))",
-                          "format": "table",
-                          "instant": true
-                        },
-                        "version": "v0"
-                      },
-                      "refId": "A"
-                    }
-                  }
-                ],
-                "queryOptions": {},
-                "transformations": [
-                  {
-                    "group": "labelsToFields",
-                    "kind": "Transformation",
-                    "spec": {
-                      "options": {
-                        "mode": "columns"
-                      }
-                    }
-                  },
-                  {
-                    "group": "organize",
-                    "kind": "Transformation",
-                    "spec": {
-                      "options": {
-                        "excludeByName": {
-                          "Time": true
-                        },
-                        "indexByName": {
-                          "Value": 1,
-                          "user_id": 0
-                        },
-                        "renameByName": {
-                          "Value": "requests",
-                          "user_id": "user_id"
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
-            },
-            "description": "Users with the highest total request counts across the selected time range.",
-            "id": 9,
-            "links": [],
-            "title": "Most Active Users (selected range)",
-            "vizConfig": {
-              "group": "table",
-              "kind": "VizConfig",
-              "spec": {
-                "fieldConfig": {
-                  "defaults": {
-                    "custom": {
-                      "align": "auto",
-                      "cellOptions": {
-                        "type": "auto"
-                      },
-                      "footer": {
-                        "reducers": []
-                      },
-                      "inspect": false
-                    },
-                    "thresholds": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "green",
-                          "value": 0
-                        },
-                        {
-                          "color": "red",
-                          "value": 80
-                        }
-                      ]
-                    },
-                    "unit": "short"
-                  },
-                  "overrides": []
-                },
-                "options": {
-                  "cellHeight": "sm",
-                  "showHeader": true
-                }
-              },
-              "version": "13.0.1"
-            }
-          }
-        }
-      },
-      "layout": {
-        "kind": "GridLayout",
-        "spec": {
-          "items": [
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-1"
-                },
-                "height": 4,
-                "width": 8,
-                "x": 0,
-                "y": 0
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-2"
-                },
-                "height": 4,
-                "width": 8,
-                "x": 8,
-                "y": 0
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-3"
-                },
-                "height": 4,
-                "width": 8,
-                "x": 16,
-                "y": 0
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-5"
-                },
-                "height": 8,
-                "width": 24,
-                "x": 0,
-                "y": 4
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-7"
-                },
-                "height": 8,
-                "width": 12,
-                "x": 0,
-                "y": 12
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-8"
-                },
-                "height": 8,
-                "width": 12,
-                "x": 12,
-                "y": 12
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-9"
-                },
-                "height": 8,
-                "width": 8,
-                "x": 0,
-                "y": 20
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-10"
-                },
-                "height": 8,
-                "width": 8,
-                "x": 8,
-                "y": 20
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-11"
-                },
-                "height": 8,
-                "width": 8,
-                "x": 16,
-                "y": 20
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-14"
-                },
-                "height": 8,
-                "width": 12,
-                "x": 0,
-                "y": 28
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-15"
-                },
-                "height": 8,
-                "width": 12,
-                "x": 12,
-                "y": 28
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-17"
-                },
-                "height": 8,
-                "width": 12,
-                "x": 0,
-                "y": 36
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-18"
-                },
-                "height": 8,
-                "width": 12,
-                "x": 12,
-                "y": 36
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-19"
-                },
-                "height": 9,
-                "width": 24,
-                "x": 0,
-                "y": 44
-              }
-            },
-            {
-              "kind": "GridLayoutItem",
-              "spec": {
-                "element": {
-                  "kind": "ElementReference",
-                  "name": "panel-21"
-                },
-                "height": 10,
-                "width": 24,
-                "x": 0,
-                "y": 53
-              }
-            }
-          ]
-        }
-      },
-      "links": [],
-      "liveNow": false,
       "preload": false,
+      "refresh": "10s",
+      "schemaVersion": 42,
       "tags": [
         "oswald-ai"
       ],
-      "timeSettings": {
-        "autoRefresh": "10s",
-        "autoRefreshIntervals": [
+      "time": {
+        "from": "now-24h",
+        "to": "now"
+      },
+      "timepicker": {
+        "refresh_intervals": [
           "5s",
           "10s",
           "30s",
@@ -1978,13 +1439,11 @@ data:
           "1h",
           "2h",
           "1d"
-        ],
-        "fiscalYearStartMonth": 0,
-        "from": "now-24h",
-        "hideTimepicker": false,
-        "timezone": "browser",
-        "to": "now"
+        ]
       },
+      "timezone": "browser",
       "title": "Oswald AI",
-      "variables": []
+      "version": 2,
+      "uid": "osrx6vh",
+      "id": 3784488793780224
     }

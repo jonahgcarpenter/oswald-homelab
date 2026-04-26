@@ -12,3 +12,4 @@ resources:
   - ./pihole-exporter
   - ./portfolio
   - ./eBPF
+  - ./oswald-ai

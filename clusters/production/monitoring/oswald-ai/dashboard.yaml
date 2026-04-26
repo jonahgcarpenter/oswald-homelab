@@ -11,6 +11,10 @@ data:
         "list": [
           {
             "builtIn": true,
+            "datasource": {
+              "type": "datasource",
+              "uid": "grafana"
+            },
             "enable": true,
             "hide": true,
             "iconColor": "rgba(0, 211, 255, 1)",
@@ -32,7 +36,10 @@ data:
           "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "sum(rate(oswald_requests_total[5m])) * 60",
               "legendFormat": "",
               "refId": "A"
@@ -68,7 +75,10 @@ data:
           "gridPos": { "h": 4, "w": 6, "x": 6, "y": 0 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "sum(oswald_active_requests)",
               "refId": "A"
             }
@@ -103,7 +113,10 @@ data:
           "gridPos": { "h": 4, "w": 6, "x": 12, "y": 0 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "oswald_broker_queue_depth",
               "refId": "A"
             }
@@ -138,7 +151,10 @@ data:
           "gridPos": { "h": 4, "w": 6, "x": 18, "y": 0 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "sum(rate(oswald_tool_failures_total[5m])) * 60",
               "refId": "A"
             }
@@ -173,7 +189,10 @@ data:
           "gridPos": { "h": 8, "w": 12, "x": 0, "y": 4 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "sum by (gateway) (increase(oswald_requests_total[$__range]) + ((oswald_requests_total unless oswald_requests_total offset $__range) > bool 0))",
               "format": "table",
               "instant": true,
@@ -218,7 +237,10 @@ data:
           "gridPos": { "h": 8, "w": 12, "x": 12, "y": 4 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "sum by (result) (rate(oswald_requests_total[5m]))",
               "legendFormat": "{{result}}",
               "refId": "A"
@@ -243,13 +265,19 @@ data:
           "gridPos": { "h": 8, "w": 12, "x": 0, "y": 12 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "histogram_quantile(0.50, sum by (le, gateway) (rate(oswald_request_duration_seconds_bucket[5m])))",
               "legendFormat": "p50 {{gateway}}",
               "refId": "A"
             },
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "histogram_quantile(0.95, sum by (le, gateway) (rate(oswald_request_duration_seconds_bucket[5m])))",
               "legendFormat": "p95 {{gateway}}",
               "refId": "B"
@@ -271,7 +299,10 @@ data:
           "gridPos": { "h": 8, "w": 12, "x": 12, "y": 12 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "histogram_quantile(0.95, sum by (le, gateway) (rate(oswald_broker_queue_wait_seconds_bucket[5m])))",
               "legendFormat": "{{gateway}}",
               "refId": "A"
@@ -293,7 +324,10 @@ data:
           "gridPos": { "h": 8, "w": 8, "x": 0, "y": 20 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "topk(15, sum by (user_id) (increase(oswald_user_requests_total[$__range]) + ((oswald_user_requests_total unless oswald_user_requests_total offset $__range) > bool 0)))",
               "format": "table",
               "instant": true,
@@ -324,7 +358,10 @@ data:
           "gridPos": { "h": 8, "w": 8, "x": 8, "y": 20 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "sort_desc(sum by (tool) (increase(oswald_tools_total{result=\"success\"}[$__range]) + ((oswald_tools_total{result=\"success\"} unless oswald_tools_total{result=\"success\"} offset $__range) > bool 0)))",
               "format": "table",
               "instant": true,
@@ -355,7 +392,10 @@ data:
           "gridPos": { "h": 8, "w": 8, "x": 16, "y": 20 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "sort_desc(sum by (component, type) (increase(oswald_errors_total[$__range])))",
               "format": "table",
               "instant": true,
@@ -386,7 +426,10 @@ data:
           "gridPos": { "h": 8, "w": 12, "x": 0, "y": 28 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "sum by (tool) (rate(oswald_tools_total[5m]))",
               "legendFormat": "{{tool}}",
               "refId": "A"
@@ -408,7 +451,10 @@ data:
           "gridPos": { "h": 8, "w": 12, "x": 12, "y": 28 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "sum by (tool, error_type) (rate(oswald_tool_failures_total[5m]))",
               "legendFormat": "{{tool}} / {{error_type}}",
               "refId": "A"
@@ -430,13 +476,19 @@ data:
           "gridPos": { "h": 8, "w": 8, "x": 0, "y": 36 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "histogram_quantile(0.50, sum by (le, model) (rate(oswald_llm_tokens_per_second_bucket[5m])))",
               "legendFormat": "p50 {{model}}",
               "refId": "A"
             },
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "histogram_quantile(0.95, sum by (le, model) (rate(oswald_llm_tokens_per_second_bucket[5m])))",
               "legendFormat": "p95 {{model}}",
               "refId": "B"
@@ -458,13 +510,19 @@ data:
           "gridPos": { "h": 8, "w": 8, "x": 8, "y": 36 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "histogram_quantile(0.50, sum by (le, model) (rate(oswald_llm_time_to_first_token_seconds_bucket[5m])))",
               "legendFormat": "p50 {{model}}",
               "refId": "A"
             },
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "histogram_quantile(0.95, sum by (le, model) (rate(oswald_llm_time_to_first_token_seconds_bucket[5m])))",
               "legendFormat": "p95 {{model}}",
               "refId": "B"
@@ -486,7 +544,10 @@ data:
           "gridPos": { "h": 8, "w": 8, "x": 16, "y": 36 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "sum by (model, reason) (rate(oswald_llm_done_reason_total[5m]))",
               "legendFormat": "{{model}} / {{reason}}",
               "refId": "A"
@@ -508,13 +569,19 @@ data:
           "gridPos": { "h": 8, "w": 12, "x": 0, "y": 44 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "histogram_quantile(0.50, sum by (le, model, kind) (rate(oswald_memory_prompt_budget_utilization_bucket[5m])))",
               "legendFormat": "p50 {{model}} / {{kind}}",
               "refId": "A"
             },
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "histogram_quantile(0.95, sum by (le, model, kind) (rate(oswald_memory_prompt_budget_utilization_bucket[5m])))",
               "legendFormat": "p95 {{model}} / {{kind}}",
               "refId": "B"
@@ -536,13 +603,19 @@ data:
           "gridPos": { "h": 8, "w": 12, "x": 12, "y": 44 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "rate(oswald_memory_compactions_total[5m])",
               "legendFormat": "compactions",
               "refId": "A"
             },
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "histogram_quantile(0.95, sum by (le) (rate(oswald_memory_compacted_turn_pairs_bucket[5m])))",
               "legendFormat": "p95 compacted pairs",
               "refId": "B"
@@ -564,7 +637,10 @@ data:
           "gridPos": { "h": 8, "w": 12, "x": 0, "y": 52 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "sum by (gateway_kind) (label_join(increase(oswald_gateway_messages_received_total[$__range]) + ((oswald_gateway_messages_received_total unless oswald_gateway_messages_received_total offset $__range) > bool 0), \"gateway_kind\", \" / \", \"gateway\", \"kind\"))",
               "format": "table",
               "instant": true,
@@ -599,7 +675,10 @@ data:
           "gridPos": { "h": 8, "w": 12, "x": 12, "y": 52 },
           "targets": [
             {
-              "datasource": "prometheus",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "expr": "sum by (gateway, reason) (rate(oswald_request_unsupported_attachments_total[5m]))",
               "legendFormat": "{{gateway}} / {{reason}}",
               "refId": "A"
@@ -621,7 +700,10 @@ data:
           "gridPos": { "h": 10, "w": 24, "x": 0, "y": 60 },
           "targets": [
             {
-              "datasource": "loki",
+              "datasource": {
+                "type": "loki",
+                "uid": "loki"
+              },
               "expr": "{namespace=\"oswald-ai\"}",
               "refId": "A"
             }

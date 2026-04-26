@@ -731,7 +731,7 @@ data:
       "schemaVersion": 38,
       "tags": ["oswald-ai"],
       "time": {
-        "from": "now-6h",
+        "from": "now-24h",
         "to": "now"
       },
       "timepicker": {

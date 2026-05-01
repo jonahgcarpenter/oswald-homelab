@@ -47,22 +47,18 @@ data:
     Software Engineer | April 2026 - Present
     Jr Web/ERP Developer | April 2025 – April 2026
 
-
-    - Established a dedicated Kubernetes testing infrastructure on Proxmox, providing an isolated Talos environment to validate complex builds of the live translation platform before release
-    - Leading the architecture of CALC-Translation
-    - Utilizing Terraform and Ansible to manage VPS, VMs, and the staging cluster
-    - Provided IT support for internal staff, while maintaining the company's legacy Laravel ERP system and automating daily logistics workflows
-    - Redid the companies public facing webpage with a much needed facelift, and the added functionality to manage events hosted by the company
+    - **Sole Engineering Owner:** Direct all technical strategy, architecture, and development for the organization. 
+    - Spearheaded the ground-up rewrite of a legacy ERP into a custom Go/React platform, engineering native integrations with 3rd-party APIs to guarantee strict backward compatibility.
+    - Built CALC-Translation, an ultra-low latency (<1000ms) real-time audio processing pipeline integrating Zoom RTMS and Soniox. Actively porting the backend from Python to TypeScript (Bun) to maximize concurrency.
+    - Administered all company infrastructure from the metal up; established a dedicated Kubernetes (K8s) staging environment on Proxmox, fully automated and provisioned via Terraform and Ansible.
 
     ## Technical Skills
 
-    **Infrastructure & Orchestration:** Kubernetes, Docker, Terraform, GitHub Actions, FluxCD, Ansible, Proxmox, Linux, GCP, DigitalOcean, TrueNAS, UnRaid
-
-    **Programming Languages:** Python, Go (Golang), Bash, JavaScript, TypeScript, PHP, C++, SQL
-
-    **Observability & Monitoring:** Prometheus, Grafana, Loki, Hubble
-
-    **Frameworks & Tools:** React, FastAPI, Gin, Electron, PostgreSQL, LangChain, Laravel, Angular, Express
+    **Languages:** Go (Golang), Python, Bash, TypeScript, JavaScript, PHP, SQL
+    **Frameworks & Tools:** React, Bun, FastAPI, Gin, Electron, PostgreSQL, LangChain, Laravel, Angular, Express, Ollama, MCP
+    **Infrastructure & CI/CD:** Kubernetes (K8s), Docker, Terraform, Ansible, FluxCD (GitOps), GitHub Actions, Proxmox, Talos Linux, ZFS
+    **Networking & Security:** Cilium, eBPF, WireGuard, UniFi, Traefik, Pi-hole, Cloudflare Tunnels, WebRTC, WebSockets
+    **Observability:** Prometheus, Grafana, Loki, Hubble
 
     ## Projects
 

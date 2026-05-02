@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+resources:
+  - cilium.yaml
+  - home-assistant.yaml
+  - hubble.yaml
+  - loki.yaml
+  - longhorn.yaml
+  - node-temps.yaml
+  - oswald-ai.yaml
+  - pihole.yaml
+  - portfolio.yaml
+  - proxmox.yaml
+  - unifi-aps.yaml
+  - unifi-clients.yaml
+  - unifi-dpi.yaml
+  - unifi-gateway.yaml
+  - unifi-switch.yaml

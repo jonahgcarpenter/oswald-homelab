@@ -5,5 +5,3 @@ resources:
   - exporter-deployment.yaml
   - exporter-service.yaml
   - sealed-api-token.yaml
-  - dashboard.yaml
-  - alerts.yaml

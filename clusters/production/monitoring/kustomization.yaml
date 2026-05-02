@@ -3,13 +3,9 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - ./kube-prom-stack
+  - ./loki-alloy
   - ./proxmox
   - ./longhorn
-  - ./home-assistant
-  - ./loki-alloy
-  - ./cluster
   - ./unpoller
-  - ./pihole-exporter
-  - ./portfolio
-  - ./eBPF
-  - ./oswald-ai
+  - ./alerts
+  - ./dashboards

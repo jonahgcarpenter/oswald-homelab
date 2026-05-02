@@ -550,9 +550,9 @@ data:
                 "scaleDistribution": {
                   "type": "linear"
                 },
-                "showPoints": "never",
+                "showPoints": "always",
                 "showValues": false,
-                "spanNulls": false,
+                "spanNulls": true,
                 "stacking": {
                   "group": "A",
                   "mode": "none"
@@ -619,7 +619,7 @@ data:
               },
               "direction": "backward",
               "editorMode": "code",
-              "expr": "avg_over_time( {service_name=\"oswald-ai\"} | json | event=\"agent.response.complete\" | unwrap duration_ms [$__interval] )",
+              "expr": "avg(avg_over_time( {service_name=\"oswald-ai\"} | json | event=\"agent.response.complete\" | unwrap duration_ms [$__interval]))",
               "legendFormat": "Average",
               "queryType": "range",
               "refId": "A"
@@ -631,7 +631,7 @@ data:
               },
               "direction": "backward",
               "editorMode": "code",
-              "expr": "quantile_over_time(0.95, {service_name=\"oswald-ai\"} | json | event=\"agent.response.complete\" | unwrap duration_ms [$__interval])",
+              "expr": "max(quantile_over_time(0.95, {service_name=\"oswald-ai\"} | json | event=\"agent.response.complete\" | unwrap duration_ms [$__interval]))",
               "legendFormat": "P95",
               "queryType": "range",
               "refId": "B"

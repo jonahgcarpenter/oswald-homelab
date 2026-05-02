@@ -709,6 +709,10 @@ data:
       },
       "timezone": "browser",
       "title": "Oswald AI",
+      "tags": [
+        "ai",
+        "oswald"
+      ],
       "version": 1,
       "uid": "osj7r4p",
       "id": 3941092045455360

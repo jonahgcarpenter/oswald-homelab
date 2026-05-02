@@ -7,7 +7,7 @@ spec:
     - start: "192.168.4.231"
       stop: "192.168.4.250"
 ---
-apiVersion: "cilium.io/v2"
+apiVersion: "cilium.io/v2alpha1"
 kind: CiliumL2AnnouncementPolicy
 metadata:
   name: default-l2-announcement

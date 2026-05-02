@@ -711,7 +711,8 @@ data:
       "title": "Oswald AI",
       "tags": [
         "ai",
-        "oswald"
+        "oswald",
+        "golang"
       ],
       "version": 1,
       "uid": "osj7r4p",

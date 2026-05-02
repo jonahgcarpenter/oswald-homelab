@@ -14,10 +14,22 @@ spec:
       labels:
         app: cloudflare-ddns-proxied
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: cloudflare-ddns-proxied
           image: oznu/cloudflare-ddns:latest # Never gets updated anyways
           imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
           env:
             - name: ZONE
               valueFrom:

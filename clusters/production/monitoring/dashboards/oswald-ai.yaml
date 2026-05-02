@@ -507,7 +507,10 @@ data:
                   "user_id": 0
                 },
                 "renameByName": {
-                  "user_id": "user"
+                  "user_id": "User",
+                  "Value #A": "iMessage",
+                  "Value #B": "Discord",
+                  "Value #C": "Total"
                 }
               }
             }

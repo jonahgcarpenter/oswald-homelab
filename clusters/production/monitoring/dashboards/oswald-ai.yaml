@@ -385,7 +385,6 @@ data:
             "type": "loki",
             "uid": "P8E80F9AEF21F6940"
           },
-          "description": "Per-user prompt totals by gateway. Display names are not currently logged on gateway.request.received, so this panel uses canonical user_id only.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -589,6 +588,7 @@ data:
             "y": 10
           },
           "id": 3,
+          "description": "Average is the mean response time, which can be heavily skewed by extreme outliers. P95 (95th Percentile) indicates that 95% of requests complete faster than this value, providing a much more reliable metric for the typical agent response experience.",
           "options": {
             "annotations": {
               "clustering": -1,

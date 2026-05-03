@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: piper-svc
 spec:
+  type: LoadBalancer
+  loadBalancerIP: "192.168.4.232"
   selector:
     app: piper-tts
   ports:
     - protocol: TCP
       port: 10200
       targetPort: 10200
-  type: LoadBalancer

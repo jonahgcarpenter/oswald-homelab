@@ -66,6 +66,17 @@
 - 500GB NVMe
 - Dual 2.5GB RJ45
 
+### [Home Assistant](https://www.home-assistant.io/yellow/)
+
+- Compute Module 4
+- 4GB Ram
+
+### [Mac Mini](https://www.home-assistant.io/yellow/)
+
+- Intel i3-8100B 4C/4T 3.6GHz
+- 8GB Ram
+- 128GB SSD
+
 ### [PVE 0](https://pcpartpicker.com/user/HeyItsJonah/saved/KfvZzy)
 
 - Ryzen 5 3600 6C/12T 3.6GHz
@@ -73,11 +84,6 @@
 - 500GB NVMe
 - 2x2TB 3.5" Drive
 - RTX 3060 8GB VRAM
-
-### [Home Assistant](https://www.home-assistant.io/yellow/)
-
-- Compute Module 4
-- 4GB Ram
 
 ### [Tripplite UPS](https://a.co/d/gjzwQbd)
 

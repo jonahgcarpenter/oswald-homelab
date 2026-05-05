@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/Pi--hole-96060C?style=for-the-badge&logo=pi-hole&logoColor=white" alt="Pi-hole"/>
   <img src="https://img.shields.io/badge/Home Assistant-41BDF5?style=for-the-badge&logo=homeassistant&logoColor=white" alt="Home Assistant"/>
   <img src="https://img.shields.io/badge/TrueNAS-0095D5?style=for-the-badge&logo=truenas&logoColor=white" alt="TrueNAS"/>
-  <img src="https://img.shields.io/badge/Minecraft-59A653?style=for-the-badge&logoColor=white" alt="Minecraft"/>
+  <img src="https://img.shields.io/badge/Pterodactyl-1040D3?style=for-the-badge&logo=pterodactyl&logoColor=white" alt="Pterodactyl"/>
   <img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white" alt="Ollama"/>
   <img src="https://img.shields.io/badge/Longhorn-4A154B?style=for-the-badge&logoColor=white" alt="Longhorn"/>
   <img src="https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana"/>

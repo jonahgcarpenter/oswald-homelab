@@ -70,6 +70,7 @@
 
 - Compute Module 4
 - 4GB Ram
+- 32GB eMMC
 
 ### [Mac Mini](https://support.apple.com/en-us/111912)
 

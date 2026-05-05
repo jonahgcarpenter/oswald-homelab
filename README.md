@@ -71,7 +71,7 @@
 - Compute Module 4
 - 4GB Ram
 
-### [Mac Mini](https://www.home-assistant.io/yellow/)
+### [Mac Mini](https://support.apple.com/en-us/111912)
 
 - Intel i3-8100B 4C/4T 3.6GHz
 - 8GB Ram

@@ -59,7 +59,7 @@ data:
     - Networking:
         - Unify:
             icon: ubiquiti.png
-            href: https://unify.home.jonahsserver.com/
+            href: https://unifi.home.jonahsserver.com/
         - Hubble:
             icon: cilium.png
             href: https://hubble.home.jonahsserver.com/

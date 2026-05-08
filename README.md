@@ -1,39 +1,8 @@
 # Project Oswald (aka Homelab)
 
 <p align="center">
-  <img alt="Server Rack" src="./misc/pictures/rack.jpeg" width="60%">
+  <img alt="Server Rack" src="./misc/pictures/homelab.jpeg" width="100%">
 </p>
-
----
-
-<p align="left">
-  <img src="https://img.shields.io/badge/Proxmox-E57000?style=for-the-badge&logo=proxmox&logoColor=white" alt="Proxmox"/>
-  <img src="https://img.shields.io/badge/Talos-525ddc?style=for-the-badge&logo=talos&logoColor=white" alt="Talos"/>
-  <img src="https://img.shields.io/badge/Pi--hole-96060C?style=for-the-badge&logo=pi-hole&logoColor=white" alt="Pi-hole"/>
-  <img src="https://img.shields.io/badge/Home Assistant-41BDF5?style=for-the-badge&logo=homeassistant&logoColor=white" alt="Home Assistant"/>
-  <img src="https://img.shields.io/badge/TrueNAS-0095D5?style=for-the-badge&logo=truenas&logoColor=white" alt="TrueNAS"/>
-  <img src="https://img.shields.io/badge/UniFi-0193D7?style=for-the-badge&logo=ubiquiti&logoColor=white" alt="UniFi"/>
-  <img src="https://img.shields.io/badge/Portainer-13BEF9?style=for-the-badge&logo=portainer&logoColor=white" alt="Portainer"/>
-  <img src="https://img.shields.io/badge/Minecraft-59A653?style=for-the-badge&logoColor=white" alt="Minecraft"/>
-  <img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white" alt="Ollama"/>
-  <img src="https://img.shields.io/badge/Longhorn-4A154B?style=for-the-badge&logoColor=white" alt="Longhorn"/>
-  <img src="https://img.shields.io/badge/Nginx Proxy Manager-F15833?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx Proxy Manager"/>
-  <img src="https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana"/>
-  <img src="https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white" alt="Prometheus"/>
-  <img src="https://img.shields.io/badge/Vaultwarden-175DDC?style=for-the-badge&logo=vaultwarden&logoColor=white" alt="Vaultwarden"/>
-  <img src="https://img.shields.io/badge/Traefik-24A1C1?style=for-the-badge&logo=traefikproxy&logoColor=white" alt="Traefik"/>
-  <img src="https://img.shields.io/badge/Flux--CD-44A1C3?style=for-the-badge&logo=flux&logoColor=white" alt="FluxCD"/>
-  <img src="https://img.shields.io/badge/Frigate-000000?style=for-the-badge&logo=frigate&logoColor=white" alt="Frigate"/>
-  <img src="https://img.shields.io/badge/Cert--Manager-175DDC?style=for-the-badge&logoColor=white" alt="Cert-Manager"/>
-  <img src="https://img.shields.io/badge/Terraform-844FBA?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform"/>
-  <img src="https://img.shields.io/badge/Sealed Secrets-0D3ECC?style=for-the-badge&logoColor=white" alt="Sealed Secrets"/>
-  <img src="https://img.shields.io/badge/WireGuard-88171A?style=for-the-badge&logo=wireguard&logoColor=white" alt="WireGuard"/>
-  <img src="https://img.shields.io/badge/Loki-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Loki"/>
-  <img src="https://img.shields.io/badge/Piper--TTS-304FFE?style=for-the-badge&logoColor=white" alt="Piper-TTS"/>
-  <img src="https://img.shields.io/badge/Whisper--STT-74AA9C?style=for-the-badge&logo=openai&logoColor=white" alt="Whisper-STT"/>
-</p>
-
----
 
 ## Todo
 
@@ -46,6 +15,10 @@
 ### [2x U7 Lite](https://store.ui.com/us/en/category/all-wifi/products/u7-lite)
 
 ### [UDM-SE](https://store.ui.com/us/en/category/all-cloud-gateways/products/udm-se)
+
+<p align="left">
+  <img src="https://img.shields.io/badge/WireGuard-88171A?style=for-the-badge&logo=wireguard&logoColor=white" alt="WireGuard"/>
+</p>
 
 - 2 GbE PoE+
 - 6 GbE PoE
@@ -61,23 +34,72 @@
 
 ### [Talos Cluster](https://www.gmktec.com/products/amd-ryzen-7-5825u-mini-pc-nucbox-m5-plus?srsltid=AfmBOorNrOPnRo3cqmPHBq14s82hdWG4dPwe6ntEimRl0J_gWKyXjpC3)
 
+<p align="left">
+  <img src="https://img.shields.io/badge/Talos-525ddc?style=for-the-badge&logo=talos&logoColor=white" alt="Talos"/>
+  <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes"/>
+  <img src="https://img.shields.io/badge/Pi--hole-96060C?style=for-the-badge&logo=pi-hole&logoColor=white" alt="Pi-hole"/>
+  <img src="https://img.shields.io/badge/Longhorn-4A154B?style=for-the-badge&logoColor=white" alt="Longhorn"/>
+  <img src="https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana"/>
+  <img src="https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white" alt="Prometheus"/>
+  <img src="https://img.shields.io/badge/Vaultwarden-175DDC?style=for-the-badge&logo=vaultwarden&logoColor=white" alt="Vaultwarden"/>
+  <img src="https://img.shields.io/badge/Traefik-24A1C1?style=for-the-badge&logo=traefikproxy&logoColor=white" alt="Traefik"/>
+  <img src="https://img.shields.io/badge/Cert--Manager-175DDC?style=for-the-badge&logoColor=white" alt="Cert-Manager"/>
+  <img src="https://img.shields.io/badge/Sealed Secrets-0D3ECC?style=for-the-badge&logoColor=white" alt="Sealed Secrets"/>
+  <img src="https://img.shields.io/badge/Cilium-1F59A3?style=for-the-badge&logo=cilium&logoColor=white" alt="Cilium"/>
+  <img src="https://img.shields.io/badge/Loki-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Loki"/>
+  <img src="https://img.shields.io/badge/Flux--CD-2B61D6?style=for-the-badge&logo=flux&logoColor=white" alt="Flux CD"/>
+  <img src="https://img.shields.io/badge/Homepage-111111?style=for-the-badge&logo=homepage&logoColor=white" alt="Homepage"/>
+  <img src="https://img.shields.io/badge/Piper--TTS-304FFE?style=for-the-badge&logoColor=white" alt="Piper-TTS"/>
+  <img src="https://img.shields.io/badge/Whisper--STT-74AA9C?style=for-the-badge&logo=openai&logoColor=white" alt="Whisper-STT"/>
+  <img src="https://img.shields.io/badge/Hubble-1F59A3?style=for-the-badge&logo=cilium&logoColor=white" alt="Hubble"/>
+  <img src="https://img.shields.io/badge/Cloudflare%20Tunnel-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare Tunnel"/>
+</p>
+
 - Ryzen 7 5825U 8C/16T 4.5GHz
 - 2x8GB 3200MHz DDR4
 - 500GB NVMe
 - Dual 2.5GB RJ45
 
+### [Home Assistant](https://www.home-assistant.io/yellow/)
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Home Assistant-41BDF5?style=for-the-badge&logo=homeassistant&logoColor=white" alt="Home Assistant"/>
+  <img src="https://img.shields.io/badge/Homebridge-492F5C?style=for-the-badge&logo=homebridge&logoColor=white" alt="Homebridge"/>
+  <img src="https://img.shields.io/badge/Cloudflare%20Tunnel-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare Tunnel"/>
+  <img src="https://img.shields.io/badge/MQTT-660066?style=for-the-badge&logo=mqtt&logoColor=white" alt="MQTT"/>
+  <img src="https://img.shields.io/badge/NUT%20Server-333333?style=for-the-badge&logoColor=white" alt="NUT Server"/>
+</p>
+
+- Compute Module 4
+- 4GB Ram
+- 32GB eMMC
+
+### [Mac Mini](https://support.apple.com/en-us/111912)
+
+<p align="left">
+  <img src="https://img.shields.io/badge/BlueBubbles-007AFF?style=for-the-badge&logo=apple&logoColor=white" alt="BlueBubbles"/>
+</p>
+
+- Intel i3-8100B 4C/4T 3.6GHz
+- 8GB Ram
+- 128GB SSD
+
 ### [PVE 0](https://pcpartpicker.com/user/HeyItsJonah/saved/KfvZzy)
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Proxmox-E57000?style=for-the-badge&logo=proxmox&logoColor=white" alt="Proxmox"/>
+  <img src="https://img.shields.io/badge/TrueNAS-0095D5?style=for-the-badge&logo=truenas&logoColor=white" alt="TrueNAS"/>
+  <img src="https://img.shields.io/badge/Pterodactyl-1040D3?style=for-the-badge&logo=pterodactyl&logoColor=white" alt="Pterodactyl"/>
+  <img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white" alt="Ollama"/>
+  <img src="https://img.shields.io/badge/Frigate-000000?style=for-the-badge&logo=frigate&logoColor=white" alt="Frigate"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+</p>
 
 - Ryzen 5 3600 6C/12T 3.6GHz
 - 4x16GB 3200MHz DDR4
 - 500GB NVMe
 - 2x2TB 3.5" Drive
 - RTX 3060 8GB VRAM
-
-### [Home Assistant](https://www.home-assistant.io/yellow/)
-
-- Compute Module 4
-- 4GB Ram
 
 ### [Tripplite UPS](https://a.co/d/gjzwQbd)
 

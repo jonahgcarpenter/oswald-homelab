@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - ./pve-0
-  - ./unify
+  - ./unifi
   - ./truenas
   - ./homebridge
   - ./pterodactyl

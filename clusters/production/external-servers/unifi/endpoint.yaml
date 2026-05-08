@@ -1,9 +1,9 @@
 apiVersion: discovery.k8s.io/v1
 kind: EndpointSlice
 metadata:
-  name: unify-slice
+  name: unifi-slice
   labels:
-    kubernetes.io/service-name: unify
+    kubernetes.io/service-name: unifi
 addressType: IPv4
 ports:
   - name: https

@@ -40,9 +40,11 @@ spec:
       prometheusSpec:
         serviceMonitorNamespaceSelector: {}
         serviceMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelector: {}
 
         podMonitorNamespaceSelector: {}
         podMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelector: {}
 
         retention: 7d
         retentionSize: "80GB"

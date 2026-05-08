@@ -151,7 +151,7 @@ spec:
       # -- Labels for the web interface service
       extraLabels: {}
 
-    virtualHost: pi.hole
+    virtualHost: pihole.home.jonahsserver.com
 
     # -- Configuration for the Ingress
     ingress:
@@ -276,6 +276,7 @@ spec:
     # -- extraEnvironmentVars is a list of extra enviroment variables to set for pihole to use. You can use either scalars or project cm, secrets or pod fields via valueFrom
     extraEnvVars:
       TZ: America/Chicago
+      VIRTUAL_HOST: pihole.home.jonahsserver.com
       # Project a variable
       # SOME_VAR:
       #   valueFrom:

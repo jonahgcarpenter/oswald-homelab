@@ -12,3 +12,6 @@ spec:
         - name: pihole-web
           namespace: pihole
           port: 80
+          sticky:
+            cookie:
+              name: pihole_session

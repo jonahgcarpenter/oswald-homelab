@@ -5,6 +5,5 @@ resources:
   - namespace.yaml
   - helm-repo.yaml
   - sealed-ui-password.yaml
-  - volume.yaml
   - release.yaml
   - ingress.yaml

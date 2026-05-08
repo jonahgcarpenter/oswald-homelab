@@ -69,6 +69,19 @@ spec:
           - job_name: "node-exporter" # MAC
             static_configs:
               - targets: ["192.168.4.206:9100"]
+          - job_name: "pihole-exporter"
+            kubernetes_sd_configs:
+              - role: pod
+                namespaces:
+                  names:
+                    - pihole
+            relabel_configs:
+              - source_labels: [__meta_kubernetes_pod_container_name]
+                action: keep
+                regex: pihole-exporter
+              - action: replace
+                replacement: 9617
+                target_label: __meta_kubernetes_pod_annotation_prometheus_io_port
           - job_name: "unpoller"
             static_configs:
               - targets: ["unpoller.monitoring.svc.cluster.local:9130"]

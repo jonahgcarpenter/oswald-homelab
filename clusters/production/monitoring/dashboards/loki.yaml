@@ -119,7 +119,7 @@ data:
                 "type": "loki",
                 "uid": "P8E80F9AEF21F6940"
               },
-              "expr": "sum(count_over_time({namespace=~\"$namespace\", app=~\"$workload\", pod=~\"$pod\"} |~ \"$search\"[$__interval]))",
+              "expr": "sum(count_over_time({namespace=~\"$namespace\", pod=~\"$pod\"} |~ \"$search\"[$__interval]))",
               "refId": "A"
             }
           ],
@@ -152,7 +152,7 @@ data:
             "showControls": false,
             "showLabels": false,
             "showTime": true,
-            "sortOrder": "Descending",
+            "sortOrder": "Ascending",
             "unwrappedColumns": false,
             "wrapLogMessage": true
           },
@@ -163,7 +163,7 @@ data:
                 "type": "loki",
                 "uid": "P8E80F9AEF21F6940"
               },
-              "expr": "{namespace=~\"$namespace\", app=~\"$workload\", pod=~\"$pod\"} |~ \"$search\" | line_format \"\\033[36m[{{.pod}}]\\033[0m {{__line__}}\"",
+              "expr": "{namespace=~\"$namespace\", pod=~\"$pod\"} |~ \"$search\" | line_format \"\\033[36m[{{.pod}}]\\033[0m {{__line__}}\"",
               "refId": "A"
             }
           ],
@@ -209,28 +209,6 @@ data:
           {
             "allValue": ".*",
             "current": {
-              "text": "All",
-              "value": "$__all"
-            },
-            "datasource": {
-              "type": "loki",
-              "uid": "P8E80F9AEF21F6940"
-            },
-            "definition": "label_values({namespace=~\"$namespace\"}, app)",
-            "includeAll": true,
-            "multi": true,
-            "name": "workload",
-            "options": [],
-            "query": "label_values({namespace=~\"$namespace\"}, app)",
-            "refresh": 1,
-            "regex": "",
-            "regexApplyTo": "value",
-            "sort": 1,
-            "type": "query"
-          },
-          {
-            "allValue": ".*",
-            "current": {
               "text": [
                 "source-controller-5bd498f4d5-9pb42"
               ],
@@ -242,12 +220,12 @@ data:
               "type": "loki",
               "uid": "P8E80F9AEF21F6940"
             },
-            "definition": "label_values({namespace=~\"$namespace\", app=~\"$workload\"}, pod)",
+            "definition": "label_values({namespace=~\"$namespace\"}, pod)",
             "includeAll": true,
             "multi": true,
             "name": "pod",
             "options": [],
-            "query": "label_values({namespace=~\"$namespace\", app=~\"$workload\"}, pod)",
+            "query": "label_values({namespace=~\"$namespace\"}, pod)",
             "refresh": 1,
             "regex": "",
             "regexApplyTo": "value",

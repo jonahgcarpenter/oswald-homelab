@@ -418,9 +418,9 @@ spec:
       #   - cname=cname record,dns record
 
     # -- list of adlists to import during initial start of the container
-    adlists: {}
-      # If you want to provide blocklists, add them here.
-      - https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/hosts/pro.txt
+    # If you want to provide blocklists, add them here.
+    adlists:
+      - 	https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/hosts/pro.txt
 
     # -- list of whitelisted domains to import during initial start of the container
     whitelist: {}

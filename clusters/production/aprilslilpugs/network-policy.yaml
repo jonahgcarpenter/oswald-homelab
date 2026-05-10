@@ -18,8 +18,8 @@ spec:
               protocol: TCP
 
     # Allow specific local IP to reach the RTMP server
-    - fromCIDR:
-        - "192.168.4.42/32"
+    - fromEntities:
+        - world
       toPorts:
         - ports:
             - port: "1935"

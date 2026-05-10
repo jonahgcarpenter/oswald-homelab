@@ -17,10 +17,10 @@ spec:
             - port: "4000"
               protocol: TCP
 
-    # Allow a specific list of IPs/Subnets to reach the RTMP server
-    - fromCIDR:
-        - "192.168.4.42/32"
-        - "192.168.6.4/32"
+    # Allow world to reach the RTMP server
+    # BUG: Cant get this to work with a specific LAN IP
+    - fromEntities:
+        - world
       toPorts:
         - ports:
             - port: "1935"

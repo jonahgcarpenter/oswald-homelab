@@ -17,6 +17,14 @@ spec:
             - port: "4000"
               protocol: TCP
 
+    # Allow specific local IP to reach the RTMP server
+    - fromCIDR:
+        - "192.168.4.42/32"
+      toPorts:
+        - ports:
+            - port: "1935"
+              protocol: TCP
+
   egress:
     # Allow DNS resolution
     - toEndpoints:

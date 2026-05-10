@@ -24,7 +24,7 @@ spec:
 
       containers:
         - name: alp-web
-          image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.0.6
+          image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.1.0
           ports:
             - containerPort: 4000
 

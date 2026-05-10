@@ -62,7 +62,7 @@ spec:
         - matchName: "has.carpentersserver.com"
       toPorts:
         - ports:
-            - port: "8123"
+            - port: "443"
               protocol: TCP
 ---
 apiVersion: "cilium.io/v2"

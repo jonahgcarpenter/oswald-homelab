@@ -27,6 +27,7 @@ spec:
           image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.1.0
           ports:
             - containerPort: 4000
+            - containerPort: 1935
 
           # Enforcing Principle of Least Privilege
           securityContext:

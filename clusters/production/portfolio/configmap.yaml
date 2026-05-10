@@ -78,7 +78,7 @@ data:
 
     **April's Lil Pugs** | TypeScript, Golang
 
-    Full-stack website developed to manage dog breeding operations, puppy galleries, and customer interactions. Built with a React frontend and a Go backend backed by a PostgreSQL database, the platform is mostly a boring CRUD app. Mainly, it features a self hosted live camera feed of the play pen using zero cloud dependencies.
+    Built a full-stack dog breeding operations platform with React, Go, and PostgreSQL, featuring a custom self-hosted RTMP/RTMPS live streaming server that delivers a zero-cloud live play pen camera alongside puppy galleries, customer interactions, and waitlist workflows.
   calc-translation.md: |
     # CALC-Translation [repo](https://github.com/jcarpenter-uam/calc-translation)
 
@@ -198,28 +198,33 @@ data:
 
     ## Overview
 
-    At its core, a dog breeder's website is a standard CRUD application: manage litters, update puppy statuses, and handle a waitlist. But instead of spinning up a generic WordPress template or paying for a bloated SaaS platform for my mom's side business, I custom-engineered a Go and React solution. 
+    April's Lil Pugs is a full-stack web platform built for a dog breeding business to manage litters, puppy listings, galleries, waitlist inquiries, and site administration. Rather than using a generic site builder or breeder-specific SaaS product, I built a custom React and Go application tailored to the actual operational needs of the business.
 
-    While the basic data operations are straightforward, I focused the heavy lifting on the two most demanding aspects of a breeder's site: managing high-volume image compression and delivering a real-time, self-hosted video stream without burning my bandwidth or relying on third parties.
+    Although much of the platform is standard CRUD functionality, the project became more interesting in two areas that matter most for this type of site: handling large volumes of uploaded images efficiently and delivering a fully self-hosted live puppy camera feed with no cloud streaming dependencies.
 
     ## Architecture
 
-    - **Backend:** Pure Golang, Local Storage
-    - **Frontend:** Vite React with TailwindCSS
-    - **Streaming Pipeline:** NGINX RTMP/HLS, FFmpeg, Cheap Eufy RTSP camera
+    - **Frontend:** React, TypeScript, Vite, Tailwind CSS
+    - **Backend:** Go, Gin, PostgreSQL
+    - **Storage:** Local file storage for uploads and generated media
+    - **Streaming Pipeline:** Custom Go RTMP/RTMPS ingest server, FFmpeg, Cheap Eufy RTSP camera
 
-    ## High-Quality Image Compression
+    ## Image Handling
 
-    Breeder sites are inherently image-heavy. Uploading massive, raw smartphone pictures directly would instantly nuke the page load times and chew through storage. Instead of relying on a third-party CDN, the Go backend intercepts every image upload, stripping the EXIF data and executing high-quality, aggressive compression before pushing the assets to my local storage. It keeps the visual quality high enough for prospective buyers to obsess over, while keeping the actual payload tiny and the site fast.
+    Breeder sites are inherently media-heavy, and raw phone photos are far too large to serve directly without hurting performance and storage costs. The backend processes uploads before storing them, reducing image size and stripping unnecessary metadata so galleries stay fast while preserving enough quality for detailed puppy photos.
 
-    ## The Fully Local Live Stream
+    This keeps the site lightweight without introducing third-party image hosting or CDN dependencies, which was an intentional design choice for simplicity and control.
 
-    Static pictures only go so far when people are picking out a puppy. Originally, I piped the camera feed through YouTube, but their silent stream limitations meant they kept taking the stream down after 24-48 hours. Manually restarting the stream and updating URLs on Facebook got annoying incredibly fast, so I engineered a fully local pipeline.
+    ## Self-Hosted Live Streaming
 
-    It starts with an RTSP camera at my parents' house (hooked into their home server). To get the video to my rack, a dedicated VM connects via a WireGuard tunnel and runs an FFmpeg service, encoding the RTSP feed and shoving it to an RTMP server. *(Yes, dedicating a full VM to this is bad practice. I originally thought I'd need OBS. I was wrong, but that is a future-me problem).*
+    The standout feature of the platform is a fully self-hosted puppy camera feed. Instead of embedding YouTube or relying on an external streaming service, I built live streaming directly into the application stack using Go.
 
-    On my end, the server ingests the feed and converts it to HLS for the frontend. Currently, this relies on an NGINX RTMP module, but before the next litter drops, the plan is to rewrite the RTMP ingestion directly into the Go backend. By integrating key-exchange authentication, I can ensure they are the sole ingest source and drop the VPN step entirely for a much cleaner setup.
+    The server accepts RTMP and RTMPS ingest, manages stream state, and publishes HLS playback for the frontend. That means the live camera operates entirely on infrastructure I control, with no cloud video vendor, no platform moderation issues, and no dependency on third-party uptime or policy changes.
 
-    Naturally, a pipeline with this many moving parts drops from time to time. To keep me from doing 2 AM tech support, the Go backend continuously polls the stream status. If it returns a 404, it hits the Proxmox API to automatically restart the ingestion VM. Because most drops are just temporary hiccups, this almost always fixes it. If it doesn't, it fires off an alert requiring human intervention. 
+    For the business, the live stream became more than a novelty feature. It gives prospective buyers a real-time view into the play pen, increases trust, and creates a stronger connection to the puppies long before pickup day.
 
-    This custom setup has drastically increased uptime, and the 24/7 puppy cam has become the main attraction to her business—even for people who aren't buying dogs.
+    ## Why It Matters
+
+    At a glance, this is a niche business website. In practice, it is a production full-stack system that combines administrative workflows, media processing, and custom live video infrastructure in a single application.
+
+    The CRUD side keeps the business running day to day. The custom streaming stack is what makes the project technically distinctive.

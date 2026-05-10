@@ -22,7 +22,6 @@ spec:
     app: alp-web
   type: LoadBalancer
   loadBalancerIP: "192.168.4.236"
-  externalTrafficPolicy: Local
   ports:
     - protocol: TCP
       port: 1935

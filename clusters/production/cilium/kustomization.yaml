@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: cilium
 resources:
   - namespace.yaml
+  - gateway-api-crds.yaml
   - helm-repo.yaml
   - release.yaml
   - pool.yaml

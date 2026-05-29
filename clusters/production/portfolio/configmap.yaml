@@ -47,10 +47,10 @@ data:
     Software Engineer | April 2026 - Present
     Jr Web/ERP Developer | April 2025 – April 2026
 
-    - **Sole Engineering Owner:** Direct all technical strategy, architecture, and development for the organization. 
-    - Spearheaded the ground-up rewrite of a legacy ERP into a custom Go/React platform, engineering native integrations with 3rd-party APIs to guarantee strict backward compatibility.
-    - Built CALC-Translation, an ultra-low latency (<1000ms) real-time audio processing pipeline integrating Zoom RTMS and Soniox. Actively porting the backend from Python to TypeScript (Bun) to maximize concurrency.
-    - Administered all company infrastructure from the metal up; established a dedicated Kubernetes (K8s) staging environment on Proxmox, fully automated and provisioned via Terraform and Ansible.
+    - **Technical Direction & Support:** Direct all organizational technical strategy and architecture, serving as the primary escalation point for all software, hardware, network, and as needed IT support. 
+    - **ERP Architecture (Go/React):** Spearheaded the ground-up rewrite of a legacy ERP into a custom Go/React platform, engineering native 3rd-party API integrations to guarantee backward compatibility.
+    - **High-Performance Audio Pipeline:** Built CALC-Translation, a sub-1000ms real-time audio pipeline integrating Zoom RTMS and Soniox for live meeting transcription and translation.
+    - **Infrastructure Management:** Administer metal-up infrastructure, deploying bare-metal ZFS storage (flashed IT-mode H810 HBAs) and automated Proxmox Kubernetes staging environments via Terraform/Ansible.
 
     ## Technical Skills
 

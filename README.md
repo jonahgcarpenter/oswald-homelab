@@ -92,7 +92,6 @@
   <img src="https://img.shields.io/badge/Pterodactyl-1040D3?style=for-the-badge&logo=pterodactyl&logoColor=white" alt="Pterodactyl"/>
   <img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white" alt="Ollama"/>
   <img src="https://img.shields.io/badge/Frigate-000000?style=for-the-badge&logo=frigate&logoColor=white" alt="Frigate"/>
-  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
 </p>
 
 - Ryzen 5 3600 6C/12T 3.6GHz

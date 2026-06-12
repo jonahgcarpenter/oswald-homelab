@@ -24,7 +24,7 @@ spec:
 
       containers:
         - name: alp-web
-          image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.2.0
+          image: ghcr.io/jonahgcarpenter/aprilslilpugs/aprilslilpugs:v2.2.1
           ports:
             - containerPort: 4000
             - containerPort: 1935
@@ -54,11 +54,11 @@ spec:
 
           # Mounting the storage directory
           volumeMounts:
-            - name: storage-volume
-              mountPath: /app/storage
+            - name: data-volume
+              mountPath: /app/data
 
       volumes:
-        - name: storage-volume
+        - name: data-volume
           persistentVolumeClaim:
             claimName: aprilslilpugs-pvc
 ---

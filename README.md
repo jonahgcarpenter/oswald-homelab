@@ -98,7 +98,7 @@
 - 4x16GB 3200MHz DDR4
 - 500GB NVMe
 - 2x2TB 3.5" Drive
-- RTX 3060 8GB VRAM
+- Intel Arc Pro B70 32GB VRAM
 
 ### [Tripplite UPS](https://a.co/d/gjzwQbd)
 

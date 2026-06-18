@@ -1,0 +1,21 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: bifrost
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: bifrost
+      sourceRef:
+        kind: HelmRepository
+        name: bifrost
+        namespace: bifrost
+      version: "v1.5.15"
+  values:
+    image:
+      tag: "v1.5.15"
+    bifrost:
+      encryptionKeySecret:
+        name: "bifrost-encryption-key"
+        key: "encryption-key"

@@ -1,0 +1,14 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: bifrost-encryption-key
+  namespace: bifrost
+spec:
+  encryptedData:
+    encryption-key: AgCUeuH6c3clixfDyqA9pPVvbU7C7F90FcUSf4B7FxzW6IkLImwAq4j4fwBUR4uJn/FRtc/OAD2kn6DR+gsgDZarKCgy24MUuqueolQfNYigY2580jHBaweNM2YNwtkAU6PRHZYa0N8FfufFoQ9QxrHLC7UQJjbKQhmhS2kmohscHrXTeYdczzQKWHTG8D/dUD8MxYtEF0HN/bmdLsU/geK2j4z/LTNQ7G1G7cnjEThX2VlWoD+1y+KeIx9Kc+c/XQ6BfHEhN2Bl3WOn8e4MN9E3AtLcrlEG6T63hyhIuHzUfGbCRgOI2JUpyNtwAwhpX8KsRvmjvnvFSSmbJkaIuXbNkpaErbtSyJQBN5JqbHLjLsERWtEdeSVpp3xAALLYTu6aWkknBrYcBCVn4tgjSEmDW36srZU12KG+7FivulNeU98s+rxqZNKpBjZSRAy47tMcoae29owDokxjXba96C9FItadYr7ZY420Rhj6H0QmIDy/wZvr0YkoQr5pUJilt6pf2kHI+j6Pd5omg+s4ipzeNTG5i+eM6xZFQVcX85URlKpLWjsiMZScHnvCeaBKzk4k5w1OTuDwSBzmWffJVynMa6mB0SBB7EyIXOYaS1X9d3hYIF0RndOz6J4jIlnZGuTiNRwpyh1HbocdTFDihaZY7nlmwBg9BHO6dRZJdzfkWSmEEKn3RiXQ7VvC0aN+DUvLvEBnRwA0eUruCKLoz+7CHrreAvwht3ttI8WXhOZmlO1a6Axd52MPekyqcQ==
+  template:
+    metadata:
+      name: bifrost-encryption-key
+      namespace: bifrost
+    type: Opaque

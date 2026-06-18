@@ -15,7 +15,15 @@ spec:
   values:
     image:
       tag: "v1.5.15"
+
     bifrost:
       encryptionKeySecret:
         name: "bifrost-encryption-key"
         key: "encryption-key"
+
+    storage:
+      mode: sqlite
+      persistence:
+        enabled: true
+        size: 20Gi
+        storageClass: "longhorn"

@@ -30,13 +30,6 @@ spec:
               ollama_key_config:
                 url: "http://192.168.4.106:11434"
 
-      plugins:
-        serviceMonitor:
-          enabled: true
-          interval: 30s
-          scrapeTimeout: 10s
-          namespace: monitoring
-
     storage:
       mode: sqlite
       persistence:

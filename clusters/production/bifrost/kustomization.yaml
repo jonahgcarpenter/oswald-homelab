@@ -7,3 +7,4 @@ resources:
   - sealed-encyption-key.yaml
   - release.yaml
   - ingress.yaml
+  - service-monitor.yaml

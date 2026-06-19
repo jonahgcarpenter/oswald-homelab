@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: bifrost
+  labels:
+    release: kube-prometheus-stack
+spec:
+  jobLabel: bifrost
+  namespaceSelector:
+    matchNames:
+      - bifrost
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: bifrost
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 30s
+      scrapeTimeout: 10s

@@ -25,5 +25,16 @@ spec:
       mode: sqlite
       persistence:
         enabled: true
-        size: 15Gi
+        size: 10Gi
         storageClass: "longhorn"
+      configStore:
+        enabled: true
+      logsStore:
+        enabled: true
+
+    postgresql:
+      enabled: false
+
+    vectorStore:
+      enabled: false
+      type: none

@@ -26,7 +26,7 @@ spec:
 
       containers:
         - name: oswald-ai
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v2.6.2
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v3.0.0-beta.0
 
           # Enforcing Principle of Least Privilege
           securityContext:
@@ -47,13 +47,10 @@ spec:
           # Mounting the storage directory
           volumeMounts:
             - name: storage-volume
-              mountPath: /home/oswald-ai/config/soul.md
-              subPath: soul.md
-            - name: storage-volume
-              mountPath: /home/oswald-ai/config/accounts
+              mountPath: /home/oswald-ai/data/accounts
               subPath: accounts
             - name: storage-volume
-              mountPath: /home/oswald-ai/config/memory
+              mountPath: /home/oswald-ai/data/memory
               subPath: memory
 
       volumes:

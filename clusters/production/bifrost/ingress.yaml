@@ -1,0 +1,13 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: bifrost-ingress
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`bifrost.home.jonahsserver.com`)
+      kind: Rule
+      services:
+        - name: bifrost
+          port: 8080

@@ -6,3 +6,4 @@ resources:
   - helm-repo.yaml
   - sealed-encyption-key.yaml
   - release.yaml
+  - ingress.yaml

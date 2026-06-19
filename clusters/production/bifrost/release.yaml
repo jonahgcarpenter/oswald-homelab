@@ -21,6 +21,16 @@ spec:
         name: "bifrost-encryption-key"
         key: "encryption-key"
 
+      plugins:
+        telemetry:
+          enabled: true
+          config:
+            serviceMonitor:
+              enabled: true
+              interval: 30s
+              scrapeTimeout: 10s
+              namespace: monitoring
+
     storage:
       mode: sqlite
       persistence:
@@ -38,9 +48,3 @@ spec:
     vectorStore:
       enabled: false
       type: none
-
-    serviceMonitor:
-      enabled: true
-      interval: 30s
-      scrapeTimeout: 10s
-      namespace: monitoring

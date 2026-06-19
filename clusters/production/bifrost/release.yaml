@@ -13,6 +13,9 @@ spec:
         namespace: bifrost
       version: "2.1.24"
   values:
+    image:
+      tag: "v1.5.15"
+
     bifrost:
       encryptionKeySecret:
         name: "bifrost-encryption-key"

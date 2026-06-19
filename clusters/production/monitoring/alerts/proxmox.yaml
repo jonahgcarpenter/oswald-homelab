@@ -8,13 +8,13 @@ spec:
   groups:
     - name: proxmox.rules
       rules:
-        # Notifies me if a proxmox lxc/vm is down for >5 mins
+        # Notifies me if a whitelisted proxmox lxc/vm is down for >5 mins
         - alert: ProxmoxGuestDown
           expr: |
             (
               pve_up{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter"}
               * on (id, instance) group_left(name, type)
-              pve_guest_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter", template!="1"}
+              pve_guest_info{instance="exporter-proxmox.monitoring.svc.cluster.local:9221", job="proxmox-ve-exporter", template!="1", name=~"ollama|frigate"}
             ) == 0
           for: 5m
           labels:

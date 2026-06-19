@@ -20,6 +20,15 @@ spec:
       encryptionKeySecret:
         name: "bifrost-encryption-key"
         key: "encryption-key"
+      providers:
+        ollama:
+          keys:
+            - name: "Ollama"
+              value: ""
+              weight: 1
+              models: ["*"]
+              ollama_key_config:
+                url: "http://192.168.4.106:11434"
 
     serviceMonitor:
       enabled: true

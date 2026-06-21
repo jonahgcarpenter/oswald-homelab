@@ -86,6 +86,11 @@ data:
               key: {{HOMEPAGE_VAR_PTERODACTYL_API_KEY}}
               fields: ["nodes", "servers"]
 
+    - LLMs:
+        - Bifrost:
+            icon: bifrost.png
+            href: https://bifrost.home.jonahsserver.com/
+
     - Security:
         - Vaultwarden:
             icon: vaultwarden.png

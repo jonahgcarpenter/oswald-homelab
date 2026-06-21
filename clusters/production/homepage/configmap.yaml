@@ -15,20 +15,7 @@ data:
         url: http://longhorn-frontend.longhorn-system
   custom.css: ""
   custom.js: ""
-  bookmarks.yaml: |
-    - Dev & Ops:
-        - Github:
-            - abbr: GH
-              href: https://github.com/
-              icon: github.png
-        - Docker Hub:
-            - abbr: DH
-              href: https://hub.docker.com/
-              icon: docker.png
-        - Helm Charts:
-            - abbr: HC
-              href: https://artifacthub.io/
-              icon: helm.png
+  bookmarks.yaml: ""
   services.yaml: |
     - IoT & Smarthome:
         - Home Assistant:

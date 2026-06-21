@@ -123,4 +123,7 @@ data:
           - node1
           - node2
           - node3
+    - search:
+        provider: google
+        target: _blank
   docker.yaml: ""

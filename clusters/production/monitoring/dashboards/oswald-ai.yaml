@@ -677,12 +677,12 @@ data:
               },
               "direction": "backward",
               "editorMode": "code",
-              "expr": "{namespace=\"oswald-ai\"}",
+              "expr": "{namespace=\"oswald-ai\", service_name=\"oswald-ai\"}",
               "queryType": "range",
               "refId": "A"
             }
           ],
-          "title": "Raw Namespace Logs",
+          "title": "Pod Logs",
           "type": "logs"
         }
       ],

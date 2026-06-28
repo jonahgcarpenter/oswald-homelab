@@ -2054,6 +2054,19 @@ data:
               "legendFormat": "NVMe Drive",
               "range": true,
               "refId": "C"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "max(node_hwmon_temp_celsius{job=\"proxmox-exporter\", chip=\"0000:08:01_0_0000:09:00_0\"})",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "GPU",
+              "range": true,
+              "refId": "C"
             }
           ],
           "title": "Temperatures",

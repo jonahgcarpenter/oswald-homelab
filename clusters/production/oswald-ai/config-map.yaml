@@ -3,6 +3,7 @@ kind: ConfigMap
 metadata:
   name: oswald-ai-config
 data:
+  LOG_LEVEL: "debug"
   SEARXNG_URL: "http://searxng:8080"
   LLM_GATEWAY_URL: "http://bifrost.bifrost.svc.cluster.local:8080"
   LLM_GATEWAY_MODEL: "fredrezones55/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive:Q4"

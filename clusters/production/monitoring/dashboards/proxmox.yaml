@@ -2066,7 +2066,7 @@ data:
               "instant": false,
               "legendFormat": "GPU",
               "range": true,
-              "refId": "C"
+              "refId": "D"
             }
           ],
           "title": "Temperatures",

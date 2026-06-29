@@ -2,8 +2,7 @@
 
 # --- Configuration ---
 LOG_FILE="/var/log/smart_test.log"
-EMAIL_RECIPIENT="root@pam"
-PROXMOX_MAILER="/usr/bin/proxmox-mail-forward"
+EMAIL_RECIPIENT="your-email@gmail.com"
 SCRIPT_NAME="SMART_Auto_Test"
 
 # --- Helper Functions ---
@@ -82,10 +81,8 @@ log_message "All tests reached completion time. Gathering results..."
 log_message "Generating and sending email notification to $EMAIL_RECIPIENT..."
 EMAIL_SUBJECT="[$SCRIPT_NAME]: S.M.A.R.T. Tests Completed"
 
-# Group the output block to stream directly into the mailer without using temp files
+# Group the output block to stream directly into mail without using temp files
 {
-    echo "Subject: $EMAIL_SUBJECT"
-    echo ""
     echo "All scheduled S.M.A.R.T. long tests have completed successfully."
     echo "Below are the full diagnostic logs for each tested drive."
     echo ""
@@ -102,7 +99,7 @@ EMAIL_SUBJECT="[$SCRIPT_NAME]: S.M.A.R.T. Tests Completed"
     
     echo "================================================================================"
     echo "See the log file for script execution details: $LOG_FILE"
-} | "$PROXMOX_MAILER" "$EMAIL_RECIPIENT"
+} | mail -s "$EMAIL_SUBJECT" "$EMAIL_RECIPIENT"
 
 if [ $? -eq 0 ]; then
     log_message "Email notification sent successfully."

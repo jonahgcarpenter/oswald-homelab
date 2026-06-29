@@ -10,8 +10,7 @@
 # === Configuration ===
 LOG_FILE="/var/log/disk_wipe.log"
 SCRIPT_NAME="Disk Wipe Utility"
-EMAIL_RECIPIENT="root@pam"
-PROXMOX_MAILER="/usr/bin/proxmox-mail-forward"
+EMAIL_RECIPIENT="your-email@gmail.com"
 
 # === Helper Function for Logging ===
 log_message() {
@@ -28,7 +27,7 @@ log_message "======= Starting $SCRIPT_NAME Script ======="
 # 1. Check if a device was provided as an argument.
 if [ "$#" -ne 1 ]; then
     log_message "CRITICAL ERROR: No device specified. Please provide a device as an argument. Aborting."
-    printf "Subject: %s: CRITICAL FAILURE\n\nConfiguration error: Script was run without specifying a target device." "[$SCRIPT_NAME]" | sudo "$PROXMOX_MAILER" "$EMAIL_RECIPIENT"
+    printf "Configuration error: Script was run without specifying a target device.\n" | mail -s "[$SCRIPT_NAME]: CRITICAL FAILURE" "$EMAIL_RECIPIENT"
     exit 1
 fi
 
@@ -40,7 +39,7 @@ log_message "CONFIG: Target device for wipe is set to $WIPE_DEVICE"
 # 2. Check if the device exists as a block device.
 if [ ! -b "$WIPE_DEVICE" ]; then
     log_message "CRITICAL ERROR: Device $WIPE_DEVICE does not exist or is not a block device. Aborting."
-    printf "Subject: %s: CRITICAL FAILURE\n\nValidation error: The specified device %s could not be found." "[$SCRIPT_NAME]" "$WIPE_DEVICE" | sudo "$PROXMOX_MAILER" "$EMAIL_RECIPIENT"
+    printf "Validation error: The specified device %s could not be found.\n" "$WIPE_DEVICE" | mail -s "[$SCRIPT_NAME]: CRITICAL FAILURE" "$EMAIL_RECIPIENT"
     exit 1
 fi
 
@@ -48,7 +47,7 @@ fi
 if findmnt -n "$WIPE_DEVICE" >/dev/null; then
     MOUNT_INFO=$(findmnt -n -o TARGET --source "$WIPE_DEVICE")
     log_message "CRITICAL ERROR: Device $WIPE_DEVICE or its partitions are currently mounted at: $MOUNT_INFO. Aborting."
-    printf "Subject: %s: CRITICAL FAILURE\n\nSafety error: Attempted to wipe a mounted device (%s)." "[$SCRIPT_NAME]" "$WIPE_DEVICE" | sudo "$PROXMOX_MAILER" "$EMAIL_RECIPIENT"
+    printf "Safety error: Attempted to wipe a mounted device (%s).\n" "$WIPE_DEVICE" | mail -s "[$SCRIPT_NAME]: CRITICAL FAILURE" "$EMAIL_RECIPIENT"
     exit 1
 fi
 
@@ -115,9 +114,9 @@ EMAIL_BODY+="Total Duration: $FORMATTED_DURATION\n\n"
 EMAIL_BODY+="Result: $WIPE_MESSAGE_DETAIL\n\n"
 EMAIL_BODY+="See the log file for full details: $LOG_FILE\n"
 
-# Send the email using the Proxmox mailer
+# Send the email using mail
 log_message "Sending email notification to $EMAIL_RECIPIENT..."
-printf "Subject: %s\n\n%s" "$EMAIL_SUBJECT" "$EMAIL_BODY" | sudo "$PROXMOX_MAILER" "$EMAIL_RECIPIENT"
+printf "%b" "$EMAIL_BODY" | mail -s "$EMAIL_SUBJECT" "$EMAIL_RECIPIENT"
 
 if [ $? -eq 0 ]; then
     log_message "Email notification sent successfully."

@@ -13,8 +13,7 @@ SOURCE_MNT="/mnt/source_clone"
 DEST_MNT="/mnt/dest_clone"
 
 # Email settings
-EMAIL_RECIPIENT="root@pam"
-PROXMOX_MAILER="/usr/bin/proxmox-mail-forward"
+EMAIL_RECIPIENT="your-email@gmail.com"
 
 # Log file for rsync output
 LOG_FILE="/var/log/clone_disk.log"
@@ -92,4 +91,3 @@ echo "---"
 echo "Script finished."
 
 exit 0
-

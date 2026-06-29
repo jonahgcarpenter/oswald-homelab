@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # --- Configuration ---
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 LOG_FILE="/var/log/smart_test.log"
 EMAIL_RECIPIENT="your-email@gmail.com"
 SCRIPT_NAME="SMART_Auto_Test"
+SMARTCTL="/usr/sbin/smartctl"
 
 # --- Helper Functions ---
 log_message() {
@@ -14,6 +16,16 @@ log_message() {
 
 # --- Initialization ---
 log_message "======= $SCRIPT_NAME Script Started ======="
+
+if [[ ! -x "$SMARTCTL" ]]; then
+    SMARTCTL=$(command -v smartctl)
+fi
+
+if [[ -z "$SMARTCTL" ]]; then
+    log_message "ERROR: smartctl was not found. Exiting."
+    exit 1
+fi
+
 declare -A DRIVE_FINISH_TIMES
 MAX_WAIT_TIME=0
 SUCCESSFUL_TESTS=0
@@ -32,14 +44,20 @@ for drive in $DRIVES; do
     drive_name=$(basename "$drive")
     log_message "Starting long test on: $drive_name"
     
-    OUTPUT=$(smartctl -t long "$drive" 2>&1)
+    OUTPUT=$("$SMARTCTL" -t long "$drive" 2>&1)
     
     # Extract the exact completion string
     COMPLETION_STR=$(echo "$OUTPUT" | grep "Test will complete after" | sed 's/Test will complete after //')
 
     if [[ -n "$COMPLETION_STR" ]]; then
         # Convert to Unix timestamp
-        COMPLETION_EPOCH=$(date -d "$COMPLETION_STR" +%s)
+        if ! COMPLETION_EPOCH=$(date -d "$COMPLETION_STR" +%s 2>/dev/null); then
+            log_message " -> Failed to parse completion time for $drive_name: $COMPLETION_STR"
+            log_message " -> smartctl output:"
+            printf '%s\n' "$OUTPUT" | tee -a "$LOG_FILE"
+            continue
+        fi
+
         DRIVE_FINISH_TIMES["$drive"]=$COMPLETION_EPOCH
         ((SUCCESSFUL_TESTS++))
         
@@ -51,6 +69,8 @@ for drive in $DRIVES; do
         fi
     else
         log_message " -> Failed to start test or parse completion time for $drive_name. Skipping."
+        log_message " -> smartctl output:"
+        printf '%s\n' "$OUTPUT" | tee -a "$LOG_FILE"
     fi
 done
 
@@ -92,7 +112,7 @@ EMAIL_SUBJECT="[$SCRIPT_NAME]: S.M.A.R.T. Tests Completed"
         echo "================================================================================"
         echo "RESULTS FOR: $drive_name"
         echo "================================================================================"
-        smartctl -a "$drive"
+        "$SMARTCTL" -a "$drive"
         echo ""
         echo ""
     done

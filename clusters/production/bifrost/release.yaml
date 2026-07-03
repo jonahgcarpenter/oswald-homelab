@@ -14,7 +14,7 @@ spec:
       version: "2.1.25"
   values:
     image:
-      tag: "v1.5.15"
+      tag: "v1.6.2"
 
     bifrost:
       encryptionKeySecret:

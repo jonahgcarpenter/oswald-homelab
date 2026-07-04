@@ -6,7 +6,7 @@ metadata:
   labels:
     app: oswald-ai
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: oswald-ai
   ports:

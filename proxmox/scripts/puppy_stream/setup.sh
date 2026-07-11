@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Puppy Stream Setup
+# Installs dependencies, configures NVIDIA/WireGuard, and creates the stream service.
+
+# Main
 echo "--- Initializing Setup: Installing Dependencies ---"
 apt update && apt install -y \
     build-essential \
@@ -10,6 +14,7 @@ apt update && apt install -y \
 DRIVER_URL="https://us.download.nvidia.com/XFree86/Linux-x86_64/580.159.03/NVIDIA-Linux-x86_64-580.159.03.run"
 DRIVER_FILE="NVIDIA-driver.run"
 
+# Install NVIDIA driver
 echo "--- Checking for existing NVIDIA Drivers ---"
 if command -v nvidia-smi &> /dev/null; then
     echo "NVIDIA Drivers are already installed. Current status:"
@@ -24,18 +29,17 @@ else
     echo "--- Installing NVIDIA Driver (No-Kernel Mode) ---"
     ./"$DRIVER_FILE" --no-kernel-module --ui=none --no-questions --accept-license
     
-    # Cleanup installer to save space
     rm "$DRIVER_FILE"
 fi
 
 echo ""
+
+# Configure WireGuard
 echo "--- Checking WireGuard Status ---"
 
-# Check if the interface is already up
 if ip link show wg0 &> /dev/null; then
     echo "WireGuard interface (wg0) is already active. Skipping setup."
 else
-    # Check if a config exists but isn't active
     if [ -f "/etc/wireguard/wg0.conf" ]; then
         echo "Found existing config at /etc/wireguard/wg0.conf but interface is down."
         echo "Attempting to bring up existing tunnel..."
@@ -54,7 +58,7 @@ else
     systemctl enable wg-quick@wg0
 fi
 
-# --- 4. Generating Stream Execution Script ---
+# Create stream script
 echo "--- Checking for Stream Execution Script ---"
 
 if [ -f "/root/stream.sh" ]; then
@@ -96,6 +100,8 @@ EOF
 fi
 
 echo ""
+
+# Configure stream service
 echo "--- Checking for Stream Service ---"
 
 SERVICE_PATH="/etc/systemd/system/puppy-stream.service"
@@ -138,6 +144,8 @@ EOF
 fi
 
 echo ""
+
+# Report status
 echo "--- Final System Status ---"
 systemctl is-active --quiet puppy-stream.service && echo "Puppy Stream: [ACTIVE]" || echo "Puppy Stream: [FAILED/INACTIVE]"
 echo "Setup complete! Monitor your stream with: journalctl -fu puppy-stream.service"

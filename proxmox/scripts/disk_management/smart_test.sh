@@ -1,16 +1,19 @@
 #!/bin/bash
 
-# --- Configuration ---
+# SMART Auto Test
+# Starts SMART long tests, waits for completion, and emails a summary.
+
+# Configuration
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 LOG_FILE="/var/log/smart_test.log"
 EMAIL_RECIPIENT="your-email@gmail.com"
 SCRIPT_NAME="SMART_Auto_Test"
 SMARTCTL="/usr/sbin/smartctl"
 
-# --- Helper Functions ---
+# Helpers
 log_message() {
     local message="$1"
-    # Print to stdout and append to the single log file
+
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $message" | tee -a "$LOG_FILE"
 }
 
@@ -63,7 +66,7 @@ print_smart_summary() {
     echo "UDMA CRC errors: ${crc_errors:-Unknown}"
 }
 
-# --- Initialization ---
+# Main
 log_message "======= $SCRIPT_NAME Script Started ======="
 
 if [[ ! -x "$SMARTCTL" ]]; then
@@ -79,7 +82,7 @@ declare -A DRIVE_FINISH_TIMES
 MAX_WAIT_TIME=0
 SUCCESSFUL_TESTS=0
 
-# --- Find Drives ---
+# Find drives
 log_message "Scanning /dev/disk/by-id/ for ATA drives..."
 DRIVES=$(find /dev/disk/by-id/ -name "ata-*" ! -name "*-part*")
 
@@ -88,18 +91,16 @@ if [[ -z "$DRIVES" ]]; then
     exit 1
 fi
 
-# --- Start Tests ---
+# Start tests
 for drive in $DRIVES; do
     drive_name=$(basename "$drive")
     log_message "Starting long test on: $drive_name"
     
     OUTPUT=$("$SMARTCTL" -t long "$drive" 2>&1)
     
-    # Extract the exact completion string
     COMPLETION_STR=$(echo "$OUTPUT" | grep "Test will complete after" | sed 's/Test will complete after //')
 
     if [[ -n "$COMPLETION_STR" ]]; then
-        # Convert to Unix timestamp
         if ! COMPLETION_EPOCH=$(date -d "$COMPLETION_STR" +%s 2>/dev/null); then
             log_message " -> Failed to parse completion time for $drive_name: $COMPLETION_STR"
             log_message " -> smartctl output:"
@@ -112,7 +113,6 @@ for drive in $DRIVES; do
         
         log_message " -> Expected completion: $COMPLETION_STR"
         
-        # Track the maximum wait time
         if [[ $COMPLETION_EPOCH -gt $MAX_WAIT_TIME ]]; then
             MAX_WAIT_TIME=$COMPLETION_EPOCH
         fi
@@ -128,7 +128,7 @@ if [[ $SUCCESSFUL_TESTS -eq 0 ]]; then
     exit 1
 fi
 
-# --- Wait Loop ---
+# Wait for completion
 log_message "Waiting for all tests to finish. Maximum wait time: $(date -d @$MAX_WAIT_TIME)"
 while true; do
     CURRENT_TIME=$(date +%s)
@@ -145,14 +145,13 @@ while true; do
     sleep 60
 done
 
-echo "" # Clear the printf line
+echo ""
 log_message "All tests reached completion time. Gathering results..."
 
-# --- Construct and Send Email ---
+# Send notification
 log_message "Generating and sending email notification to $EMAIL_RECIPIENT..."
 EMAIL_SUBJECT="[$SCRIPT_NAME]: S.M.A.R.T. Tests Completed"
 
-# Group the output block to stream directly into mail without using temp files
 {
     echo "All scheduled S.M.A.R.T. long tests have completed successfully."
     echo ""

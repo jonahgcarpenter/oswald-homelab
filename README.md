@@ -53,6 +53,7 @@
   <img src="https://img.shields.io/badge/Whisper--STT-74AA9C?style=for-the-badge&logo=openai&logoColor=white" alt="Whisper-STT"/>
   <img src="https://img.shields.io/badge/Hubble-1F59A3?style=for-the-badge&logo=cilium&logoColor=white" alt="Hubble"/>
   <img src="https://img.shields.io/badge/Cloudflare%20Tunnel-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare Tunnel"/>
+  <img src="https://img.shields.io/badge/Bifrost%20LLM%20Gateway-111827?style=for-the-badge&logoColor=white" alt="Bifrost LLM Gateway"/>
 </p>
 
 - Ryzen 7 5825U 8C/16T 4.5GHz
@@ -68,6 +69,7 @@
   <img src="https://img.shields.io/badge/Cloudflare%20Tunnel-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare Tunnel"/>
   <img src="https://img.shields.io/badge/MQTT-660066?style=for-the-badge&logo=mqtt&logoColor=white" alt="MQTT"/>
   <img src="https://img.shields.io/badge/NUT%20Server-333333?style=for-the-badge&logoColor=white" alt="NUT Server"/>
+  <img src="https://img.shields.io/badge/Music%20Assistant-41BDF5?style=for-the-badge&logo=musicassistant&logoColor=white" alt="Music Assistant"/>
 </p>
 
 - Compute Module 4

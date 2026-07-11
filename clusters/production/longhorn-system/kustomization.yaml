@@ -7,3 +7,4 @@ resources:
   - sealed-smb-credentials.yaml
   - release.yaml
   - ingress.yaml
+  - recurring-jobs.yaml

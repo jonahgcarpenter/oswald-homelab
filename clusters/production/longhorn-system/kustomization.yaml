@@ -4,7 +4,6 @@ namespace: longhorn-system
 resources:
   - namespace.yaml
   - helm-repo.yaml
-  - sealed-smb-credentials.yaml
   - release.yaml
   - ingress.yaml
   - recurring-jobs.yaml

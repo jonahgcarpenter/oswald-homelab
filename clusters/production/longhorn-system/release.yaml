@@ -14,8 +14,8 @@ spec:
       version: "1.12.0"
   values:
     defaultSettings:
-      backupTarget: "cifs://192.168.4.110/kubernetes-backups"
-      backupTargetCredentialSecret: "smb-credential-secret"
+      backupTarget: "nfs://192.168.4.110:/mnt/pool-1/kubernetes"
+      backupTargetCredentialSecret: ""
 
     longhornUI:
       replicas: 1

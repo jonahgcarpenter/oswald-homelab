@@ -3,7 +3,7 @@ kind: RecurringJob
 metadata:
   name: daily-snapshots
 spec:
-  cron: "0 1 * * *"
+  cron: "0 5 * * *" # 12:00 AM CDT
   task: "snapshot"
   groups:
     - backups
@@ -15,7 +15,7 @@ kind: RecurringJob
 metadata:
   name: weekly-backups
 spec:
-  cron: "0 2 * * MON"
+  cron: "0 6 * * SUN" # 1:00 AM CDT Sunday
   task: "backup"
   groups:
     - backups

@@ -5,7 +5,7 @@ metadata:
   labels:
     app: oswald-ai
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
@@ -26,7 +26,7 @@ spec:
 
       containers:
         - name: oswald-ai
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v3.2.0-beta.1
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v3.2.0-beta.2
 
           # Enforcing Principle of Least Privilege
           securityContext:
@@ -52,8 +52,14 @@ spec:
             - name: storage-volume
               mountPath: /home/oswald-ai/data/database
               subPath: database
+            # /tmp for Gif support
+            - name: tmp-dir
+              mountPath: /tmp
 
       volumes:
         - name: storage-volume
           persistentVolumeClaim:
             claimName: oswald-ai-pvc
+        - name: tmp-dir
+          emptyDir:
+            sizeLimit: 256Mi

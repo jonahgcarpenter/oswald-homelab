@@ -99,7 +99,7 @@
 - Ryzen 5 3600 6C/12T 3.6GHz
 - 4x16GB 3200MHz DDR4
 - 500GB NVMe
-- 2x2TB 3.5" Drive
+- 3x2TB 3.5" Drive
 - Intel Arc Pro B70 32GB VRAM
 
 ### [Tripplite UPS](https://a.co/d/gjzwQbd)

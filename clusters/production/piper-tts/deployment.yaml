@@ -27,7 +27,7 @@ spec:
             - containerPort: 10200
           env:
             - name: PIPER_VOICE
-              value: "en_US-danny-low"
+              value: "en_US-c3po-medium"
             - name: TZ
               value: "Etc/UTC"
             - name: PUID

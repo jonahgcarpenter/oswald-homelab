@@ -18,7 +18,7 @@ spec:
     spec:
       initContainers:
         - name: initialize-storage
-          image: ghcr.io/jonahgcarpenter/nestledger:v1.0.1
+          image: ghcr.io/jonahgcarpenter/nestledger:v1.0.2
           securityContext:
             runAsUser: 0
           command:
@@ -34,7 +34,7 @@ spec:
 
       containers:
         - name: nestledger
-          image: ghcr.io/jonahgcarpenter/nestledger:v1.0.1
+          image: ghcr.io/jonahgcarpenter/nestledger:v1.0.2
 
           ports:
             - name: http

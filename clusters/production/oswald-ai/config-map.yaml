@@ -4,10 +4,10 @@ metadata:
   name: oswald-ai-config
 data:
   LLM_GATEWAY_URL: "http://bifrost.bifrost.svc.cluster.local:8080"
-  LLM_GATEWAY_MODEL: "llama.cpp-chat/qwen3.8-27b-q4km"
+  LLM_GATEWAY_MODEL: "vllm/huihui-qwen3.8-27b"
   LLM_GATEWAY_EMBEDDING_MODEL: "llama.cpp-embeddings/nomic-embed-text:v1.5"
   BLUEBUBBLES_LISTEN_PORT: "8090"
   HOME_ASSISTANT_LISTEN_PORT: "8000"
-  MODEL_CONTEXT_WINDOW: "262144"
+  MODEL_CONTEXT_WINDOW: "200000"
   MODEL_MAX_OUTPUT_TOKENS: "8192"
-  COMFYUI_URL: "https://comfy-ui.home.jonahsserver.com"
+  COMFYUI_URL: "https://comfyui.home.carpentersserver.com"

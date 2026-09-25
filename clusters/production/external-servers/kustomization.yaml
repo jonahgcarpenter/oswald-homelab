@@ -7,4 +7,3 @@ resources:
   - ./truenas
   - ./homebridge
   - ./pterodactyl
-  - ./comfy-ui

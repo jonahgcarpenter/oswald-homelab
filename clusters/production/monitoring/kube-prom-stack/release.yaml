@@ -80,6 +80,9 @@ spec:
           - job_name: "truenas-exporter"
             static_configs:
               - targets: ["truenas-exporter.monitoring.svc.cluster.local:9100"]
+          - job_name: "vllm-exporter"
+            static_configs:
+              - targets: ["192.168.4.189:8000"]
 
     alertmanager:
       alertmanagerSpec:

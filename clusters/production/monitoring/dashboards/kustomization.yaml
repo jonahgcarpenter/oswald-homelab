@@ -17,3 +17,4 @@ resources:
   - unifi-dpi.yaml
   - unifi-gateway.yaml
   - unifi-switch.yaml
+  - vllm.yaml

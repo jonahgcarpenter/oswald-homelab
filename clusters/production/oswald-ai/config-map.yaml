@@ -12,3 +12,4 @@ data:
   COMFYUI_URL: "https://comfyui.home.carpentersserver.com"
   BLUEBUBBLES_DM_MENTION: "true"
   WORKER_POOL_SIZE: "2"
+  LOG_LEVEL: "debug"

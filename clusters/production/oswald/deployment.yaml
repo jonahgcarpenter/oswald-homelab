@@ -52,6 +52,8 @@ spec:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
             runAsNonRoot: true
+            runAsUser: 999
+            runAsGroup: 999
             capabilities:
               drop:
                 - ALL
@@ -60,7 +62,6 @@ spec:
           volumeMounts:
             - name: oswald
               mountPath: /home/oswald/.oswald
-              subPath: .oswald
             # /tmp for Gif support
             - name: tmp-dir
               mountPath: /tmp

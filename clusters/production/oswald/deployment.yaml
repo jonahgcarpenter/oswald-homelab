@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oswald
+  labels:
+    app: oswald
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: oswald
+  template:
+    metadata:
+      labels:
+        app: oswald
+    spec:
+      # Block API token and kernel syscalls
+      automountServiceAccountToken: false
+      securityContext:
+        fsGroup: 999
+        fsGroupChangePolicy: "Always"
+        seccompProfile:
+          type: RuntimeDefault
+
+      initContainers:
+        - name: fix-perms
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.0.0-beta.0
+          securityContext:
+            runAsUser: 0
+          command:
+            [
+              "sh",
+              "-c",
+              "mkdir -p /home/oswald/.oswald && chown 999:999 /home/oswald/.oswald && chmod 700 /home/oswald/.oswald",
+            ]
+          volumeMounts:
+            - { name: oswald, mountPath: /home/oswald/.oswald }
+        - name: setup
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.0.0-beta.0
+          command: ["oswald", "setup"]
+          volumeMounts:
+            - { name: oswald, mountPath: /home/oswald/.oswald }
+
+      containers:
+        - name: oswald-ai
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.0.0-beta.0
+
+          # Enforcing Principle of Least Privilege
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
+
+          # Mounting the storage directory
+          volumeMounts:
+            - name: oswald
+              mountPath: /home/oswald/.oswald
+              subPath: .oswald
+            # /tmp for Gif support
+            - name: tmp-dir
+              mountPath: /tmp
+
+      volumes:
+        - name: oswald
+          persistentVolumeClaim:
+            claimName: oswald-pvc
+        - name: tmp-dir
+          emptyDir:
+            sizeLimit: 256Mi

@@ -42,6 +42,17 @@ spec:
           command: ["oswald", "setup"]
           volumeMounts:
             - { name: oswald, mountPath: /home/oswald/.oswald }
+        - name: secure-perms
+          securityContext:
+            runAsUser: 0
+          command:
+            [
+              "sh",
+              "-c",
+              "chown -R 999:999 /home/oswald/.oswald && find /home/oswald/.oswald -type d -exec chmod 700 {} + && find /home/oswald/.oswald -type f -exec chmod 600 {} +",
+            ]
+          volumeMounts:
+            - { name: oswald, mountPath: /home/oswald/.oswald }
 
       containers:
         - name: oswald-ai

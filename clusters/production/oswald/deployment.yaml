@@ -43,6 +43,7 @@ spec:
           volumeMounts:
             - { name: oswald, mountPath: /home/oswald/.oswald }
         - name: secure-perms
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.0.0-beta.0
           securityContext:
             runAsUser: 0
           command:

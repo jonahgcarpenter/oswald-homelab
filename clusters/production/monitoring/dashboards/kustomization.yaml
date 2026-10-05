@@ -8,7 +8,6 @@ resources:
   - loki.yaml
   - longhorn.yaml
   - node-temps.yaml
-  - oswald-ai.yaml
   - pihole.yaml
   - proxmox.yaml
   - truenas.yaml

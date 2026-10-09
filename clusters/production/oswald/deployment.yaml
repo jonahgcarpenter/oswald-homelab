@@ -5,7 +5,7 @@ metadata:
   labels:
     app: oswald
 spec:
-  replicas: 1
+  replicas: 0
   strategy:
     type: Recreate
   selector:

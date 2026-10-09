@@ -6,4 +6,3 @@ resources:
   - ./unifi
   - ./truenas
   - ./homebridge
-  - ./pterodactyl

@@ -379,8 +379,6 @@ spec:
         - address=/longhorn.home.jonahsserver.com/192.168.4.231
         - address=/oswald.home.jonahsserver.com/192.168.4.231
         - address=/pihole.home.jonahsserver.com/192.168.4.231
-        - address=/pterodactyl-panel.home.jonahsserver.com/192.168.4.231
-        - address=/pterodactyl-wing-0.home.jonahsserver.com/192.168.4.231
         - address=/pve-0.home.jonahsserver.com/192.168.4.231
         - address=/talos.home.jonahsserver.com/192.168.4.230
         - address=/truenas.home.jonahsserver.com/192.168.4.231

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: oswald-webhook
+  name: oswald-svc
   namespace: oswald
   labels:
     app: oswald
@@ -11,7 +11,11 @@ spec:
   selector:
     app: oswald
   ports:
-    - name: http
+    - name: bluebubbles
       protocol: TCP
       port: 8090
       targetPort: 8090
+    - name: api
+      protocol: TCP
+      port: 8080
+      targetPort: 8080

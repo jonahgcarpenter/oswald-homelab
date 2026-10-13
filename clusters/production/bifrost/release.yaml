@@ -11,7 +11,7 @@ spec:
         kind: HelmRepository
         name: bifrost
         namespace: bifrost
-      version: "2.1.43"
+      version: "2.1.44"
   values:
     image:
       tag: "v1.6.11"

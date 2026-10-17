@@ -83,6 +83,10 @@ spec:
           - job_name: "vllm-exporter"
             static_configs:
               - targets: ["192.168.4.189:8000"]
+          - job_name: "frigate"
+            metrics_path: "/api/metrics"
+            static_configs:
+              - targets: ["192.168.4.89:5000"]
 
     alertmanager:
       alertmanagerSpec:

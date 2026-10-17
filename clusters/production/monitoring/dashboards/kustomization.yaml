@@ -17,3 +17,4 @@ resources:
   - unifi-gateway.yaml
   - unifi-switch.yaml
   - vllm.yaml
+  - frigate.yaml

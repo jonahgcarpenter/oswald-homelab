@@ -20,7 +20,7 @@ spec:
       automountServiceAccountToken: false
       securityContext:
         fsGroup: 10000
-        fsGroupChangePolicy: "Always"
+        fsGroupChangePolicy: "OnRootMismatch"
         seccompProfile:
           type: RuntimeDefault
 

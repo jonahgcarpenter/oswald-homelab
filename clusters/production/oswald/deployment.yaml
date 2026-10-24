@@ -25,7 +25,7 @@ spec:
           type: RuntimeDefault
 
       initContainers:
-      # TMP FIX FOR `read user soul: unsafe soul file`
+        # TMP FIX FOR `read user soul: unsafe soul file`
         - name: secure-perms
           image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.1.0-beta.3
           securityContext:
@@ -43,6 +43,11 @@ spec:
         - name: oswald-ai
           image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.1.0-beta.3
           env:
+            # TMP FIX for browser crashes
+            - name: HOME
+              value: /tmp
+            - name: TMPDIR
+              value: /tmp
             - name: GH_TOKEN
               valueFrom:
                 secretKeyRef:
@@ -63,6 +68,10 @@ spec:
           volumeMounts:
             - name: oswald
               mountPath: /home/oswald/.oswald
+            # TMP FIX for browser crashes
+            - name: tmp-dir
+              emptyDir:
+                sizeLimit: 256Mi
 
       volumes:
         - name: oswald

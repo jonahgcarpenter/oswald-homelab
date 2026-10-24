@@ -4,5 +4,6 @@ namespace: oswald
 resources:
   - namespace.yaml
   - pvc.yaml
+  - sealed-gh-token.yaml
   - deployment.yaml
   - service.yaml

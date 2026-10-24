@@ -1,0 +1,14 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: gh-token
+  namespace: oswald
+spec:
+  encryptedData:
+    GH_TOKEN: AgBYWo641U7xG8B4DDwwQKY9wTJwfwu5nvvIbf95GyMmReaeVuizybcgjxZdPoYxwyW9VlZuKHv/YD+RsLNJepZZYHpHs23E/wM7wq9LQTWZ73HrmfU/ZH0xJ71T+B1eq5+WY1UnvIQ6JTQnURyZvM/GN5nYNELmHrPRwDUaycl5o4wN0ciQ8D9GvBffBQw8cSuEBNbXWBAH+EV2Syoro1/dEH7DtH/FuetlIyqUNaThLlkfnLErWDVG7IiAviEFjZ+kjdVJor7r9kghf1oeNzKuq0YYEvPM+9HPP4rjIv86LEvY7Pp8iT2l5b4A4T7eVJ9bYNL0mt4JAoHAp1VJg+giwPlunZ0Cd5VIK7VYeaqgWIKs87cBKOmol5hBum6oxZYTKy3oqLa+jnKsnUjHkk6ohM0h7c91REYOF+tLXm+004AW1oSTDikDz1S/Eb8oeGxpAgXbthUtyOQ3wc3RdNKycdnu/e363Z5jImL29YGDZQTRT+xQcj+2zTi4A4r8e8/1wgNnoqx2yp/F+Y7eoDiT6d5cnYD/KlCX1XVMrryBEy5aWGWItwIeoV7ZQt1xShCqhPZgedjJ12q2LVSmQlTexu/L0KLbcONONmLW+s+jO1NvYvL/ADf+2zD4qFHh5eRTRZ/Z1QoMc0HpFJYL+JEn3DgaAkVBPNVHWpRAnvEL+bn7wRX6TNvo7iK3uiZ1QftXwJWSVUHDVnzPYJJeDlorsooPWFk+77VPFMF+mhfCGZ+ZoX4QwH7t
+  template:
+    metadata:
+      name: gh-token
+      namespace: oswald
+    type: Opaque

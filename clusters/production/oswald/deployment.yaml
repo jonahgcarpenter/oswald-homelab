@@ -24,53 +24,19 @@ spec:
         seccompProfile:
           type: RuntimeDefault
 
-      initContainers:
-        - name: fix-perms
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.1.0-beta.2
-          securityContext:
-            runAsUser: 0
-          command:
-            [
-              "sh",
-              "-c",
-              "mkdir -p /home/oswald/.oswald && chown 999:999 /home/oswald/.oswald && chmod 700 /home/oswald/.oswald",
-            ]
-          volumeMounts:
-            - { name: oswald, mountPath: /home/oswald/.oswald }
-        - name: setup
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.1.0-beta.2
-          securityContext:
-            runAsUser: 999
-            runAsGroup: 999
-          command: ["oswald", "setup"]
-          volumeMounts:
-            - { name: oswald, mountPath: /home/oswald/.oswald }
-        - name: secure-perms
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.1.0-beta.2
-          securityContext:
-            runAsUser: 0
-          command:
-            [
-              "sh",
-              "-c",
-              "chown -R 999:999 /home/oswald/.oswald && find /home/oswald/.oswald -type d -exec chmod 700 {} + && find /home/oswald/.oswald -type f -exec chmod 600 {} +",
-            ]
-          volumeMounts:
-            - { name: oswald, mountPath: /home/oswald/.oswald }
-
       containers:
         - name: oswald-ai
           image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.1.0-beta.2
           env:
-            - name: HOME
-              value: /tmp
-            - name: TMPDIR
-              value: /tmp
+            - name: GH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: gh-token
+                  key: GH_TOKEN
 
           # Enforcing Principle of Least Privilege
           securityContext:
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 999
             runAsGroup: 999
@@ -82,14 +48,8 @@ spec:
           volumeMounts:
             - name: oswald
               mountPath: /home/oswald/.oswald
-            # /tmp for Gif support
-            - name: tmp-dir
-              mountPath: /tmp
 
       volumes:
         - name: oswald
           persistentVolumeClaim:
             claimName: oswald-pvc
-        - name: tmp-dir
-          emptyDir:
-            sizeLimit: 256Mi

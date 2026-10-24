@@ -24,6 +24,21 @@ spec:
         seccompProfile:
           type: RuntimeDefault
 
+      initContainers:
+      # TMP FIX FOR `read user soul: unsafe soul file`
+        - name: secure-perms
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.1.0-beta.3
+          securityContext:
+            runAsUser: 0
+          command:
+            [
+              "sh",
+              "-c",
+              "chown -R 999:999 /home/oswald/.oswald && find /home/oswald/.oswald -type d -exec chmod 700 {} + && find /home/oswald/.oswald -type f -exec chmod 600 {} +",
+            ]
+          volumeMounts:
+            - { name: oswald, mountPath: /home/oswald/.oswald }
+
       containers:
         - name: oswald-ai
           image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.1.0-beta.3

@@ -6,3 +6,4 @@ resources:
   - ./unifi
   - ./truenas
   - ./homebridge
+  - ./kvm

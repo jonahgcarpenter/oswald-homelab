@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kvm-ingress
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`kvm.home.jonahsserver.com`)
+      kind: Rule
+      services:
+        - name: kvm
+          port: 443
+          scheme: https
+          serversTransport: kvm-insecure-transport

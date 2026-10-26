@@ -1,0 +1,16 @@
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: kvm-slice
+  labels:
+    kubernetes.io/service-name: kvm
+addressType: IPv4
+ports:
+  - name: https
+    protocol: TCP
+    port: 443
+endpoints:
+  - addresses:
+      - "192.168.2.95"
+    conditions:
+      ready: true

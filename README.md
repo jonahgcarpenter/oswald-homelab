@@ -28,6 +28,8 @@
 - 8 2.5 GbE PoE++
 - 2 10G SFP+
 
+### [KVM](https://www.gl-inet.com/en-us/products/gl-rm4pe?_pos=3&_psq=kvm&_psid=6e812adaf&_ss=e)
+
 ### [Talos Cluster](https://www.gmktec.com/products/amd-ryzen-7-5825u-mini-pc-nucbox-m5-plus?srsltid=AfmBOorNrOPnRo3cqmPHBq14s82hdWG4dPwe6ntEimRl0J_gWKyXjpC3)
 
 <p align="left">

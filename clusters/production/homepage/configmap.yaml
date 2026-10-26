@@ -24,6 +24,9 @@ data:
         - Homebridge:
             icon: homebridge.png
             href: https://homebridge.home.jonahsserver.com
+        - GliNet KVM:
+            icon: glinet.png
+            href: https://kvm.home.jonahsserver.com
 
     - Infrastructure & Data:
         - PVE-0:

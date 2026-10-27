@@ -26,7 +26,7 @@ spec:
 
       containers:
         - name: oswald-ai
-          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.1.0-beta.8
+          image: ghcr.io/jonahgcarpenter/oswald-ai/oswald-ai:v5.1.0-beta.9
           env:
             - name: GH_TOKEN
               valueFrom:

@@ -11,7 +11,7 @@ spec:
         kind: HelmRepository
         name: traefik
         namespace: traefik
-      version: "42.1.3"
+      version: "42.2.0"
   values:
     service:
       spec:

@@ -21,6 +21,17 @@ spec:
         kubeProxy: false
 
     grafana:
+      deploymentStrategy:
+        type: Recreate
+
+      persistence:
+        enabled: true
+        type: pvc
+        storageClassName: longhorn
+        accessModes:
+          - ReadWriteOnce
+        size: 1Gi
+
       admin:
         existingSecret: "grafana-admin-credentials"
         userKey: admin_user

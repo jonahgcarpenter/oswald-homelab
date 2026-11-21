@@ -16,8 +16,9 @@ spec:
       labels:
         app: oswald
     spec:
-      # Block API token and kernel syscalls
-      automountServiceAccountToken: false
+      # Readonly SVC ACC
+      serviceAccountName: oswald
+      automountServiceAccountToken: true
       securityContext:
         fsGroup: 10000
         fsGroupChangePolicy: "OnRootMismatch"

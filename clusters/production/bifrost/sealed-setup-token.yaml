@@ -1,0 +1,14 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: bifrost-setup-token
+  namespace: bifrost
+spec:
+  encryptedData:
+    setup-token: AgASMSv/m8Q78Jd150zm4OZMMyPCbj7KVmcQipOXjYODZp1YB4QYXLn+e8wSG8Ri+e+WcYZAgcnsk43zJ7JqzAc1VlE2p932++nHjb54sP5mg/6Fo5H0lb6aRP1/RfT4mOhr+YYMSi7UK44oNQUgTzBhmmdz4ttJK/arm7e8BJMohEgUkA4/QTj6w8yA+/5mNkidfVxZgxm9J2JSyCwl7QptC8eilyR2P2J5S3/k63K6pM9a8pS11aXg4OHHJfLfnkaHGpNydEF0RaCQMaExKF08MLiFu2iS7H+B56/JpaRT0+2Vs2I1U1e0wCa16jakIBH1s9wPx/L7bi2ETquObbBuw+SBFyck+lrJgqOVnrkvLSlIFLHUJnev6AVdj2RY1t+HvOTfRDgo5MFfXr5/dG01m5WDNJpUWKhC6i8jE1Os6y03/nPZ8oQE2+0ABtR1kmOt0p+W6vW/c8eOQwH2gtGiCqIXy5dFBjy+JU32RZhSKm928aLHxo5KL/2laYni6D+9F3b9lSYaGaLIRL3F2RDHrvV9+MQ+trepsD1M6mSso+1ngz7lGd3m74pvAFWnPqN34oiM9SrBIVu0oTqVq/OXPUq0ouHQQSi7aA9BtK8ukRx2GQpJrQcm2H4Dcb4g3sMVfhkQPKzMWpFkdcHh0ckKGnJVglplyJ65rqhDlD37pIkXmvR3qs3Jweqfg0t648EgDYwEmNt4lqQQUqgBW7lKnE54jxumzPeFNOPxgilEnl/rQFf4wbjT4mhDUSMq3pM=
+  template:
+    metadata:
+      name: bifrost-setup-token
+      namespace: bifrost
+    type: Opaque

@@ -17,6 +17,7 @@ spec:
       tag: "v2.6.0"
 
     bifrost:
+      setupToken: "env.BIFROST_SETUP_TOKEN"
       encryptionKeySecret:
         name: "bifrost-encryption-key"
         key: "encryption-key"
@@ -38,3 +39,10 @@ spec:
     vectorStore:
       enabled: false
       type: none
+
+    env:
+      - name: BIFROST_SETUP_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: bifrost-setup-token
+            key: setup-token

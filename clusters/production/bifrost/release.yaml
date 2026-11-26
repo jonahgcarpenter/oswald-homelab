@@ -11,10 +11,10 @@ spec:
         kind: HelmRepository
         name: bifrost
         namespace: bifrost
-      version: "2.1.49"
+      version: "2.1.50"
   values:
     image:
-      tag: "v1.6.11"
+      tag: "v2.6.0"
 
     bifrost:
       encryptionKeySecret:

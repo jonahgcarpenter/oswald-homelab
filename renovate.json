@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
-  "enabledManagers": ["flux", "kubernetes", "regex"],
+  "enabledManagers": ["flux", "kubernetes", "custom.regex"],
   "flux": {
     "managerFilePatterns": ["/clusters/.+\\.yaml$/"]
   },
@@ -26,12 +26,11 @@
       "assignees": ["jonahgcarpenter"]
     }
   ],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["clusters/production/tuppr/.+\\.yaml$"],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\s*\\n\\s*version:\\s*(?<currentValue>\\S+)"
-      ]
+      "customType": "regex",
+      "managerFilePatterns": ["/clusters/production/tuppr/.+\\.yaml$/"],
+      "matchStrings": ["# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\s*\\n\\s*version:\\s*(?<currentValue>\\S+)"]
     }
   ]
 }

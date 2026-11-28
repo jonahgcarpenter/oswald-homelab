@@ -88,9 +88,7 @@
 <p align="left">
   <img src="https://img.shields.io/badge/Proxmox-E57000?style=for-the-badge&logo=proxmox&logoColor=white" alt="Proxmox"/>
   <img src="https://img.shields.io/badge/TrueNAS-0095D5?style=for-the-badge&logo=truenas&logoColor=white" alt="TrueNAS"/>
-  <img src="https://img.shields.io/badge/Pterodactyl-1040D3?style=for-the-badge&logo=pterodactyl&logoColor=white" alt="Pterodactyl"/>
   <img src="https://img.shields.io/badge/vllm-%2330A2FF.svg?style=for-the-badge&logo=vllm&logoColor=white" alt="vLLM"/>
-  <img src="https://img.shields.io/badge/ComfyUI-172DD7?style=for-the-badge" alt="ComfyUI"/>
   <img src="https://img.shields.io/badge/Frigate-000000?style=for-the-badge&logo=frigate&logoColor=white" alt="Frigate"/>
 </p>
 

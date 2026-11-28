@@ -5,3 +5,5 @@ resources:
   - namespace.yaml
   - helm-repo.yaml
   - release.yaml
+  - talos-upgrade.yaml
+  - kubernetes-upgrade.yaml

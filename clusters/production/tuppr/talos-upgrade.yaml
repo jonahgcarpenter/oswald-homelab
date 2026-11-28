@@ -1,0 +1,14 @@
+apiVersion: tuppr.home-operations.com/v1alpha1
+kind: TalosUpgrade
+metadata:
+  name: cluster
+spec:
+  talos:
+    # renovate: datasource=docker depName=ghcr.io/siderolabs/talos
+    version: v1.14.6
+  policy:
+    # Wait for Longhorn volumes to detach before reboot (avoids Multi-Attach).
+    waitForVolumeDetach: true
+    # Generous drain ceiling after the rate-limiter storm hit doing this manually.
+    drainTimeout: 10m
+    timeout: 30m
